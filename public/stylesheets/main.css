@@ -3,6 +3,10 @@ body{
     font-size: .9vw;
 }
 
+/* Login page */
+ /*  */
+ /*  */
+
 #appTitle{
     font-size: 3vw;
     font-family: 'Roboto';
@@ -14,7 +18,7 @@ body{
     letter-spacing: .08rem;
 }
 
-#loginDiv{
+.loginDiv{
     border: 2px solid #d1d1d1;
     width: 30%;
     height: 76vh;
@@ -52,4 +56,52 @@ body{
 a{
     color: #457b9d;
     font-weight: 700;
+}
+
+/* Demo page */
+ /*  */
+ /*  */
+
+#demoLoginTitle{
+    color: #1d3557;
+    font-size: 1.7vw;
+    font-weight: bold;
+    margin-top: 7vh;
+    margin-bottom: 9vh;
+    padding-left: 5.5vw;
+}
+
+p{
+    margin-top: 1vh;
+    margin-bottom: 9vh;
+    color: #1d3557;
+}
+
+.demoUser{
+    padding-left: 5.6vw;
+}
+
+.fa-user{
+    font-size: 5em;
+}
+
+#demoSignIn{
+    padding-left: 6.8vw;
+    font-size: .8vw;
+}
+
+#demoIconColor1{
+    color: #e63946;
+}
+
+#demoIconColor2{
+    color: #a8dadc;
+}
+
+#demoIconColor3{
+    color: #457b9d;
+}
+
+#demoIconColor4{
+    color: #1d3557;
 }
