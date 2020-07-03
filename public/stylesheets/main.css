@@ -1,0 +1,55 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-size: .9vw;
+}
+
+#appTitle{
+    font-size: 3vw;
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    margin-top: 6vh;
+    margin-bottom: 3vh; 
+    color: #457b9d;
+    font-weight: 500;
+    letter-spacing: .08rem;
+}
+
+#loginDiv{
+    border: 2px solid #d1d1d1;
+    width: 30%;
+    height: 76vh;
+    margin: 12vh auto;
+    padding-left: 2rem;
+}
+
+.form-control{
+    width: 80%;
+    height: 4.5vh;
+}
+
+#forgotPassword{
+    display: block;
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+}
+
+#loginBtn{
+    display: block;
+    width: 80%;
+    height: 6vh;
+    margin-bottom: 5vh;
+    background-color: #457b9d;
+    font-weight: bold;
+    border-radius: 1rem;
+    font-size: 1.2vw;
+}
+
+#signingUp{
+    padding-left: .5rem;
+    line-height: 4vh;
+}
+
+a{
+    color: #457b9d;
+    font-weight: 700;
+}
