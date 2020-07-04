@@ -1,6 +1,6 @@
 body{
     font-family: 'Montserrat', sans-serif;
-    font-size: .9vw;
+    font-size: 1rem;
 }
 
 /* Login page */
@@ -8,7 +8,7 @@ body{
  /*  */
 
 #appTitle{
-    font-size: 3vw;
+    font-size: 2.5rem;
     font-family: 'Roboto';
     text-transform: uppercase;
     margin-top: 6vh;
@@ -18,13 +18,49 @@ body{
     letter-spacing: .08rem;
 }
 
+@media (min-width: 576px) {
+    #appTitle {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (min-width: 768px)  {
+    #appTitle{
+      font-size: 3.5rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    #appTitle{
+      font-size: 4rem;
+    }
+  }
+
 .loginDiv{
     border: 2px solid #d1d1d1;
-    width: 30%;
+    width: 20rem;
     height: 76vh;
     margin: 12vh auto;
     padding-left: 2rem;
 }
+ 
+@media (min-width: 576px) {
+    .loginDiv {
+      width: 25rem;
+    }
+  }
+  
+  @media (min-width: 768px)  {
+    .loginDiv{
+      width: 35rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .loginDiv{
+      width: 39rem;
+    }
+  }
 
 .form-control{
     width: 80%;
@@ -44,14 +80,60 @@ body{
     margin-bottom: 5vh;
     background-color: #457b9d;
     font-weight: bold;
-    border-radius: 1rem;
-    font-size: 1.2vw;
+    border-radius: 1.2rem;
+    font-size: 1.1rem;
 }
 
+@media (min-width: 576px) {
+    #loginBtn {
+      font-size: 1.3rem;
+      margin-bottom: 4vh;
+    }
+  }
+  
+  @media (min-width: 768px)  {
+    #loginBtn{
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    #loginBtn{
+      padding-bottom: 3rem;
+      font-size: 1.8rem;
+    }
+  }
+
 #signingUp{
-    padding-left: .5rem;
+    padding-left: 1rem;
     line-height: 4vh;
 }
+
+@media (max-width: 767px) {
+    #signingUp {
+        font-size: 0.9rem;
+        padding-left: 0;
+        line-height: 4vh;
+        margin-right: 4rem;
+        text-align: left;
+    }
+
+    #signingUp a{
+        margin-bottom: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px)  {
+    #signingUp{
+        padding-left: 2.3rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    #signingUp{
+        padding-left: 4rem;
+    }
+  }
 
 a{
     color: #457b9d;
@@ -64,11 +146,11 @@ a{
 
 #demoLoginTitle{
     color: #1d3557;
-    font-size: 1.7vw;
+    font-size: 1.7rem;
     font-weight: bold;
     margin-top: 7vh;
     margin-bottom: 9vh;
-    padding-left: 5.5vw;
+    padding-left: 25%;
 }
 
 p{
@@ -78,7 +160,7 @@ p{
 }
 
 .demoUser{
-    padding-left: 5.6vw;
+    padding-left: 20%;
 }
 
 .fa-user{
@@ -86,9 +168,27 @@ p{
 }
 
 #demoSignIn{
-    padding-left: 6.8vw;
-    font-size: .8vw;
+    padding-left: 15%;
+    font-size: 1rem;
 }
+
+@media (min-width: 576px) {
+   #demoSignIn{
+        padding-left: 21%;
+   }
+  }
+  
+  @media (min-width: 768px)  {
+    #demoSignIn{
+        padding-left: 28%;
+   }
+  }
+  
+  @media (min-width: 992px) {
+    #demoSignIn{
+        padding-left: 30%;
+    }
+  }
 
 #demoIconColor1{
     color: #e63946;

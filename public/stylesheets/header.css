@@ -1,0 +1,78 @@
+.navbar-custom{
+    height: 6vh;
+    padding-top: 1vh;
+}
+
+.navbar-custom a{
+    color: #f1faee;
+    font-weight: bold;
+    font-size: 1.2vw;
+}
+
+#navbar2{
+    z-index: 0;
+    margin-top: 6vh;
+    height: 10.9vh;
+    opacity: 0.87;
+}
+
+#nameJob{
+    margin-left: 22.7vw;
+    font-weight: bold;
+    font-size: 2.4vw;
+    line-height:2.2vh;
+    padding-bottom: 1vh;
+    color: #f1faee;
+  }
+  
+  #nameJob small {
+    margin-top: 2vh;
+    display:block;
+    font-size:10px;
+    font-weight: bold;
+    font-size: 1.4vw;
+  }
+
+  #profilePic{
+      position: absolute;
+      margin-left: 6vw;
+      margin-top: 9vh;
+      z-index: 1;
+      width: 11%;
+      height: 20%;
+      border-radius: 50%;
+  }
+
+  #managerPic{
+    position: absolute;
+    width: 1.5%;
+    height: 4%;
+    border-radius: 50%;
+}
+
+
+  #personalInfo{
+    margin-left: 6vw;
+  }
+
+  p{
+    color: #1d3557;
+    margin-bottom: 0.2vh;
+  }
+
+  i{
+    color: black;
+  }
+
+  #line1{
+      padding-top: 33vh;
+  }
+
+  .heading{
+      font-weight: bold;
+      color: #e63946;
+  }
+
+  #besidePic{
+    margin-left: 2vw;
+  }
