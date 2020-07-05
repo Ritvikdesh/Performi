@@ -1,25 +1,24 @@
 .navbar-custom{
-    height: 6vh;
-    padding-top: 1vh;
+    height: 3rem;
 }
 
 .navbar-custom a{
     color: #f1faee;
-    font-weight: bold;
-    font-size: 1.2vw;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 #navbar2{
     z-index: 0;
-    margin-top: 6vh;
+    margin-top: 3rem;
     height: 10.9vh;
     opacity: 0.87;
 }
 
 #nameJob{
-    margin-left: 22.7vw;
+    margin-left: 24rem;
     font-weight: bold;
-    font-size: 2.4vw;
+    font-size: 3rem;
     line-height:2.2vh;
     padding-bottom: 1vh;
     color: #f1faee;
@@ -28,9 +27,8 @@
   #nameJob small {
     margin-top: 2vh;
     display:block;
-    font-size:10px;
     font-weight: bold;
-    font-size: 1.4vw;
+    font-size: 1.6rem;
   }
 
   #profilePic{
@@ -43,16 +41,17 @@
       border-radius: 50%;
   }
 
-  #managerPic{
+  .employeesPic{
     position: absolute;
     width: 1.5%;
-    height: 4%;
+    height: 2.5%;
     border-radius: 50%;
 }
 
 
   #personalInfo{
     margin-left: 6vw;
+    font-size: 1.24rem;
   }
 
   p{
@@ -61,7 +60,7 @@
   }
 
   i{
-    color: black;
+    color:black;
   }
 
   #line1{
@@ -75,4 +74,18 @@
 
   #besidePic{
     margin-left: 2vw;
+  }
+
+  #settings{
+    color: #f1faee;
+  }
+
+  #suboordinates{
+    margin-top: 1rem;
+  }
+
+  hr{
+    margin-left: .1rem;
+    width: 13rem;
+    border: 1px dashed #a6a6a6;
   }
