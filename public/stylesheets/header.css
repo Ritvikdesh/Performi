@@ -54,12 +54,12 @@
     font-size: 1.24rem;
   }
 
-  p{
+  #personalInfo p{
     color: #1d3557;
     margin-bottom: 0.2vh;
   }
 
-  i{
+  #personalInfo i{
     color:black;
   }
 
@@ -67,7 +67,7 @@
       padding-top: 33vh;
   }
 
-  .heading{
+  #personalInfo .heading{
       font-weight: bold;
       color: #e63946;
   }
@@ -88,4 +88,39 @@
     margin-left: .1rem;
     width: 13rem;
     border: 1px dashed #a6a6a6;
+  }
+
+  #dashboard{
+    position: fixed;
+    top: 10rem;
+    left: 25rem;
+  }
+
+  #dashboard h1{
+    color: #1d3557;
+    font-size: 2.25rem;
+    font-weight: 700;
+  }
+
+  .dashboardBox{
+    box-shadow: 1px 1px 3px;
+    width: 72vw;
+    height: 17vh;
+    margin-top: 1rem;
+    background-color: #ededed;
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }
+
+  p{
+    color: #1d3557;
+  }
+
+  .dashboardBox p:nth-of-type(1){
+    font-weight: 700;
+  }
+
+  a{
+    color: #457b9d;
+    font-weight: 700;
   }
