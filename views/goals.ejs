@@ -1,0 +1,35 @@
+<%- include ("./partials/header") %> 
+
+<div class="goalsContent">
+    <ul class="nav nav-tabs">
+          <a id="goalsHeading" class="nav-item nav-link" data-toggle="tab" href="#goals"><i class="fas fa-bullseye"></i>   Goals</a>
+          <a  id="assessmentHeading" class="nav-item nav-link " data-toggle="tab" href="#assessment"><i class="fas fa-tachometer-alt"></i>   Asssessment</a>
+          <a  id="feedbackHeading" class="nav-item nav-link " data-toggle="tab" href="#feedback"><i class="fas fa-globe"></i>   360 Feedback</a>
+          <span>Review Period</span>
+          <div class="dropdown">
+              <button id="dropdownBtn" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">Dec 4, 2020 - Feb 8, 2021</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Mar 4, 2020 - Nov 28, 2020</a>
+                <a class="dropdown-item" href="#">Aug 15, 2020 - Sep 15, 2020</a>
+                <a class="dropdown-item" href="#">Jul 1, Aug 2, 2020</a>
+              </div>
+          </div>
+      </ul>
+
+
+      <div class="tab-content" id="nav-tabContent">
+          <div id="goals" class="tab-pane fade in active">
+            <h1>random things</h1>
+          </div>
+
+          <div id="assessment" class="tab-pane fade in active">
+            <h1>random things</h1>
+          </div>
+
+          <div id="feedback" class="tab-pane fade in active">
+            <h1>random things</h1>
+          </div>
+      </div>
+</div>
+
+<%- include ("./partials/footer") %> 
