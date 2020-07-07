@@ -76,14 +76,58 @@
         </div>
     </div>
 
-        <div id="assessment" class="tab-pane fade in active">
-        <button>hey this is the button for the assessment page</button>
-
+    <div id="assessment" class="tab-pane fade in active">
+        <div class="selfAssessment">
+            <form class="selfAssessmentForm" action="">
+                <i class="fas fa-portrait"></i>
+                <h2>Self Assessment</h2>
+                <div class="form-group">
+                    <label class="labelMargin">How well does Company recognize my value?</label>
+                    <select class="custom-select">
+                        <option selected>~Select~</option>
+                        <option value="1">Very well</option>
+                        <option value="2">Okay</option>
+                        <option value="3">Not Good</option>
+                      </select>
+                </div>  
+                <div class="form-group">
+                    <label class="labelMargin">What would have the greatest impact on my ability to do my best work?</label>
+                    <select class="custom-select">
+                        <option selected>~Select~</option>
+                        <option value="1">Very well</option>
+                        <option value="2">Okay</option>
+                        <option value="3">Not Good</option>
+                      </select>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="labelMargin"  for="pros">What are some things that I do well?</label>
+                    <input type="text" name="pros" id="pros" class="form-control selfAssessmentInput">
+                </div>
+                <div class="form-group">
+                    <label class="labelMargin"  for="cons">How could I improve?</label>
+                    <input type="text" name="pros" id="cons" class="form-control selfAssessmentInput">
+                </div>
+                <div class="form-group">
+                    <label class="labelMargin"  for="projects">What has been your favourite project this quarter?</label>
+                    <input type="text" name="pros" id="projects" class="form-control selfAssessmentInput">
+                </div>
+                <button class="btn submitAssessment">Submit</button>
+                <button class="btn saveAssessment">Save & Finish Later</button>
+            </form>
+            
         </div>
+    </div>
 
-        <div id="feedback" class="tab-pane fade in active">
-            <h1>feedback page</h1>
-        </div>
+
+
+
+
+
+
+    <div id="feedback" class="tab-pane fade in active">
+        <h1>feedback page</h1>
+    </div>
 
 </div>
 

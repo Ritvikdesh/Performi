@@ -2,6 +2,22 @@
     height: 3rem;
 }
 
+.smart-scroll{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.scrolled-down{
+   transform:translateY(-100%); transition: all 0.3s ease-in-out;
+}
+
+.scrolled-up{
+  transform:translateY(0); transition: all 0.3s ease-in-out;
+}
+
 .navbar-custom a{
     color: #f1faee;
     font-weight: 700;
@@ -274,7 +290,7 @@
 
   #assessment{
     position: absolute;
-    top: 15rem;
+    top: 15.5rem;
     left: 25rem;
     width: 75.3%;
   }
@@ -497,4 +513,67 @@
   margin-top: 19rem;
   font-size: 1rem;
   z-index: 1;
+}
+
+.selfAssessment{
+  width: 48%;
+  background-color: #ededed;
+  height: 58rem;
+  box-shadow: 1px 1px 3px;
+  margin-bottom: 1rem;
+}
+
+.selfAssessment .selfAssessmentForm{
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+.selfAssessmentForm i{
+  font-size: 3rem;
+  color: #457b9d;
+  margin-bottom: 1.5rem;
+}
+
+.selfAssessmentForm h2{
+  position: absolute;
+  left: 4rem;
+  top: 1rem;
+
+  color: #1d3557;
+}
+
+.labelMargin{
+  margin-bottom: 0;
+}
+
+.custom-select{
+  width: 85%;
+}
+
+.selfAssessmentForm hr{
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  width: 85%
+}
+
+.selfAssessmentInput{
+  width: 85%;
+  height: 10rem;
+}
+
+.submitAssessment{
+  background-color: #457b9d;
+  color: #f1faee;
+  width: 20%;
+  margin-right: 1rem;
+  border: 1px solid #1d3557;
+}
+
+.saveAssessment{
+  background-color: #f1faee;
+  color: #1d3557;
+  width: 30%;
+  border: 1px solid #1d3557;
 }
