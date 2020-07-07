@@ -29,6 +29,10 @@ app.get("/goals", function(req, res){
     res.render("goals");
 })
 
+app.get("/employees", function(req, res){
+    res.render("employees");
+})
+
 //forgot password page
 app.get("/forgotPassword", function(req,res){
     res.render("forgotPassword");
