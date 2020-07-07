@@ -19,6 +19,16 @@ app.get("/home", function(req, res){
     res.render("home");
 })
 
+//tasks page
+app.get("/tasks", function(req, res){
+    res.render("tasks");
+})
+
+//goals page
+app.get("/goals", function(req, res){
+    res.render("goals");
+})
+
 //forgot password page
 app.get("/forgotPassword", function(req,res){
     res.render("forgotPassword");
