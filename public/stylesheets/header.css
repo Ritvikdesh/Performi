@@ -49,8 +49,8 @@
 
   #profilePic{
       position: absolute;
-      margin-left: 6vw;
-      margin-top: 9vh;
+      margin-left: 6%;
+      margin-top: 2%;
       z-index: 1;
       width: 11%;
       height: 20%;
@@ -59,14 +59,16 @@
 
   .employeesPic{
     position: absolute;
-    width: 1.5%;
-    height: 2.5%;
+    width: 11%;
+    height: 3%;
     border-radius: 50%;
 }
 
 
   #personalInfo{
-    margin-left: 6vw;
+    position: absolute;
+    top: 0%;
+    margin-left: 6%;
     font-size: 1.24rem;
   }
 
@@ -1213,3 +1215,172 @@
   opacity: 0.21;
 }
 
+/* 360 feeddback page */
+
+
+.viewFeedbackDiv {
+  position: absolute;
+  top: 18%;
+  left: 7%;
+  width: 44%;
+  height: 90%;
+  margin-bottom: 10rem;
+}
+
+.giveFeedbackDiv {
+  position: absolute;
+  top: 23.5%;
+  left: 52%;
+  width: 44%;
+  background-color: #ededed;
+  box-shadow: 1px 1px 3px;
+  padding-top: 0.7%;
+  padding-left: 1%;
+  padding-right: 1%;
+  height: 75%;
+}
+
+.giveFeedbackDiv h3{
+  font-size: 1.5rem;
+}
+
+.findEmployeesFeedback{
+  margin-top: 2%;
+  width: 100%;
+  height: 61%;
+  background-color: #ededed;
+  box-shadow: 1px 1px 3px;
+}
+
+.findEmployeesFeedback h3{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.findEmployeesFeedback hr{
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 99%;
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.findEmployeesFeedback .sendButton{
+  background-color: #457b9d;
+  box-shadow: 1px 1px 3px;
+  color: #f1faee;
+  width: 50%;
+}
+
+.findEmployeesFeedback .viewButton{
+  background-color: #f1faee;
+  box-shadow: 1px 1px 3px;
+  width: 60%;
+}
+
+.findEmployeesFeedback .employeeNameFeedback{
+  color: #457b9d;
+}
+
+.profilePicFeedbackPage{
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.submitFeedback{
+  background-color: #457b9d;
+  color: #f1faee;
+  box-shadow: 1px 1px 3px;
+}
+
+.saveFeedback{
+  background-color :#f1faee ;
+  color: #457b9d;
+  box-shadow: 1px 1px 3px;
+}
+
+/* Add employees */
+
+.addEmployeeDiv {
+  margin-left: 7%;
+  margin-top: 6.3%;
+  width: 89%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.addEmployeeForm {
+  margin-top: 0.9%;
+  background-color: #ededed;
+  width: 100%;
+  height: 100%;
+  padding-top: 2%;
+  padding-left: 0.5%;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.addEmployeeForm h4{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1d3557;
+}
+
+
+.addEmployeeDiv h2{
+  color: #1d3557;
+  font-weight: 600;
+}
+
+.addEmployeeForm hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  width: 99%;
+  margin-bottom: 1rem;
+}
+
+.addEmployeeForm .standardInputSize {
+  width: 11.9%;
+}
+
+.indentedInfo{
+  padding-left: 1%;
+}
+
+.selectBtn{
+ background-color: white;
+ color: #1d3557;
+ border: 1px solid #ced4da;
+}
+
+.indentedInfo label{
+  color: #1d3557;
+}
+
+.boxPrivleges{
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.5rem;
+  border: 1px solid #1d3557;
+  width: 15%;
+}
+
+.saveEmployeeBtn{
+  background-color: #457b9d;
+  color: #f1faee;
+  box-shadow: 1px 1px 3px;
+  width: 8%;
+}
+
+.cancelEmployeeBtn{
+  background-color: #f1faee;
+  color: #457b9d;
+  box-shadow: 1px 1px 3px;
+  width: 8%;
+}

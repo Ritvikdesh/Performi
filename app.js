@@ -41,6 +41,15 @@ app.get("/generalSettings", function(req, res){
     res.render("generalSettings");
 })
 
+app.get("/addEmployee", function(req, res){
+    res.render("addEmployee");
+})
+
+app.get("/360feedback", function(req, res){
+    res.render("360feedback");
+})
+
+
 //forgot password page
 app.get("/forgotPassword", function(req,res){
     res.render("forgotPassword");
