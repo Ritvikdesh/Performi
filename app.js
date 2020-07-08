@@ -15,8 +15,8 @@ app.get("/", function(req, res){
 })
 
 // compnay sign up page
-app.get("/", function(req, res){
-    res.render("login");
+app.get("/companySignUp", function(req, res){
+    res.render("companySignUp");
 })
 
 //home page
