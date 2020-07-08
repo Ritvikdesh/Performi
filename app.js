@@ -74,6 +74,6 @@ app.get("/demo", function(req, res){
 })
 
 // running app at local host 3000
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("listening at port 3000");
 })
