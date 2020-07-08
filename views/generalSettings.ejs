@@ -1,0 +1,51 @@
+<%- include ("./partials/header2.ejs") %> 
+    
+<div class="manageAccountDiv">
+    <h2>Manage Account</h2>
+    <ul class="nav flex-column nav-pills">
+        <div class="a-div">
+            <a class="nav-link nav-item generalSettings" data-toggle="pill" href="#generalSettings">General Settings</a>
+            <i class="fas fa-caret-right arrowIcon"></i>
+            <a class="nav-link nav-item" data-toggle="pill" href="#reviewCycles">Review Cycles</a>
+            <i class="fas fa-caret-right arrowIcon2"></i>
+        </div>
+    </ul>
+</div>
+
+<div class="tab-content" id="nav-tabContent">
+
+    <div id="generalSettings" class="tab-pane fade in active">
+        <div class="changeSettings">
+            <h2>General</h2>
+            <hr>
+            <form action="">
+                <div class="form-group">
+                    <Label for="companyName">Company Name</Label>
+                    <input type="text" name="companyName" id="companyName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <Label for="peerFeedbackCycle"># of 360 Feedbacks per assessment cycle</Label>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          1
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">2</a>
+                          <a class="dropdown-item" href="#">3 </a>
+                          <a class="dropdown-item" href="#">4 </a>
+                        </div>
+                      </div>
+                      
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="reviewCycles" class="tab-pane fade in active">
+        <h1> this is the general settings</h1>
+    </div>
+</div>
+
+
+
+<%- include ("./partials/footer.ejs") %> 

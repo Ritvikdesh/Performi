@@ -33,6 +33,14 @@ app.get("/employees", function(req, res){
     res.render("employees");
 })
 
+app.get("/manageUsers", function(req, res){
+    res.render("manageUsers");
+})
+
+app.get("/generalSettings", function(req, res){
+    res.render("generalSettings");
+})
+
 //forgot password page
 app.get("/forgotPassword", function(req,res){
     res.render("forgotPassword");

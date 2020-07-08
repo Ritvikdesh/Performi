@@ -892,7 +892,7 @@
   margin-right: 15%;
 }
 
-.findEmployees hr{
+.hrManagers{
   border: 0;
   height: 1px;
   background: #333;
@@ -910,6 +910,7 @@
 }
 
 .employeeInfoDiv{
+  position: relative;
   margin-top: 0;
   width: 100%;
   height: 10%;
@@ -978,4 +979,199 @@
   box-shadow: 1px 1px 3px;
   width: 7%;
   color: #f1faee;
+}
+
+/* Manage Users Page */
+
+.tableHeadingEveryone{
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #ededed;
+  height: 2%;
+  padding-left: 5%;
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #1d3557;
+}
+
+#tableHeadingName{
+  position: absolute;
+  left: 5%;
+}
+
+#tableHeadingEmailAddress{
+  position: absolute;
+  left: 21%;
+}
+
+#tableHeadingDepartment{
+  position: absolute;
+  left: 37%;
+}
+
+#tableHeadingManager{
+  position: absolute;
+  left: 53%;
+}
+
+#tableHeadingHireDate{
+  position: absolute;
+  left: 69%;
+}
+
+.nameOfEmployeeEveryone{
+  position: absolute;
+  top: 20%;
+  left: 4.7%;
+  color: #457b9d;
+  font-weight: 700;
+}
+
+.emailAddressEveryone{
+  position: absolute;
+  top: 20%;
+  left: 20.7%;
+  color: #1d3557;
+  font-weight: 400;
+}
+
+.departmentEveryone{
+  position: absolute;
+  top: 20%;
+  left: 36.7%;
+  color: #1d3557;
+  font-weight: 400;
+}
+
+.managerEveryone{
+  position: absolute;
+  top: 20%;
+  left: 52.7%;
+  z-index: 1;
+}
+
+.hireDateEveryone{
+  position: absolute;
+  top: 20%;
+  left: 68.7%;
+  width: 7%;
+}
+
+.editIconEveryone{
+  position: absolute;
+  top: 22%;
+  left: 79%;
+  z-index: 1;
+}
+
+.editEveryone{
+  position: absolute;
+  top: 10%;
+  left: 78%;
+  background-color: #f1faee;
+  box-shadow: 1px 1px 3px;
+  width: 7%;
+}
+
+.deleteIconEveryone{
+  position: absolute;
+  top: 22%;
+  left: 85.5%;
+  z-index: 1;
+  color: #f1faee;
+}
+
+.deleteEveryone{
+  position: absolute;
+  top: 10%;
+  left: 85%;
+  background-color: #e63946;
+  box-shadow: 1px 1px 3px;
+  width: 7%;
+  color: #f1faee;
+}
+
+.hrEveryone{
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  width: 99%;
+}
+
+.profilePicEmployeePageEveryone{
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+/* Manage Account screen */
+.manageAccountDiv {
+  position: fixed;
+  top: 18%;
+  left: 7%;
+  width: 15%;
+}
+
+.a-div{
+  position: relative;
+  width: 100%;
+  height: 25%;
+  box-shadow: 1px 1px 3px;
+}
+
+.generalSettings{
+  border-bottom: 1px double #d1d1d1;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: #f1faee;
+  background-color: #457b9d;
+}
+
+.arrowIcon{
+  position: absolute;
+  top: 15%;
+  left: 93%;
+}
+
+.arrowIcon2{
+  position: absolute;
+  top: 65%;
+  left: 93%;
+}
+
+.changeSettings{
+  position: fixed;
+  top: 22.6%;
+  left: 23%;
+  width: 73%;
+  height: 76%;
+  background-color: #ededed;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.changeSettings hr{
+  border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    width: 99%;
+}
+
+#companyName{
+  width: 50%;
+}
+
+#peerFeedbackCycle{
+  width: 50%;
+}
+
+.changeSettings .dropdown-toggle{
+  width: 10%;
+  background-color: white;
+  color: #1d3557;
 }
