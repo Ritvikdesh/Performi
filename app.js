@@ -14,6 +14,11 @@ app.get("/", function(req, res){
     res.render("login");
 })
 
+// compnay sign up page
+app.get("/", function(req, res){
+    res.render("login");
+})
+
 //home page
 app.get("/home", function(req, res){
     res.render("home");
@@ -43,6 +48,14 @@ app.get("/generalSettings", function(req, res){
 
 app.get("/addEmployee", function(req, res){
     res.render("addEmployee");
+})
+
+app.get("/viewDirectory", function(req, res){
+    res.render("viewDirectory");
+})
+
+app.get("/editPersonalInfo", function(req, res){
+    res.render("editPersonalInfo");
 })
 
 app.get("/360feedback", function(req, res){

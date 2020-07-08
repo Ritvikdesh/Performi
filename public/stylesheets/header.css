@@ -111,7 +111,7 @@
   /* home page */
 
   .content{
-    position: fixed;
+    position: absolute;
     top: 10rem;
     left: 25rem;
     width: 75.3%;
@@ -1384,3 +1384,22 @@
   box-shadow: 1px 1px 3px;
   width: 8%;
 }
+
+/* edit profile page */
+
+.editProfileDiv{
+  width: 100%;
+  height: 100%;
+  background-color: #ededed;
+}
+
+/* View directory Page */
+
+.viewDirectoryDiv {
+  margin-left: 7%;
+  margin-top: 6.3%;
+  width: 89%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+

@@ -1,0 +1,130 @@
+<%- include ("./partials/header") %> 
+
+<div class="content">
+    <h1>Profile</h1>
+    <div class="addEmployeeForm">
+        <div class="editProfileDiv">
+            
+            
+            <form action="">
+                <h4>Personal</h4>
+                <hr>
+
+                <div class="indentedInfo">
+                    <label class="mb-0" for="">Name</label>
+                    <div class="row pl-3 mb-3">
+                        <input type="text" placeholder="First" class="form-control standardInputSize mr-2">
+                        <input type="text" placeholder="Middle" class="form-control standardInputSize mr-2">
+                        <input type="text" placeholder="Last" class="form-control standardInputSize mr-2">
+                    </div>
+                    <label class="mb-0" for="">Gender</label>
+                    <div class="row pl-3 mb-3">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ~Select~   
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>                      
+                    </div>
+                    <label class="mb-0" for="">Birth Date</label>
+                    <div class="row pl-3 mb-3">
+                        <input type="text" placeholder="01/02/2002" class="form-control standardInputSize mr-2">
+                    </div>
+                    <div class="row pl-3 mb-3">
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Address</label>
+                            <input type="text" placeholder="123 Drew Lane" class="form-control ">
+                        </div>
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">City</label>
+                            <input type="text" placeholder="Sydney" class="form-control  mr-2">
+                        </div>
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Postal Code</label>
+                            <input type="text" placeholder="R45 42R" class="form-control mr-2">
+                        </div>
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Country</label>
+                            <input type="text" placeholder="Australia" class="form-control mr-2">
+                        </div>
+                    </div>
+                    <label class="mb-0" for="">Work Email</label>
+                    <div class="row pl-3 mb-3">
+                        <input type="text" placeholder="email@gmail.com" class="form-control standardInputSize mr-2">
+                    </div>
+                    <label class="mb-0" for="">Mobile Phone Number</label>
+                    <div class="row pl-3 mb-3">
+                        <input type="text" placeholder="234-4234-4234" class="form-control standardInputSize mr-2">
+                    </div>
+                </div>
+
+                <h4>Job Information</h4>
+                <hr>
+
+                <div class="indentedInfo">
+                    <label class="mb-2" for="">Department</label>
+                    <div class="row pl-3 mb-3">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ~Select~   
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                        <a class="ml-3" href="">Manage Users</a>
+                    </div>
+                    <div class="row pl-3 mb-3">
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Job Title</label>
+                            <input type="text" placeholder="Head of Sales" class="form-control ">
+                        </div>
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Reports To</label>
+                            <input type="text" placeholder="Martin Short" class="form-control  mr-2">
+                        </div>
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Manager</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ~Select~   
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="mb-2" for="">Working Status</label>
+                    <div class="row pl-3 mb-3">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ~Select~   
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn saveEmployeeBtn">Save</button>
+                    <button class="btn cancelEmployeeBtn">Cancel</button>
+                </div>
+
+        
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ("./partials/footer") %> 
