@@ -1144,7 +1144,7 @@
 }
 
 .changeSettings{
-  position: fixed;
+  position: absolute;
   top: 22.6%;
   left: 23%;
   width: 73%;
@@ -1152,6 +1152,8 @@
   background-color: #ededed;
   padding-top: 1rem;
   padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .changeSettings hr{
@@ -1175,3 +1177,39 @@
   background-color: white;
   color: #1d3557;
 }
+
+.saveChanges{
+  position: absolute;
+  top: 88%;
+  left: 0.4%; 
+}
+
+.saveChangesBtn{
+  position: absolute;
+  top: 92%;
+  width: 10%;
+  background-color: #457b9d;
+  color: #f1faee;
+}
+
+.changeSettings h3{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.changeSettings h4{
+  font-size: 1rem;
+}
+
+.headingRow{
+  padding-left: 2%;
+}
+
+.col-2{
+  width: 15%;
+}
+
+.faded{
+  opacity: 0.21;
+}
+
