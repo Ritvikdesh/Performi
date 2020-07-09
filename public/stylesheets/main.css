@@ -1,6 +1,8 @@
 body{
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
+    width: 100%;
+    height: 100%;
 }
 
 /* Login page */
@@ -17,20 +19,22 @@ body{
     font-weight: 500;
     letter-spacing: .08rem;
 }
-
-@media (min-width: 576px) {
-    #appTitle {
-      font-size: 3rem;
-    }
-  }
   
-  @media (min-width: 768px)  {
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
     #appTitle{
-      font-size: 3.5rem;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 1030px) and (max-width: 1366px)  {
+    #appTitle{
+      font-size: 2.5rem;
+      margin-top: 1.5rem;
     }
   }
   
-  @media (min-width: 992px) {
+  @media (min-width: 1370px) {
     #appTitle{
       font-size: 4rem;
     }
@@ -38,29 +42,17 @@ body{
 
 .loginDiv{
     border: 2px solid #d1d1d1;
-    width: 20rem;
+    width: 32%;
     height: 76vh;
     margin: 12vh auto;
     padding-left: 2rem;
 }
- 
-@media (min-width: 576px) {
-    .loginDiv {
-      width: 25rem;
-    }
+
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  .loginDiv{
+    padding-left: 3%;
   }
-  
-  @media (min-width: 768px)  {
-    .loginDiv{
-      width: 35rem;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .loginDiv{
-      width: 39rem;
-    }
-  }
+}
 
 .form-control{
     width: 80%;
@@ -71,6 +63,26 @@ body{
     display: block;
     margin-top: 3vh;
     margin-bottom: 4vh;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  #forgotPassword{
+    margin-bottom: 2vh;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1366px)  {
+  #forgotPassword{
+    margin-bottom: 2vh;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1370px) {
+  #forgotPassword{
+    margin-bottom: 4vh;
+  }
 }
 
 #loginBtn{
@@ -84,56 +96,62 @@ body{
     font-size: 1.1rem;
 }
 
-@media (min-width: 576px) {
-    #loginBtn {
-      font-size: 1.3rem;
-      margin-bottom: 4vh;
-    }
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  #loginBtn{
+    margin-bottom: 3vh;
   }
-  
-  @media (min-width: 768px)  {
-    #loginBtn{
-      font-size: 1.6rem;
-    }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1366px)  {
+  #loginBtn{
+    margin-bottom: 3vh;
   }
-  
-  @media (min-width: 992px) {
-    #loginBtn{
-      padding-bottom: 3rem;
-      font-size: 1.8rem;
-    }
+}
+
+@media screen and (min-width: 1370px) and (max-width: 1500px) {
+  #loginBtn{
+   margin-bottom: 2vh;
+   width: 80%;
   }
+}
+
 
 #signingUp{
     padding-left: 1rem;
     line-height: 4vh;
+    width: 80%;
 }
 
-@media (max-width: 767px) {
-    #signingUp {
-        font-size: 0.9rem;
-        padding-left: 0;
-        line-height: 4vh;
-        margin-right: 4rem;
-        text-align: left;
-    }
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  #signingUp{
+    font-size: 0.9rem;
+    line-height: 3vh;
+  }
 
-    #signingUp a{
-        margin-bottom: 1rem;
-    }
+  #signingUp div{
+    margin-bottom: 1rem;
   }
-  
-  @media (min-width: 768px)  {
-    #signingUp{
-        padding-left: 2.3rem;
-    }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1366px)  {
+  #signingUp{
+    width: 80%;
+    font-size: 0.9rem;
+    padding-right: 0;
   }
-  
-  @media (min-width: 992px) {
-    #signingUp{
-        padding-left: 4rem;
-    }
+}
+
+@media screen and (min-width: 1370px) and (max-width: 1500px) {
+  #loginBtn{
+    padding-left: 5%;
   }
+}
+
+@media (min-width: 1510px) {
+  #signingUp{
+   padding-left: 10%;
+  }
+}
 
 a{
     color: #457b9d;
