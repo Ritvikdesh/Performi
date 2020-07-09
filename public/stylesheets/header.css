@@ -1,5 +1,5 @@
 .navbar-custom{
-    height: 3rem;
+    height: 5%;
 }
 
 .smart-scroll{
@@ -26,25 +26,68 @@
 
 #navbar2{
     z-index: 0;
-    margin-top: 3rem;
-    height: 10.9vh;
+    margin-top: 2.5%;
+    height: 10.9%;
     opacity: 0.87;
 }
 
 #nameJob{
-    margin-left: 24rem;
+    margin-left: 20.33%;
     font-weight: bold;
     font-size: 3rem;
-    line-height:2.2vh;
-    padding-bottom: 1vh;
+    line-height: 1.3rem;
+    padding-bottom: 0.77rem;
     color: #f1faee;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
+    #nameJob{
+      font-size: 1.7rem;
+      line-height: 0.1rem;
+      padding-bottom: 0;
+      padding-top: 1rem;
+    }
+  }
+  
+  @media screen and (min-width: 1030px) and (max-width: 1366px)  {
+    #nameJob{
+      font-size: 2rem;
+      line-height: 0.5rem;
+      padding-bottom: 0;
+    }
+  }
+  
+  @media (min-width: 1370px) {
+    #nameJob{
+      font-size: 3rem;
+    }
   }
   
   #nameJob small {
-    margin-top: 2vh;
+    margin-top: 1.4rem;
     display:block;
     font-weight: bold;
     font-size: 1.6rem;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
+    #nameJob small{
+      font-size: 1rem;
+      
+    }
+  }
+  
+  @media screen and (min-width: 1030px) and (max-width: 1366px)  {
+    #nameJob small{
+      font-size: 1.3rem;
+      
+    }
+  }
+  
+  @media (min-width: 1370px) {
+    #nameJob small{
+      font-size: 1.6rem;
+    }
   }
 
   #profilePic{
@@ -53,23 +96,51 @@
       margin-top: 2%;
       z-index: 1;
       width: 11%;
-      height: 20%;
+      height: auto;
       border-radius: 50%;
   }
 
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
+    #profilePic {
+      margin-left: 3%;
+    }
+  }
+
+  @media screen and (min-width: 1030px) and (max-width: 1366px)  {
+    #profilePic {
+      margin-left: 5%;
+    }
+  }
+
+
   .employeesPic{
-    position: absolute;
-    width: 11%;
-    height: 3%;
+    width: 100%;
+    height: auto;
     border-radius: 50%;
 }
 
 
   #personalInfo{
-    position: absolute;
-    top: 0%;
     margin-left: 6%;
-    font-size: 1.24rem;
+    margin-top: 14%;
+    /* position: absolute;
+    top: 35%;
+    margin-left: 6%;
+    font-size: 1.24rem; */
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
+    #personalInfo {
+      margin-top: 15%;
+      margin-left: 3%;
+      
+    }
+  }
+
+  @media screen and (min-width: 1030px) and (max-width: 1366px)  {
+    #personalInfo {
+      margin-left: 5%;
+    }
   }
 
   #personalInfo p{
@@ -77,12 +148,28 @@
     margin-bottom: 0.2vh;
   }
 
-  #personalInfo i{
-    color:black;
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
+    #personalInfo p{
+      font-size: 0.8rem;
+      
+    }
+  }
+  
+  @media screen and (min-width: 1030px) and (max-width: 1366px)  {
+    #personalInfo p{
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+  
+  @media (min-width: 1370px) {
+    #personalInfo p{
+      font-size: 1rem;
+    }
   }
 
-  #line1{
-      padding-top: 33vh;
+  #personalInfo i{
+    color:black;
   }
 
   #personalInfo .heading{
@@ -90,8 +177,9 @@
       color: #e63946;
   }
 
-  #besidePic{
-    margin-left: 2vw;
+  .besidePic{
+    margin-top: 2.9%;
+    margin-right: 0;
   }
 
   #settings{
@@ -102,18 +190,23 @@
     margin-top: 1rem;
   }
 
-  hr{
+  #personalInfo hr{
     margin-left: .1rem;
-    width: 13rem;
-    border: 1px dashed #a6a6a6;
+    width: 65%;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
   }
 
-  /* home page */
+  /* ///////////////////////////////////////////////////// HOME PAGE /////////////////////////////////////////////*/
+  /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
   .content{
     position: absolute;
-    top: 10rem;
-    left: 25rem;
+    top: 17%;
+    left: 21%;
     width: 75.3%;
   }
 
@@ -129,6 +222,7 @@
     margin-top: 1rem;
     background-color: #ededed;
     padding: 1rem;
+    width: 100%;
   }
 
   p{
