@@ -243,14 +243,31 @@
     color: #457b9d;
   }
 
-  /* tasks page */
+  /* ///////////////////////////////////////////////////// TASKS PAGE /////////////////////////////////////////////*/
+  /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-  #number{
+  #inLineNumber{
+    display: inline;
+  }
+
+  .circle{
+    position: absolute;
+    top: 1%;
+    left: 7%;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    padding-left: 0.65rem;
+    padding-right: 0.5rem;
+    padding-top: 0.15rem;
+    background: #457b9d;
+    border: 1px solid #457b9d;
     color: #f1faee;
-    position: fixed;
-    top: 10.2rem; 
-    left: 31.9rem;
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
   }
 
   .currentTasks{
@@ -278,38 +295,63 @@
     height: 10%;
     border-bottom: 1px solid #a6a6a6;
     border-bottom-width: 90%;
+    padding-right: 0%;
   }
 
-  .task i{
+  .fa-comment-dots{
     font-size: 2.5rem;
     color: #1d3557;
-    padding: 1rem;
+    padding-left: 25%;
+    padding-bottom: 0;
+    margin-top: 12%;
+    margin-bottom: 15%;
   }
 
-  .task .firstSpan{
-    position: absolute;
-    left: 5.2%;
-    margin-top: 1.2rem;
+  .firstParagraph{
+    margin-bottom: 0;
+    margin-top: 1rem;
+    font-weight: 600;
+    line-height: 0.5rem;
+    font-size: 1.1rem;
   }
 
-  .task span:nth-of-type(2){
+  .secondParagraph{
+    font-size: 0.8rem;
+  }
+
+   /* .task span:nth-of-type(2){
     font-size: .75rem;
     position: absolute;
     left: 5.2%;
     padding-top: 2.5rem;
-  }
+  } */
 
-  .task button:nth-of-type(1){
-    position: absolute;
-    left: 72%;
-    margin-top: 1.5rem;
+  .respondBtn{
     background-color: #457b9d;
     color: #f1faee;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    height: 5%;
+    height: 65%;
+    margin-top: 5%;
   }
 
-  .task button:nth-of-type(2){
+  .declineBtn{
+    background-color: #f1faee; 
+    color: #1d3557;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 65%;
+    margin-top: 5%;
+  }
+
+  .viewTaskBtn{
+    background-color: #f1faee; 
+    color: #1d3557;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 65%;
+    margin-top: 12%;
+    width: 6.5rem;
+  }
+
+  /* .task button:nth-of-type(2){
     position: absolute;
     left: 82%;
     margin-top: 1.5rem;
@@ -331,11 +373,11 @@
     bottom: 1rem;
     right: 1.5rem;
     font-size: 1rem;
-  }
+  } */
 
   #pencil{
     color: #f1faee;
-  }
+  } */
 
   /* goals page */
 
