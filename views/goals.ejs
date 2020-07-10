@@ -1,163 +1,184 @@
 <%- include ("./partials/header") %> 
 
 <div class="content">
-    <ul class="nav nav-tabs">
-        <a id="goalsHeading" class="nav-item nav-link" data-toggle="tab" href="#goals"><i class="fas fa-bullseye"></i>   Goals</a>
-        <a  id="assessmentHeading" class="nav-item nav-link " data-toggle="tab" href="#assessment"><i class="fas fa-tachometer-alt"></i>   Asssessment</a>
-        <a  id="feedbackHeading" class="nav-item nav-link " data-toggle="tab" href="#feedback"><i class="fas fa-globe"></i>   360 Feedback</a>
-        <span>Review Period</span>
-        <div class="dropdown">
-            <button id="dropdownBtn" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown">Dec 4, 2020 - Feb 8, 2021</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" data-toggle="dropdown" href="#pastAssessment">Mar 4, 2020 - Nov 28, 2020</a>
-                <a class="dropdown-item" data-toggle="dropdown"  href="#">Aug 15, 2020 - Sep 15, 2020</a>
-                <a class="dropdown-item" data-toggle="dropdown"  href="#">Jul 1, Aug 2, 2020</a>
-            </div>
-        </div>
-    </ul>
-</div>
-
-<div class="tab-content" id="nav-tabContent">
-    <div id="goals" class="tab-pane fade in active">
-        
-        <button id="addGoalBtn" class="btn"><i class="fas fa-plus"></i> <span> Add a Goal</span> </button>
-        <hr>
-        <div class="newGoalDiv">
-            <form action="">
-                <i class="fas fa-bullseye"></i> 
-                <div class="newGoalForm">
-                    <h2>Add a New Goal</h2>
-                    <div class="form-row">
-                        <div id="titleForm" class="form-group">
-                            <Label class="labels" for="title">Title</Label>
-                            <input class="form-control" type="text" name="title" id="title">
-                        </div>
-                        <div class="form-group">
-                            <Label class="labels" for="dueDate">Due Date</Label>
-                            <input class="form-control" type="text" name="dueDate" id="dueDate">
-                        </div>
-                    </div>
-                    <div id="goalDesDiv" class="form-group">
-                        <Label class="labels" for="goal">Goal</Label>
-                        <input class="form-control" type="text" name="goal" id="goal" placeholder="Detail a S.M.A.R.T goal that you want to accomplish">
-                    </div>
-                    <button id="saveGoal" class="btn">Save</button>
-                    <button id="cancelGoal" class="btn">Cancel</button>
+    <div class="divNavTab">
+        <ul class="nav nav-tabs">
+            <div class="row no-gutters w-100">
+                <div class="col-1 col-md-1 col-lg-1 col-xl-1 mr-md-4 mr-lg-4 mr-xl-0">   
+                    <a id="goalsHeading" class="nav-item nav-link" data-toggle="tab" href="#goals"><i class="fas fa-bullseye"></i>   Goals</a>
                 </div>
-            </form>
-        </div>
-
-        <div class="goalsCommentsDiv">
-            <i class="fas fa-bullseye"></i> 
-            <div class="commentsDiv">
-                <h3>Transfering reconcilations</h3>
-                <small>I will change the stylings of all my reconcilations to make it easier for my manager to look through.</small>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                <div class="col-2 col-md-2 col-lg-2 col-xl-1 mr-md-4 mr-lg-3 mr-xl-0 mr-xl-5">   
+                    <a  id="assessmentHeading" class="nav-item nav-link " data-toggle="tab" href="#assessment"><i class="fas fa-tachometer-alt"></i>   Asssessment</a>
                 </div>
-                <div class="comment">
-                    <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                    <span id="dueDateGoal" >Due: Jan 31, 2021</span>
-                    <span class="nameOfPerson" >Prajakta Deshpande Oct 25, 2020 8:44 PM</span>
-                    <span class="commentDetail" >Good start towards your goal! Make sure to format the tables too.</span>
+                <div class="col-7 col-md-4 col-lg-5 col-xl-6">   
+                    <a  id="feedbackHeading" class="nav-item nav-link " data-toggle="tab" href="#feedback"><i class="fas fa-globe"></i>   360 Feedback</a>
                 </div>
-                <div class="comment">
-                    <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                    <span class="nameOfPerson" >Shirish Deshpande Oct 25, 2020 8:44 PM</span>
-                    <span class="commentDetail" >Overall great job, just remember to change the font size to 15x</span>
-                </div>
-                <div class="addComment">
-                    <img id="userPicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                    <input id="addingAComment" class="form-control" type="text" placeholder="Add a Comment">
-                    <i class="fas fa-paper-plane"></i>
-                    <button id="postComment" class="btn"><span>Post</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="assessment" class="tab-pane fade in active">
-
-        <div class="selfAssessment">
-            <form class="selfAssessmentForm" action="">
-                <i class="fas fa-portrait"></i>
-                <h2>Self Assessment</h2>
-                <div class="form-group">
-                    <label class="labelMargin">How well does Company recognize my value?</label>
-                    <select class="custom-select">
-                        <option selected>~Select~</option>
-                        <option value="1">Very well</option>
-                        <option value="2">Okay</option>
-                        <option value="3">Not Good</option>
-                      </select>
+                <div class="col-md-auto marginDropDown">   
+                    <p class="mb-0">Review Period</p>
+                    <div class="dropdown">
+                        <button id="dropdownBtn" class="btn btn-primary dropdown-toggle btn-sm reviewPeriodBtnColor" data-toggle="dropdown">Dec 4, 2020 - Feb 8, 2021</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" data-toggle="dropdown" href="#pastAssessment">Mar 4, 2020 - Nov 28, 2020</a>
+                            <a class="dropdown-item" data-toggle="dropdown"  href="#">Aug 15, 2020 - Sep 15, 2020</a>
+                            <a class="dropdown-item" data-toggle="dropdown"  href="#">Jul 1, Aug 2, 2020</a>
+                         </div>
+                     </div>
                 </div>  
-                <div class="form-group">
-                    <label class="labelMargin">What would have the greatest impact on my ability to do my best work?</label>
-                    <select class="custom-select">
-                        <option selected>~Select~</option>
-                        <option value="1">Very well</option>
-                        <option value="2">Okay</option>
-                        <option value="3">Not Good</option>
-                      </select>
-                </div>
-                <hr>
-                <div class="form-group">
-                    <label class="labelMargin"  for="pros">What are some things that I do well?</label>
-                    <input type="text" name="pros" id="pros" class="form-control selfAssessmentInput">
-                </div>
-                <div class="form-group">
-                    <label class="labelMargin"  for="cons">How could I improve?</label>
-                    <input type="text" name="pros" id="cons" class="form-control selfAssessmentInput">
-                </div>
-                <div class="form-group">
-                    <label class="labelMargin"  for="projects">What has been your favourite project this quarter?</label>
-                    <input type="text" name="pros" id="projects" class="form-control selfAssessmentInput">
-                </div>
-                <button class="btn submitAssessment">Submit</button>
-                <button class="btn saveAssessment">Save & Finish Later</button>
-            </form>
-        </div>
-
-        <div class="managerAssessment">
-            <i class="fas fa-id-card"></i>
-            <h2>Manager Assessment</h2>
-            <hr>
-            <p class="lightText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-            <p class="lightText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-            <p class="lightText">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad ex illum iusto eaque quos perspiciatis voluptas laudantium, incidunt nostrum modi, sed quam minus nesciunt, delectus sapiente culpa repellat reprehenderit accusamus dolor esse. Sunt eaque beatae distinctio cum corrupti nostrum praesentium quisquam necessitatibus, alias sapiente, temporibus est nesciunt, doloremque voluptas dolorem sint veniam quaerat non eum quidem tenetur quis accusamus officiis! Exercitationem assumenda voluptatem quae a perferendis rem, amet ad earum temporibus, dolor error ut obcaecati modi facere qui voluptatibus molestias debitis rerum similique nemo omnis vel. Sed aut rem expedita aperiam asperiores, labore animi. Accusamus dolor ipsum esse harum, quas recusandae quaerat corporis laborum sit unde, magnam beatae consectetur! Obcaecati voluptas omnis velit praesentium modi sint incidunt ab dolorum? Quod modi, dignissimos earum doloremque animi delectus atque ea cupiditate et expedita quibusdam quos natus magni tempore optio debitis perferendis ipsum aperiam rem. Qui numquam nisi eius reiciendis assumenda omnis ducimus.</p>
-            <i id="middleIcon" class="fas fa-id-card"></i>
-            <p id="userWarning" >Manager Assessment will show here once completed</p>
-        </div>
-
-
+            </div>
+        </ul>
     </div>
 
-    <div id="feedback" class="tab-pane fade in active">
-        
-        <div class="peerFeedback">
-            <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <h2>John Richards</h2>
-            <small>Completed: Jan 8, 2020 at 2:12 PM</small>
+    <div class="tab-content" id="nav-tabContent">
+        <div id="goals" class="tab-pane fade in active">
+           
+            <button id="addGoalBtn" class="btn"><i class="fas fa-plus"></i> <span> Add a Goal</span> </button>
             <hr>
-            <h3>What are some things that Ritvik does well?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-            <h3>How could Ritvik improve?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
+
+            <div class="newGoalDiv">
+                <form action="">
+                    <div class="row no-gutters">
+                        <div class="col-auto ml-3 mt-3 mr-2">
+                            <i class="fas fa-bullseye"></i> 
+                        </div>
+                        <div class="col-5 mt-2 mb-0">
+                            <h2>Add a New Goal</h2>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                        </div>
+                        <div class="col-8 mt-2 ml-5 pr-5">
+                            <div id="titleForm" class="form-group pl-3">
+                                <Label class="labels" for="title">Title</Label>
+                                <input class="form-control" type="text" name="title" id="title">
+                            </div>
+                        </div>
+                        <div class="col mt-2 pr-5 ">
+                            <div class="form-group">
+                                <Label class="labels" for="dueDate">Due Date</Label>
+                                <input class="form-control" type="text" name="dueDate" id="dueDate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                        </div>
+                        <div class="col ml-5 mt-0 pr-5">
+                             <div id="goalDesDiv" class="form-group pl-3">
+                                <Label class="labels" for="goal">Goal</Label>
+                                <input class="form-control" type="text" name="goal" id="goal" placeholder="Detail a S.M.A.R.T goal that you want to accomplish">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                        </div>
+                        <div class="col-2 ml-5">
+                            <div class="form-group pl-3 mr-2">
+                                <button id="saveGoal" class="btn pl-3 w-100">Save</button>
+                            </div>
+                        </div>
+                        <div class="col-2 mr-3">
+                            <button id="cancelGoal" class="btn w-100">Cancel</button>
+                        </div>
+                    </div>
+  
+                </form>
+            </div>
+
+            <div class="goalsCommentsDiv">
+                <div class="row no-gutters">
+                    <div class="col-auto">
+                    </div>
+                    <div class="col-8 mt-2 ml-5 pr-5">
+                        <h2>Transfering reconcilations from word to pdf</h2>
+                    </div>
+                </div>
+                <div class="indented-content">
+                    <small>I will change the stylings of all my reconcilations to make it easier for my manager to look through.</small>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+                    <div class="comment">
+                        <div class="row no-gutters">
+                            <div class="col-1 mt-2 ml-2 mr-md-5 mr-lg-4 mr-xl-0">
+                                <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                            </div>
+                            <div class="col-8 col-md-7 col-lg-8">
+                                <p class="nameOfPerson mb-0 mt-4" >Prajakta Deshpande Oct 25, 2020 8:44 PM</p>
+                                <p class="commentDetail ml-2" >Good start towards your goal! Make sure to format the tables too.</p>
+                            </div>
+                            <div class="col-2 ml-md-4 ml-lg-0 ml-xl-5">
+                                <span id="dueDateGoal" >Due: Jan 31, 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="row no-gutters">
+                            <div class="col-1 mt-2 ml-2 mr-md-5 mr-lg-4 mr-xl-0">
+                                <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                            </div>
+                            <div class="col-8 col-md-7 col-lg-8">
+                                <p class="nameOfPerson mb-0 mt-4" >Prajakta Deshpande Oct 25, 2020 8:44 PM</p>
+                                <p class="commentDetail ml-2" >Good start towards your goal! Make sure to format the tables too.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="addComment">
+                        <div class="row no-gutters">
+                            <div class="col-1 mt-1 ml-3 mr-md-5 mr-lg-4 mr-xl-0">
+                                <img  id="addCommentProfilePic" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                            </div>
+                            <div class="col-9 col-md-7 col-lg-7 mt-2">
+                                <input id="addingAComment" class="form-control" type="text" placeholder="Add a Comment">
+                            </div>
+                            <div class="col-2 ml-md-4 ml-lg-5 ml-xl-5 mt-2">
+                                <button id="postComment" class="btn w-100 "><i class="fas fa-paper-plane"></i> <span> Post</span></button>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+                
+               
+               
+                <!-- 
+                    
+                    
+                    
+                    <div class="comment">
+                        <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                        <span class="nameOfPerson" >Shirish Deshpande Oct 25, 2020 8:44 PM</span>
+                        <span class="commentDetail" >Overall great job, just remember to change the font size to 15x</span>
+                    </div>
+                    <div class="addComment">
+                        <img id="userPicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                        <input id="addingAComment" class="form-control" type="text" placeholder="Add a Comment">
+                        <i class="fas fa-paper-plane"></i>
+                        <button id="postComment" class="btn"><span>Post</span></button>
+                    </div> -->
+                </div>
+            </div>
+
+
+
+
+
         </div>
-        <div class="peerFeedbackBlank">
-            <img class="profilePicPeerReviewBlank" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <h2>Jacob Collins</h2>
-            <hr>
-            <h3>What are some things that Ritvik does well?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-            <h3>How could Ritvik improve?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-            <img class="profilePicPeerReviewCenter" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span>360 Feedback has not been completed yet</span>
-        </div>
-    
     </div>
+
 </div>
+            
+    
+            
+
+
+
+
+
 
 
 <%- include ("./partials/footer") %> 

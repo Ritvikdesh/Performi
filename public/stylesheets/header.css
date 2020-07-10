@@ -352,9 +352,15 @@ button{
   /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
   /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+  .divNavTab{
+    height: 4rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
   .nav-tabs{
     background-color: #ededed;
-    height: 3.5rem;
+    height: 100%;
   }
 
   .nav-tabs i {
@@ -365,77 +371,110 @@ button{
   #goalsHeading {
     margin-top: 0.5rem;
     padding-top: 0.7rem;
-    height: 3rem;
+    height: 3.6rem;
     width: 6rem;
+  }
+
+  
+  @media screen and (min-width: 800px) and (max-width: 1010px){
+    #goalsHeading{
+      width: 6rem;
+    }
   }
 
 #assessmentHeading {
   margin-top: 0.5rem;
   padding-top: 0.7rem;
-  height: 3rem;
+  height: 3.6rem;
   width: 10rem;
+    }
+
+    @media screen and (min-width: 800px) and (max-width: 1010px){
+      #assessmentHeading{
+        width: 10rem;
+      }
     }
 
 #feedbackHeading {
   margin-top: 0.5rem;
   padding-top: 0.7rem;
-  height: 3rem;
+  height: 3.6rem;
   width: 11rem;
+  }
+
+  @media screen and (min-width: 800px) and (max-width: 1010px){
+    #feedbackHeading{
+      width: 11rem;
+    }
   }
 
   
 
   #goals{
-    position: absolute;
-    top: 15rem;
-    left: 25rem;
-    width: 75.3%;
+    width: 100%;
+    height: 23rem;
+    /* background-color: #ededed; */
+    margin-top: 0.9rem;
   }
 
   #assessment{
-    position: absolute;
-    top: 15.5rem;
-    left: 25rem;
-    width: 75.3%;
+    width: 100%;
+    height: 20rem;
+    background-color: #ededed;
+    margin-top: 0.9rem;
   }
 
   #feedback{
-    position: absolute;
-    top: 15.5rem;
-    left: 25rem;
-    width: 75.3%;
+    width: 100%;
+    height: 20rem;
+    background-color: #ededed;
+    margin-top: 0.9rem;
   }
 
   .goalsContent a{
     color: #1d3557;
   }
 
-  .nav-tabs span{
-    font-size: .85rem;
-    position: absolute;
-    right: 16rem;
+  .marginDropDown{
+
   }
 
-  #dropdownBtn{
-    position: absolute;
+  @media screen and (min-width: 1250px) and (max-width: 1330px){
+    .marginDropDown{
+      margin-left: 8%;
+    }
+  }
+
+  @media screen and (min-width: 1340px) and (max-width: 1500px){
+    .marginDropDown{
+      margin-left: 10%;
+    }
+  }
+
+  @media screen and (min-width: 1510px) and (max-width: 1700px){
+    .marginDropDown{
+      margin-left: 12%;
+    }
+  }
+
+  @media screen and (min-width: 1710px) and (max-width: 1800px){
+    .marginDropDown{
+      margin-left: 14%;
+    }
+  }
+
+  @media screen and (min-width: 1810px) and (max-width: 1990px){
+    .marginDropDown{
+      margin-left: 16%;
+    }
+  }
+
+  .reviewPeriodBtnColor{
     background-color: white;
     color: #1d3557;
-    left: 42rem; 
-    margin-top: 1.3rem;
-    width: 20rem;
-  }
-
-  .btn-group-sm>.btn, .btn-sm {
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-  }
-
-  .dropdown-item {
-    width: 20rem;
   }
 
   #addGoalBtn{
-    margin-top: 1rem;
     background-color: #457b9d;
     color: #f1f1f1;
     width: 8rem;
@@ -446,6 +485,7 @@ button{
   }
 
   #goals hr {
+    margin-top: 0.7rem;
     border: 0;
     height: 1px;
     background: #333;
@@ -458,8 +498,8 @@ button{
   margin-top: 0;
   margin-left: 3.5%;
   width: 93%;
-  background-color: #ededed;
-  height: 20rem;
+  background-color: #dddddd;
+  height: 86%;
 }
 
 .newGoalForm{
@@ -474,22 +514,12 @@ button{
 }
  
 .newGoalDiv i{
-  position: absolute;
-  left: 4rem;
-  top: 5rem;
   color: #457b9d;
   font-size: 2.5rem;
 }
-  
- #titleForm{
-  width: 75%;
-  margin-right: 3rem;
-  margin-bottom: 1rem;
-}
 
 #goal{
-  width: 75.3rem;
-  height: 6rem;
+  height: 5rem;
 }
 
 .labels{
@@ -497,42 +527,51 @@ button{
 }
 
 #saveGoal{
-  width: 8%;
   background-color: #457b9d;
   color: #f1f1f1;
-  margin-right: 1rem;
 }
 
 #cancelGoal{
-  width: 8%;
   background-color: #e63946;
   color: #f1f1f1;
 }
 
+.goalsCommentsDiv{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  margin-left: 3.5%;
+  width: 93%;
+  /* background-color: #dddddd; */
+  height: 100%;
+}
+
 .goalsCommentsDiv i{
-  position: absolute;
-  left: 4rem;
-  top: 27rem;
   color: #457b9d;
   font-size: 2.5rem;
 }
 
-.goalsCommentsDiv h3{
+.goalsCommentsDiv h2{
   color: #1d3557;
-  padding-top: 2.5rem;
+  padding-top: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 0;
 }
 
 .commentsDiv{
-  padding-left: 7.1rem;
+  margin-left: 7.1rem;
   width: 96%;  
 }
 
-.commentsDiv small{
-  font-size: 1rem;
+.indented-content{
+  margin-left: 5%;
+  width: 95%;
+  height: 20rem;
+}
+
+.indented-content small{
+  font-size: 0.9rem;
   margin-bottom: 3rem;
+  color: #1d3557;
 }
 
 .progress{
@@ -552,79 +591,102 @@ button{
   border-bottom: 1px solid #a6a6a6;
 }
 
+.profilePicComment{
+  width: auto;
+  height: 13%;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.comment .nameOfPerson{
+  line-height: 0.9rem;
+}
+
+.comment .commentDetail{
+  font-weight: 700;
+  width: 100%;
+}
+
 .addComment{
   background-color: #ededed;
   height: 4rem;
   border-bottom: 1px solid #a6a6a6;
 }
 
-.profilePicComment{
-  position: absolute;
-  margin-left: 1rem;
-  margin-top: 1.3rem;
-  z-index: 1;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
-#userPicComment{
-  position: absolute;
-  margin-left: 1rem;
-  margin-top: 0.5rem;
-  z-index: 1;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
 #dueDateGoal{
-  position: absolute;
-  margin-left: 81%;
-  margin-top: 0.3;
   font-size: 0.8rem;
+  /* margin-left: 17%; */
 }
 
-.comment .nameOfPerson{
-  position: absolute;
-  margin-left: 5rem;
-  margin-top: 1rem;
+@media screen and (min-width: 1250px) and (max-width: 1330px){
+  #dueDateGoal{
+    margin-left: 27%;
+  }
 }
 
-.comment .commentDetail{
-  position: absolute;
-  margin-left: 5.2rem;
-  margin-top: 2.3rem;
-  font-weight: 700;
+@media screen and (min-width: 1340px) and (max-width: 1500px){
+  #dueDateGoal{
+    margin-left: 33%;
+  }
 }
+
+@media screen and (min-width: 1510px) and (max-width: 1700px){
+  #dueDateGoal{
+    margin-left: 45%;
+  }
+}
+
+@media screen and (min-width: 1710px) and (max-width: 1800px){
+  #dueDateGoal{
+    margin-left: 47%;
+  }
+}
+
+@media screen and (min-width: 1810px) and (max-width: 1990px){
+  #dueDateGoal{
+    margin-left: 50%;
+  }
+}
+
 
 #addingAComment{
-  position: absolute;
-  width: 70%;
-  background-color: white;
-  left: 14%;
-  margin-top: 0.8rem;
+
 }
 
 #postComment{
-  position: absolute;
   background-color: #457b9d;
-  left: 86%;
-  margin-top: 0.8rem;
   color: #f1f1f1;
-  width: 8%;
+  height: 2.5rem; 
+  padding:0
 }
 
-.addComment i{
+#postComment span {
+  margin-bottom: 1rem;
+}
+
+.fa-paper-plane:before {
+  content: "\f1d8";
+  color: #f1faee;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+#addCommentProfilePic{
+  width: auto;
+  height: 10%;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+
+/* .addComment i{
   position: absolute;
   color: #f1f1f1;
   left: 87%;
   margin-top: 19rem;
   font-size: 1rem;
   z-index: 1;
-}
+} */
 
 .selfAssessment{
   width: 48%;
