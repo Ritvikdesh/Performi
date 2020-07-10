@@ -1244,6 +1244,14 @@ button{
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 1500px) {
+  .changeSettings{
+    left: 25%;
+    width: 71%;
+  }
+}
+
+
 .changeSettings hr{
   border: 0;
     height: 1px;
@@ -1278,6 +1286,18 @@ button{
   width: 10%;
   background-color: #457b9d;
   color: #f1faee;
+}
+
+@media screen and (min-width: 800px) and (max-width: 1190px) {
+  .saveChangesBtn{
+    width: 23%;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1700px) {
+  .saveChangesBtn{
+    width: 15%;
+  }
 }
 
 .changeSettings h3{
