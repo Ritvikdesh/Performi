@@ -256,6 +256,26 @@ p{
   letter-spacing: .08rem;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  .appTitle{
+    font-size: 1.5rem;
+    margin-top: 4%;
+  }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1366px)  {
+  .appTitle{
+    font-size: 2rem;
+    margin-top: 5%;
+  }
+}
+
+@media (min-width: 1370px) {
+  .appTitle{
+    font-size: 2.5rem;
+  }
+}
+
 #lastName{
   width: 96%;
 }
@@ -266,4 +286,70 @@ p{
   margin-top: 1%;
   margin-bottom: 5;
 }
+
+.labelCompanySignUp{
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width: 800px) and (max-width: 1630px) {
+  .labelCompanySignUp{
+   margin-bottom: 0;
+    }
+  }
+
+#loginBtnSignUp{
+  display: block;
+  width: 80%;
+  height: 6vh;
+  margin-bottom: 1rem;
+  background-color: #457b9d;
+  font-weight: bold;
+  border-radius: 1.2rem;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+#loginBtnSignUp{
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1366px)  {
+#loginBtnSignUp{
+  margin-bottom: 0.6rem;
+  margin-top: 0.5rem;
+}
+  }
+
+@media screen and (min-width: 1370px) and (max-width: 1500px) {
+#loginBtnSignUp{
+ margin-bottom: 1%;
+ margin-top: 0.7rem;
+  }
+}
+
+@media screen and (min-width: 1510px) and (max-width: 1630px) {
+  #loginBtnSignUp{
+   margin-top: 1rem;
+    }
+  }
+
+  .companySignUpgroup{
+    margin-bottom: 0.5rem;
+  }
+
+
+  .companySignUpgroup .form-control{
+
+  }
+
+  @media screen and (min-width: 800px) and (max-width: 1540px) {
+    .companySignUpgroup .form-control{
+      margin-right: 0;
+     width: 70%;
+      }
+    }
+
 
