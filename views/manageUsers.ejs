@@ -1,7 +1,5 @@
 <%- include ("./partials/header2") %> 
 
-<%- include ("./partials/header2") %> 
-
 <div class="header2container">
     <h2 style="font-weight: 600">Manage Users</h2>
     <div class="employeeFilter">
@@ -9,12 +7,12 @@
             <span>Filters</span>
         </div>
         <form action="">
-            <div class="form-row">
+            <div class="form-row employeeFilterRow">
                 <span>Employee</span>
                 <input type="text" class="form-control" name="employee" id="employeeName">
                 <input type="text" placeholder="Search" class="form-control" id="searchEmployee">
                 <span>Department</span>
-                <div class="dropdown">
+                <div class="dropdown findDepartmentDiv">
                     <a class="btn btn-secondary dropdown-toggle departmentDropdownBtn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <span> ~All~</span>
                     </a>
@@ -30,90 +28,176 @@
 
     <div class="findEmployees">
         <p id="numOfEmployeesFound">Found 5 employees.</p>
-        <div class="tableHeadingEveryone">
-            <span id="tableHeadingName">Name</span>
-            <span id="tableHeadingEmailAddress">Email Address</span>
-            <span id="tableHeadingDepartment">Department</span>
-            <span id="tableHeadingManager">Manager</span>
-            <span id="tableHeadingHireDate">Hire Date</span>
+        <div class="row tableHeadingEveryone no-gutters">
+                <div class="col-1 ">
+                    <span ></span>
+                </div>
+                <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                    <span >Name</span>
+                </div>
+                <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                    <span >Email Address</span>
+                </div>
+                <div class="col-2  mt-3">
+                    <span >Department</span>
+                </div>
+                <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                    <span >Manager</span>
+                </div>
+                <div class="col-3 mt-3">
+                    <span >Hire Date</span>
+                </div>
         </div>
-        <hr class="hrEveryone">
-        <div class="employeeInfoDiv">
-            <img class="profilePicEmployeePageEveryone" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span class="nameOfEmployeeEveryone">Prajakta Deshpande</span>
-            <span class="emailAddressEveryone">person@gmail.com</span>
-            <span class="departmentEveryone">Google Home</span>
-            <span class="managerEveryone">Ritvik Deshpande</span>
-            <span class="hireDateEveryone">01/03/2020</span>
-            <i class="fas fa-edit editIconEveryone"></i>
-            <button class="btn editEveryone">Edit</button>
-            <i class="fas fa-trash-alt deleteIconEveryone"></i>
-            <button class="btn deleteEveryone">Delete</button>
+        <hr class="hrManagers">
+        <div class="row emoplyeesEveryoneRow no-gutters">
+            <div class="col-1">
+                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                <span class="nameOfEmployee">Prajakta Deshpande</span>
+            </div>
+            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                <span class="">person@gmail.com</span>
+            </div>
+            <div class="col-2  mt-3">
+                <span class="">Google Home</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                <span class="">Ritvik D</span>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                <span class="">01/22/2020</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-2">
+                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
+                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+            </div>
         </div>
-        <hr class="hrEveryone">
-        <div class="employeeInfoDiv">
-            <img class="profilePicEmployeePageEveryone" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span class="nameOfEmployeeEveryone">Prajakta Deshpande</span>
-            <span class="emailAddressEveryone">person@gmail.com</span>
-            <span class="departmentEveryone">Google Home</span>
-            <span class="managerEveryone">Ritvik Deshpande</span>
-            <span class="hireDateEveryone">01/03/2020</span>
-            <i class="fas fa-edit editIconEveryone"></i>
-            <button class="btn editEveryone">Edit</button>
-            <i class="fas fa-trash-alt deleteIconEveryone"></i>
-            <button class="btn deleteEveryone">Delete</button>
+        <hr class="hrManagers">
+        <div class="row emoplyeesEveryoneRow no-gutters">
+            <div class="col-1">
+                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                <span class="nameOfEmployee">Prajakta Deshpande</span>
+            </div>
+            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                <span class="">person@gmail.com</span>
+            </div>
+            <div class="col-2  mt-3">
+                <span class="">Google Home</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                <span class="">Ritvik D</span>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                <span class="">01/22/2020</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-2">
+                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
+                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+            </div>
         </div>
-        <hr class="hrEveryone">
-        <div class="employeeInfoDiv">
-            <img class="profilePicEmployeePageEveryone" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span class="nameOfEmployeeEveryone">Prajakta Deshpande</span>
-            <span class="emailAddressEveryone">person@gmail.com</span>
-            <span class="departmentEveryone">Google Home</span>
-            <span class="managerEveryone">Ritvik Deshpande</span>
-            <span class="hireDateEveryone">01/03/2020</span>
-            <i class="fas fa-edit editIconEveryone"></i>
-            <button class="btn editEveryone">Edit</button>
-            <i class="fas fa-trash-alt deleteIconEveryone"></i>
-            <button class="btn deleteEveryone">Delete</button>
+        <hr class="hrManagers">
+        <div class="row emoplyeesEveryoneRow no-gutters">
+            <div class="col-1">
+                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                <span class="nameOfEmployee">Prajakta Deshpande</span>
+            </div>
+            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                <span class="">person@gmail.com</span>
+            </div>
+            <div class="col-2  mt-3">
+                <span class="">Google Home</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                <span class="">Ritvik D</span>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                <span class="">01/22/2020</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-2">
+                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
+                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+            </div>
         </div>
-        <hr class="hrEveryone">
-        <div class="employeeInfoDiv">
-            <img class="profilePicEmployeePageEveryone" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span class="nameOfEmployeeEveryone">Prajakta Deshpande</span>
-            <span class="emailAddressEveryone">person@gmail.com</span>
-            <span class="departmentEveryone">Google Home</span>
-            <span class="managerEveryone">Ritvik Deshpande</span>
-            <span class="hireDateEveryone">01/03/2020</span>
-            <i class="fas fa-edit editIconEveryone"></i>
-            <button class="btn editEveryone">Edit</button>
-            <i class="fas fa-trash-alt deleteIconEveryone"></i>
-            <button class="btn deleteEveryone">Delete</button>
+        <hr class="hrManagers">
+        <div class="row emoplyeesEveryoneRow no-gutters">
+            <div class="col-1">
+                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                <span class="nameOfEmployee">Prajakta Deshpande</span>
+            </div>
+            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                <span class="">person@gmail.com</span>
+            </div>
+            <div class="col-2  mt-3">
+                <span class="">Google Home</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                <span class="">Ritvik D</span>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                <span class="">01/22/2020</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-2">
+                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
+                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+            </div>
         </div>
-        <hr class="hrEveryone">
-        <div class="employeeInfoDiv">
-            <img class="profilePicEmployeePageEveryone" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span class="nameOfEmployeeEveryone">Prajakta Deshpande</span>
-            <span class="emailAddressEveryone">person@gmail.com</span>
-            <span class="departmentEveryone">Google Home</span>
-            <span class="managerEveryone">Ritvik Deshpande</span>
-            <span class="hireDateEveryone">01/03/2020</span>
-            <i class="fas fa-edit editIconEveryone"></i>
-            <button class="btn editEveryone">Edit</button>
-            <i class="fas fa-trash-alt deleteIconEveryone"></i>
-            <button class="btn deleteEveryone">Delete</button>
+        <hr class="hrManagers">
+        <div class="row emoplyeesEveryoneRow no-gutters">
+            <div class="col-1">
+                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                <span class="nameOfEmployee">Prajakta Deshpande</span>
+            </div>
+            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                <span class="">person@gmail.com</span>
+            </div>
+            <div class="col-2  mt-3">
+                <span class="">Google Home</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                <span class="">Ritvik D</span>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                <span class="">01/22/2020</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-2">
+                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
+                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+            </div>
         </div>
-        <hr class="hrEveryone">
-        <div class="employeeInfoDiv">
-            <img class="profilePicEmployeePageEveryone" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            <span class="nameOfEmployeeEveryone">Prajakta Deshpande</span>
-            <span class="emailAddressEveryone">person@gmail.com</span>
-            <span class="departmentEveryone">Google Home</span>
-            <span class="managerEveryone">Ritvik Deshpande</span>
-            <span class="hireDateEveryone">01/03/2020</span>
-            <i class="fas fa-edit editIconEveryone"></i>
-            <button class="btn editEveryone">Edit</button>
-            <i class="fas fa-trash-alt deleteIconEveryone"></i>
-            <button class="btn deleteEveryone">Delete</button>
+        <hr class="hrManagers">
+        <div class="row emoplyeesEveryoneRow no-gutters">
+            <div class="col-1">
+                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                <span class="nameOfEmployee">Prajakta Deshpande</span>
+            </div>
+            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                <span class="">person@gmail.com</span>
+            </div>
+            <div class="col-2  mt-3">
+                <span class="">Google Home</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                <span class="">Ritvik D</span>
+            </div>
+            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                <span class="">01/22/2020</span>
+            </div>
+            <div class="col-2 col-md-1 col-lg-2 mt-2">
+                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
+                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+            </div>
+        </div>
         </div>
     </div>
 

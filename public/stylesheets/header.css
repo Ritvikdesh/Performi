@@ -29,14 +29,15 @@ button{
     font-size: 1.2rem;
 }
 
-#navbar2{
+.navbar2{
     z-index: 0;
     margin-top: 2.5%;
     height: 10.9%;
+    background-color: #e63946;
     opacity: 0.87;
 }
 
-#nameJob{
+.nameJob{
     margin-left: 20.33%;
     font-weight: bold;
     font-size: 3rem;
@@ -46,7 +47,7 @@ button{
   }
 
   @media screen and (min-width: 768px) and (max-width: 1024px)  {
-    #nameJob{
+    .nameJob{
       font-size: 1.7rem;
       line-height: 0.1rem;
       padding-bottom: 0;
@@ -55,7 +56,7 @@ button{
   }
   
   @media screen and (min-width: 1030px) and (max-width: 1366px)  {
-    #nameJob{
+    .nameJob{
       font-size: 2rem;
       line-height: 0.5rem;
       padding-bottom: 0;
@@ -63,12 +64,12 @@ button{
   }
   
   @media (min-width: 1370px) {
-    #nameJob{
+    .nameJob{
       font-size: 3rem;
     }
   }
   
-  #nameJob small {
+  .nameJob small {
     margin-top: 1.4rem;
     display:block;
     font-weight: bold;
@@ -76,21 +77,21 @@ button{
   }
 
   @media screen and (min-width: 768px) and (max-width: 1024px)  {
-    #nameJob small{
+    .nameJob small{
       font-size: 1rem;
       
     }
   }
   
   @media screen and (min-width: 1030px) and (max-width: 1366px)  {
-    #nameJob small{
+    .nameJob small{
       font-size: 1.3rem;
       
     }
   }
   
   @media (min-width: 1370px) {
-    #nameJob small{
+    .nameJob small{
       font-size: 1.6rem;
     }
   }
@@ -903,8 +904,12 @@ button{
   margin-top: 1rem;
   width: 100%;
   background-color: #ededed;
-  height: 13%;
+  height: 6rem;
   box-shadow: 1px 1px 3px;
+  padding-bottom: 1rem;
+}
+
+.employeeFilterRow{
   padding-bottom: 1rem;
 }
 
@@ -1016,15 +1021,9 @@ button{
   color: #1d3557;
 }
 
-.employeeIcon{
-}
-
 .results{
   background-color: #f1faee;
   color: #1d3557;
-}
-
-.eyeIcon{
 }
 
 .view{
@@ -1052,25 +1051,24 @@ button{
   }
 }
 
-.feedbackIcon{
-}
-
 .feedback{
   background-color: #457b9d;
   box-shadow: 1px 1px 3px;
   color: #f1faee;
 }
 
-/* Manage Users Page */
+/* //////////////////////////////////////////////////MANAGE USERS PAGE///////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .tableHeadingEveryone{
-  margin-top: 1rem;
-  width: 100%;
-  background-color: #ededed;
-  height: 2%;
-  padding-left: 5%;
-  margin-bottom: 0;
   font-weight: bold;
+  color: #1d3557;
+  width: 100%;
+  margin-right: 0;
+}
+
+.emoplyeesEveryoneRow{
   color: #1d3557;
 }
 
@@ -1185,6 +1183,16 @@ button{
   height: 4rem;
   border-radius: 50%;
   border: 1px solid black;
+}
+
+.editPersonsDetailsBtn{
+  background-color: #f1faee;
+  color: #1d3557;
+}
+
+.terminatePersonBtn{
+  background-color: #e63946;
+  color: #f1faee;
 }
 
 /* Manage Account screen */
