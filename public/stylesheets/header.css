@@ -412,7 +412,7 @@ button{
 
   #goals{
     position: absolute;
-    top: 26.7%;
+    top: 28vh;
     left: 21%;
     width: 75.3%;
     /* width: 100%; */
@@ -422,7 +422,7 @@ button{
 
   #assessment{
     position: absolute;
-    top: 26.7%;
+    top: 28vh;
     left: 21%;
     width: 75.3%;
     /* width: 100%;
@@ -431,7 +431,7 @@ button{
 
   #feedback{
     position: absolute;
-    top: 27.5%;
+    top: 28vh;
     left: 21%;
     width: 75.3%;
     /* width: 100%;
