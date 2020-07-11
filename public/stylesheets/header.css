@@ -411,24 +411,31 @@ button{
   
 
   #goals{
-    width: 100%;
+    position: absolute;
+    top: 26.7%;
+    left: 21%;
+    width: 75.3%;
+    /* width: 100%; */
     height: 23rem;
-    /* background-color: #ededed; */
-    margin-top: 0.9rem;
+    /* margin-top: 0.9rem; */
   }
 
   #assessment{
-    width: 100%;
-    height: 20rem;
-    background-color: #ededed;
-    margin-top: 0.9rem;
+    position: absolute;
+    top: 26.7%;
+    left: 21%;
+    width: 75.3%;
+    /* width: 100%;
+    margin-top: 0.9rem; */
   }
 
   #feedback{
-    width: 100%;
-    height: 20rem;
-    background-color: #ededed;
-    margin-top: 0.9rem;
+    position: absolute;
+    top: 27.5%;
+    left: 21%;
+    width: 75.3%;
+    /* width: 100%;
+    margin-top: 0.9rem; */
   }
 
   .goalsContent a{
@@ -648,11 +655,6 @@ button{
   }
 }
 
-
-#addingAComment{
-
-}
-
 #postComment{
   background-color: #457b9d;
   color: #f1f1f1;
@@ -678,27 +680,23 @@ button{
   border: 1px solid black;
 }
 
+/* //////////////////////////////////////////// SELF ASSESSMENT PAGE//////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-/* .addComment i{
-  position: absolute;
-  color: #f1f1f1;
-  left: 87%;
-  margin-top: 19rem;
-  font-size: 1rem;
-  z-index: 1;
-} */
 
 .selfAssessment{
-  width: 48%;
   background-color: #ededed;
-  height: 58rem;
+  height: auto;
   box-shadow: 1px 1px 3px;
   margin-bottom: 1rem;
 }
 
-.selfAssessment .selfAssessmentForm{
+.selfAssessmentForm{
   padding-left: 1rem;
   padding-top: 1rem;
+  padding-bottom: 1rem;
+  height: auto;
 }
 
 .selfAssessmentForm i{
@@ -708,15 +706,12 @@ button{
 }
 
 .selfAssessmentForm h2{
-  position: absolute;
-  left: 4rem;
-  top: 1rem;
-
   color: #1d3557;
 }
 
 .labelMargin{
   margin-bottom: 0;
+  margin-right: 2rem;
 }
 
 .custom-select{
@@ -728,7 +723,8 @@ button{
   height: 1px;
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
-  width: 85%
+  width: 85%;
+  margin-left: 0;
 }
 
 .selfAssessmentInput{
@@ -739,24 +735,17 @@ button{
 .submitAssessment{
   background-color: #457b9d;
   color: #f1faee;
-  width: 20%;
-  margin-right: 1rem;
   border: 1px solid #1d3557;
 }
 
 .saveAssessment{
   background-color: #f1faee;
   color: #1d3557;
-  width: 30%;
   border: 1px solid #1d3557;
 }
 
 .managerAssessment{
-  position: absolute;
-  width: 48%;
-  height: 58rem;
-  left: 50%;
-  top: 0;
+  height: auto;
   padding-left: 1rem;
   padding-top: 1rem;
 }
@@ -769,9 +758,6 @@ button{
 }
 
 .managerAssessment h2{
-  position: absolute;
-  left: 5.1rem;
-  top: 1rem;
   color: #1d3557;
   opacity: 0.3;
   text-shadow: 0 0 5px rgba(0,0,0,0.5);
@@ -784,20 +770,21 @@ button{
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
   width: 85%;
   opacity: 0.3;
+  margin-left: 0;
 }
 
 #middleIcon{
   position: absolute;
   font-size: 5rem;
-  left: 40%;
-  top: 35%;
+  left: 20rem;
+  top: 15rem;
   opacity: 0.3;
 }
 
 #userWarning{
   position: absolute;
-  left: 25%;
-  top: 43%;
+  left: 13rem;
+  top: 20rem;
   opacity: 0.8;
 }
 
@@ -807,38 +794,22 @@ button{
   text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+/* ////////////////////////////// PEER FEEDBACK PAGE///////////////////////////////////////////////////////// */
+/* ////////////////////////////// //////////////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////// ////////////////////////////////////////////////////////////////////////////////// */
+
+
 .peerFeedback{
-  width: 48%;
   background-color: white;
-  height: 44rem;
+  height: auto;
   box-shadow: 1px 1px 3px;
   margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-top: 1rem;
-  padding-right: 1rem;
-  display: inline-block;
+  padding: 1rem;
   margin-left: 0;
   margin-right: 0.5rem;
 }
 
-.peerFeedbackBlank{
-  width: 48%;
-  background-color: white;
-  height: 44rem;
-  box-shadow: 1px 1px 3px;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-top: 1rem;
-  padding-right: 1rem;
-  display: inline-block;
-  margin-left: 0;
-  margin-right:0;
-}
-
 .peerFeedbackBlank h2{
-  position: absolute;
-  left: 48.5rem;
-  top: 1rem;
   color: #1d3557;
   opacity: 0.15;
 }
@@ -862,13 +833,17 @@ button{
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
   width: 85%;
   opacity: 0.3;
+  margin-left: 0;
 }
 
 .peerFeedback h2{
-  position: absolute;
-  left: 5rem;
-  top: 1rem;
   color: #1d3557;
+  margin-bottom: 0;
+  line-height: 1.5rem;
+}
+
+#feedbackCompletedDate{
+  font-size: 0.9rem;
 }
 
 .peerFeedback h3{
@@ -876,19 +851,14 @@ button{
   margin-bottom: 0;
 }
 
-.peerFeedback small{
-  position: absolute;
-  left: 4.8rem;
-  top: 3.4rem;
-  color: #1d3557;
-}
-
 .peerFeedback hr{
   border: 0;
   height: 1px;
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
-  width: 85%;
+  width: 95%;
+  margin-top:0;
+  margin-right: 0;
 }
 
 .profilePicPeerReview{
@@ -896,7 +866,7 @@ button{
   height: 3.2rem;
   border-radius: 50%;
   border: 1px solid black;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0;
   margin-top: 0.3rem;
 }
 
@@ -905,15 +875,15 @@ button{
   height: 3.2rem;
   border-radius: 50%;
   border: 1px solid black;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0;
   margin-top: 0.3rem;
   opacity: 0.05;
 }
 
 .peerFeedbackBlank span{
   position: absolute;
-  left: 62%;
-  top: 39%;
+  left: 11rem;
+  top: 16rem;
 }
 
 .profilePicPeerReviewCenter{
@@ -923,8 +893,8 @@ button{
   border-radius: 50%;
   border: 1px solid black;
   opacity: 0.15;
-  left: 70%;
-  top: 30%
+  left: 17rem;
+  top: 12rem;
 }
 
 /* //////////////////////////////////////////////////EMPLOYEES PAGE///////////////////////////////////// */
@@ -1484,6 +1454,19 @@ button{
   margin-bottom: 1rem;
 }
 
+@media screen and (min-width: 800px) and (max-width: 990px){
+  .addEmployeeDiv {
+    margin-top: 8.5%;
+  }
+}
+
+
+@media screen and (min-width: 1000px) and (max-width: 1250px){
+  .addEmployeeDiv {
+    margin-top: 7.5%;
+  }
+}
+
 .addEmployeeForm {
   margin-top: 0.9%;
   background-color: #ededed;
@@ -1506,6 +1489,7 @@ button{
   color: #1d3557;
   font-weight: 600;
 }
+
 
 .addEmployeeForm hr {
   border: 0;
@@ -1539,21 +1523,21 @@ button{
   padding-bottom: 0.3rem;
   padding-left: 0.5rem;
   border: 1px solid #1d3557;
-  width: 15%;
+  width: 10rem;
 }
 
 .saveEmployeeBtn{
   background-color: #457b9d;
   color: #f1faee;
   box-shadow: 1px 1px 3px;
-  width: 8%;
+  width: 6rem;
 }
 
 .cancelEmployeeBtn{
   background-color: #f1faee;
   color: #457b9d;
   box-shadow: 1px 1px 3px;
-  width: 8%;
+  width: 6rem;
 }
 
 /* edit profile page */
