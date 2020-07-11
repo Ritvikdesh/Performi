@@ -1008,7 +1008,7 @@ button{
 .findEmployees{
   margin-top: 1rem;
   background-color: #ededed;
-  height: 89%;
+  height: auto;
   box-shadow: 1px 1px 3px;
   padding-top: 0.1rem;
   padding-left: 0.3rem;
