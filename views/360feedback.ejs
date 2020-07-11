@@ -1,162 +1,174 @@
 <%- include ("./partials/header2") %> 
 
 <div class="viewFeedbackDiv">
-    <h2>360 Feedback</h2>
+    <div class="row">
+        <div class="col-6">
+            <h2>360 Feedback</h2>
 
-    <div class="employeeFilter">
-        <div class="redBarEmployee">
-            <span>Filters</span>
-        </div>
-        <form action="">
-            <div class="form-row">
-                <span>Employee</span>
-                <input type="text" class="form-control" name="employee" id="employeeName">
-                <input type="text" placeholder="Search" class="form-control" id="searchEmployee">
-                <span>Department</span>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle departmentDropdownBtn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span> ~All~</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+            <div class="employeeFilter">
+                <div class="redBarEmployee">
+                    <span>Filters</span>
+                </div>
+                <form action="">
+                    <div class="form-row employeeFilterRow">
+                        <span>Employee</span>
+                        <input type="text" class="form-control" name="employee" id="employeeName">
+                        <input type="text" placeholder="Search" class="form-control" id="searchEmployee">
+                        <span>Department</span>
+                        <div class="dropdown findDepartmentDiv">
+                            <a class="btn btn-secondary dropdown-toggle departmentDropdownBtn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span> ~All~</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="findEmployeesFeedback">
+                <small class="ml-1" >Found 6 employees.</small>
+                <div class="row mt-4 no-gutters">
+                    <div class="col-2"> 
+                    </div>
+                    <div class="col-3">
+                        <h3>Employee</h3>
+                    </div>
+                    <div class="col-4">
+                        <h3>Send Feedback Form</h3>
+                    </div>
+                    <div class="col-3">
+                        <h3>Give Feedback</h3>  
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2 mb-3 no-gutters"> 
+                    <div class="col-2 pl-1 pl-xl-4"> 
+                        <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-3 employeeNameFeedback mt-3">
+                        <h3>John Doe</h3>
+                    </div>
+                    <div class="col-4 mt-2 pr-5">    
+                        <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                    </div>
+                    <div class="col-3 mt-2 pr-4">
+                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2 mb-3 no-gutters"> 
+                    <div class="col-2 pl-1 pl-xl-4"> 
+                        <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-3 employeeNameFeedback mt-3">
+                        <h3>John Doe</h3>
+                    </div>
+                    <div class="col-4 mt-2 pr-5">    
+                        <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                    </div>
+                    <div class="col-3 mt-2 pr-4">
+                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2 mb-3 no-gutters"> 
+                    <div class="col-2 pl-1 pl-xl-4"> 
+                        <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-3 employeeNameFeedback mt-3">
+                        <h3>John Doe</h3>
+                    </div>
+                    <div class="col-4 mt-2 pr-5">    
+                        <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                    </div>
+                    <div class="col-3 mt-2 pr-4">
+                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2 mb-3 no-gutters"> 
+                    <div class="col-2 pl-1 pl-xl-4"> 
+                        <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-3 employeeNameFeedback mt-3">
+                        <h3>John Doe</h3>
+                    </div>
+                    <div class="col-4 mt-2 pr-5">    
+                        <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                    </div>
+                    <div class="col-3 mt-2 pr-4">
+                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2 mb-3 no-gutters"> 
+                    <div class="col-2 pl-1 pl-xl-4"> 
+                        <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-3 employeeNameFeedback mt-3">
+                        <h3>John Doe</h3>
+                    </div>
+                    <div class="col-4 mt-2 pr-5">    
+                        <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                    </div>
+                    <div class="col-3 mt-2 pr-4">
+                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2 mb-3 no-gutters"> 
+                    <div class="col-2 pl-1 pl-xl-4"> 
+                        <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-3 employeeNameFeedback mt-3">
+                        <h3>John Doe</h3>
+                    </div>
+                    <div class="col-4 mt-2 pr-5">    
+                        <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                    </div>
+                    <div class="col-3 mt-2 pr-4">
+                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+        <div class="col-6">
+            <div class="giveFeedbackDiv">
+                <div class="row mb-2 no-gutters">
+                    <div class="col-1 col-md-2 col-lg-2 col-xl-1 mr-xl-2">
+                        <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-10 mt-3">
+                        <h3>Give Feedback for: Shirish Deshpande</h3>
+                    </div>  
+                </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label for="prosTextArea">What are some things that Shirish does well?</label>
+                            <textarea name="prosTextArea" id="prosTextArea" cols="30" rows="9" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="consTextArea">How could Shirish improve?</label>
+                            <textarea name="consTextArea" id="consTextArea" cols="30" rows="9" class="form-control"></textarea>
+                        </div>
+                        <button class="btn submitFeedback mr-2">Submit</button>
+                        <button class="btn saveFeedback">Save & Finish Later</button>
+                    </form>
+            </div>
+        </div>
+
+
+
     </div>
 
-    <div class="findEmployeesFeedback">
-        <small class="ml-1" >Found 6 employees.</small>
-        <div class="row mt-4">
-            <div class="col-2"> 
-            </div>
-            <div class="col-3">
-                <h3>Employee</h3>
-            </div>
-            <div class="col-4">
-                <h3>Send Feedback Form</h3>
-            </div>
-            <div class="col-3">
-                <h3>Give Feedback</h3>  
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 mb-3"> 
-            <div class="col-2 pl-5 "> 
-                <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-3 employeeNameFeedback mt-3">
-                <h3>John Doe</h3>
-            </div>
-            <div class="col-4 mt-2">
-                <button class="btn sendButton pr-5"><i class="fas fa-share pr-2"></i>Send</button>
-            </div>
-            <div class="col-3 mt-2">
-                <button class="btn viewButton pr-4"><i class="fas fa-eye pr-2"></i>View</button>
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 mb-3"> 
-            <div class="col-2 pl-5 "> 
-                <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-3 employeeNameFeedback mt-3">
-                <h3>John Doe</h3>
-            </div>
-            <div class="col-4 mt-2">
-                <button class="btn sendButton pr-5"><i class="fas fa-share pr-2"></i>Send</button>
-            </div>
-            <div class="col-3 mt-2">
-                <button class="btn viewButton pr-4"><i class="fas fa-eye pr-2"></i>View</button>
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 mb-3"> 
-            <div class="col-2 pl-5 "> 
-                <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-3 employeeNameFeedback mt-3">
-                <h3>John Doe</h3>
-            </div>
-            <div class="col-4 mt-2">
-                <button class="btn sendButton pr-5"><i class="fas fa-share pr-2"></i>Send</button>
-            </div>
-            <div class="col-3 mt-2">
-                <button class="btn viewButton pr-4"><i class="fas fa-eye pr-2"></i>View</button>
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 mb-3"> 
-            <div class="col-2 pl-5 "> 
-                <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-3 employeeNameFeedback mt-3">
-                <h3>John Doe</h3>
-            </div>
-            <div class="col-4 mt-2">
-                <button class="btn sendButton pr-5"><i class="fas fa-share pr-2"></i>Send</button>
-            </div>
-            <div class="col-3 mt-2">
-                <button class="btn viewButton pr-4"><i class="fas fa-eye pr-2"></i>View</button>
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 mb-3"> 
-            <div class="col-2 pl-5 "> 
-                <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-3 employeeNameFeedback mt-3">
-                <h3>John Doe</h3>
-            </div>
-            <div class="col-4 mt-2">
-                <button class="btn sendButton pr-5"><i class="fas fa-share pr-2"></i>Send</button>
-            </div>
-            <div class="col-3 mt-2">
-                <button class="btn viewButton pr-4"><i class="fas fa-eye pr-2"></i>View</button>
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 mb-3"> 
-            <div class="col-2 pl-5 "> 
-                <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-3 employeeNameFeedback mt-3">
-                <h3>John Doe</h3>
-            </div>
-            <div class="col-4 mt-2">
-                <button class="btn sendButton pr-5"><i class="fas fa-share pr-2"></i>Send</button>
-            </div>
-            <div class="col-3 mt-2">
-                <button class="btn viewButton pr-4"><i class="fas fa-eye pr-2"></i>View</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="giveFeedbackDiv">
-    <div class="row">
-        <div class="col-1">
-            <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-        </div>
-        <div class="col-10 mt-3">
-            <h3>Give Feedback for: Shirish Deshpande</h3>
-        </div>
-    </div>
-        <form action="">
-            <div class="form-group">
-                <label for="prosTextArea">What are some things that Shirish does well?</label>
-                <textarea name="prosTextArea" id="prosTextArea" cols="30" rows="9" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="consTextArea">How could Shirish improve?</label>
-                <textarea name="consTextArea" id="consTextArea" cols="30" rows="9" class="form-control"></textarea>
-            </div>
-            <button class="btn submitFeedback mr-2">Submit</button>
-            <button class="btn saveFeedback">Save & Finish Later</button>
-        </form>
-        
-</div>
+
+
+
+
 
 <%- include ("./partials/footer") %> 
