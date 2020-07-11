@@ -63,9 +63,17 @@ button{
     }
   }
   
-  @media (min-width: 1370px) {
+  @media screen and (min-width: 1370px ) and (max-width: 1600px) {
     .nameJob{
-      font-size: 3rem;
+      font-size: 2.5rem;
+      line-height: 0.5rem;
+    }
+  }
+
+  @media (min-width: 1610px) {
+    .nameJob{
+      font-size: 2.8rem;
+      line-height: 0.5rem;
     }
   }
   
