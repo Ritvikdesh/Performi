@@ -1275,6 +1275,19 @@ button{
   left: 93%;
 }
 
+.generalSettings2{
+  position: absolute;
+  top: 22.6%;
+  left: 23%;
+  width: 73%;
+  height: 76%;
+  background-color: #ededed;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+}
+
 .changeSettings{
   position: absolute;
   top: 22.6%;

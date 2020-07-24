@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express     = require("express"),
     mongoose    = require("mongoose"),
     bodyParser  = require("body-parser"),
@@ -5,6 +6,10 @@ var express     = require("express"),
     LocalStrategy = require("passport-local"),
     User        = require("./models/user"),
     methodOverride  = require("method-override"),
+    flash       = require("connect-flash"),
+    async       = require("async"),
+    nodemailer       = require("nodemailer"),
+    crypto      = require("crypto"),
         app     = express()
 
 // setting up defaults that app requires
@@ -14,6 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
@@ -29,6 +35,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error")
+    res.locals.success = req.flash("success")
     next();
 })
 
@@ -61,6 +69,124 @@ app.post("/companySignUp", function(req,res){
     });
 })
 
+//FOROGOT PASSWORD PAGE
+app.get("/forgotPassword", function(req,res){
+    res.render("forgotPassword");
+})
+
+//FOROGOT PASSWORD PAGE
+app.post("/forgotPassword", function(req, res, next){
+    async.waterfall([
+        function(done) {
+            crypto.randomBytes(20, function(err, buf) {
+                var token = buf.toString('hex');
+                done(err, token);
+            });
+        },
+        function(token, done) {
+            User.findOne({email: req.body.email}, function(err, user){
+                if(!user) {
+                    req.flash("error", "No account with that email address.");
+                    return res.redirect("/forgotPassword");
+                }
+
+                user.resetPasswordToken = token;
+                user.resetPasswordExpires = Date.now() + 3600000;
+
+                user.save(function(err) {
+                    done(err, token, user);
+                });
+            });
+        },
+        function(token, user, done) {
+            var smtpTransport = nodemailer.createTransport({
+                service: 'Gmail', 
+                auth: {
+                    user: 'kingritz1@gmail.com',
+                    pass: process.env.GMAILPWW
+                }
+            });
+            var mailOptions = {
+                to: user.email,
+                from: 'kingritz1@gmail.com',
+                subject: 'Performi Password Reset',
+                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                    'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            };
+            smtpTransport.sendMail(mailOptions, function(err) {
+                console.log('mail sent');
+                req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+                done(err, 'done');
+            });
+        }
+    ], function(err) {
+        if (err) return next(err);
+            res.redirect('/forgotPassword');
+    });
+});
+
+app.get('/reset/:token', function(req, res) {
+    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+            req.flash('error', 'Password reset token is invalid or has expired.');
+            return res.redirect('/forgotPassword');
+        }
+        res.render('reset', {token: req.params.token});
+    });
+});
+  
+app.post('/reset/:token', function(req, res) {
+    async.waterfall([
+      function(done) {
+        User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+            if (!user) {
+                req.flash('error', 'Password reset token is invalid or has expired.');
+                return res.redirect('back');
+            }
+            if(req.body.password === req.body.confirm) {
+                user.setPassword(req.body.password, function(err) {
+                    user.resetPasswordToken = undefined;
+                    user.resetPasswordExpires = undefined;
+  
+                    user.save(function(err) {
+                        req.logIn(user, function(err) {
+                            done(err, user);
+                        });
+                    });
+                })
+            } else {
+              req.flash("error", "Passwords do not match.");
+              return res.redirect('back');
+            }
+        });
+      },
+      function(user, done) {
+        var smtpTransport = nodemailer.createTransport({
+          service: 'Gmail', 
+          auth: {
+            user: 'kingritz1@gmail.com',
+            pass: process.env.GMAILPWW
+          }
+        });
+        var mailOptions = {
+          to: user.email,
+          from: 'kingritz1@mail.com',
+          subject: 'Your password has been changed',
+          text: 'Hello,\n\n' +
+            'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+        };
+        smtpTransport.sendMail(mailOptions, function(err) {
+          req.flash('success', 'Success! Your password has been changed.');
+          done(err);
+        });
+      }
+    ], function(err) {
+      res.redirect('/home');
+    });
+  });
+   
 app.get("/logout", function(req,res){
     req.logout();
     res.redirect("/");
@@ -97,6 +223,11 @@ app.get("/manageUsers", isAdmin, function(req, res){
 // MANAGE ACCOUNT PAGE
 app.get("/manageAccount", isAdmin, function(req, res){
     res.render("generalSettings");
+})
+
+// POST ROUTE FOR GENERAL SETTINGS
+app.get("/generalSettings", function(req, res){
+    res.send("hey");
 })
 
 // EMPLOYEES INDEX
@@ -222,11 +353,6 @@ app.get("/360feedback", isLoggedIn, function(req, res){
             res.render("360feedback", {users: allUsers});
         }
     })
-})
-
-//FOROGOT PASSWORD PAGE
-app.get("/forgotPassword", function(req,res){
-    res.render("forgotPassword");
 })
 
 //DEMO LOGIN PAGE

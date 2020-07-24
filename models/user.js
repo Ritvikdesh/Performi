@@ -13,7 +13,7 @@ var UserSchema = new mongoose.Schema({
     city: String,
     postalCode: String,
     country: String,
-    email: String,
+    email: {type: String, unique: true, required: true},
     workPhoneNumber: String,
     mobilePhoneNumber: String,
     department: String,
@@ -22,6 +22,8 @@ var UserSchema = new mongoose.Schema({
     manager: String,
     workingStatus: String,
     companyName: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
     isAdmin: {type: Boolean, default: false}
 })
 UserSchema.plugin(passportLocalMongoose);
