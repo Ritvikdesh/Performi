@@ -13,30 +13,30 @@
 <body>
 
 <div class="container loginDiv">
-    <form method="GET" action="/home">
+    <form method="POST" action="/companySignUp">
 
         <h1 class="appTitle">performi</h1>
         <div class="form-group companySignUpgroup">
-            <label  class="labelCompanySignUp" for="companyName">Company Name</label>
-            <input class="form-control" type="text" name="content[companyName]" id="companyName">
+            <label  class="labelCompanySignUp" for="companyName" >Company Name</label>
+            <input class="form-control" type="text" name="companyName" id="companyName" required="required">
         </div>
         <div class="form-row ">
             <div class="form-group ml-1 companySignUpgroup">
                 <label class="labelCompanySignUp" for="firstName mb-0">First Name</label>
-                <input class="form-control" type="text" name="content[firstName]" id="firstName">
+                <input class="form-control" type="text" name="firstName" id="firstName" required="required">
             </div>
             <div class="form-group companySignUpgroup ml-1">
                 <label class="labelCompanySignUp" for="lastName">Last Name</label>
-                <input class="form-control" type="text" name="content[lastName]" id="lastName">
+                <input class="form-control" type="text" name="lastName" id="lastName">
             </div>
         </div>
         <div class="form-group companySignUpgroup">
             <label class="labelCompanySignUp" for="adminUsername">Username</label>
-            <input class="form-control" type="text" name="content[Username]" id="Username">
+            <input class="form-control" type="text" name="username" id="adminUsername" required="required" >
         </div>
         <div class="form-group companySignUpgroup">
             <label class="labelCompanySignUp" for="adminPassword">Password</label>
-            <input class="form-control" type="text" name="content[pasword]" id="password">
+            <input class="form-control" type="text" name="password" id="adminPassword" min="5" required="required">
         </div>
         <a class="forgotPassword" href="/forgotPassword">Forgot your password?</a>
         <button id="loginBtnSignUp" class="btn btn-info">SIGN UP</button>

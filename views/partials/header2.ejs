@@ -14,7 +14,7 @@
 <body>
 
     <nav class="navbar fixed-top navbar-expand navbar-custom smart-scroll" style="background-color: #457b9d;">
-        <a class="navbar-brand" href="#">Company Name</a>
+        <a class="navbar-brand" href="#"><%= currentUser.companyName %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,7 +42,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">View Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -50,5 +50,5 @@
       </nav>
 
       <nav class="navbar navbar-toggleable-sm bg-inverse navbar-inverse fixed-top smart-scroll-two navbar2">
-        <span class="navbar-brand nameJob" href="#">Ritvik Shirish Deshpande<small>CEO</small></span>
+        <span class="navbar-brand nameJob" href="#"><%= currentUser.firstName %> <%= currentUser.lastName %><small>CEO</small></span>
       </nav>

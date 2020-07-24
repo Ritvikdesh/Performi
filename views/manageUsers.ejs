@@ -49,156 +49,35 @@
                 </div>
         </div>
         <hr class="hrManagers">
-        <div class="row emoplyeesEveryoneRow no-gutters">
-            <div class="col-1">
-                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+        <% users.forEach(function(user){  %>
+            <div class="row emoplyeesEveryoneRow no-gutters">
+                <div class="col-1">
+                    <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
+                    <span class="nameOfEmployee"><%= user.firstName %> <%= user.lastName %> </span>
+                </div>
+                <div class="col-2  mt-3 mr-md-5 mr-lg-0">
+                    <span class=""><%= user.email %> </span>
+                </div>
+                <div class="col-2  mt-3">
+                    <span class=""><%= user.department %> </span>
+                </div>
+                <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
+                    <span class=""><%= user.reportsTo %> </span>
+                </div>
+                <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
+                    <span class=""><%= user.hireDate %> </span>
+                </div>
+                <div class="col-2 col-md-1 col-lg-2 mt-2">
+                    <a class="btn editPersonsDetailsBtn" href="/employees/<%= user._id %>/edit"><i class="fas fa-edit"></i><span>Edit</span></a>
+                    <form action="/employees/<%= user._id %>?_method=DELETE" method="POST" style="display: inline">
+                        <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
+                    </form>
+                </div>
             </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
-                <span class="nameOfEmployee">Prajakta Deshpande</span>
-            </div>
-            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
-                <span class="">person@gmail.com</span>
-            </div>
-            <div class="col-2  mt-3">
-                <span class="">Google Home</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
-                <span class="">Ritvik D</span>
-            </div>
-            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
-                <span class="">01/22/2020</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-2">
-                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
-                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
-            </div>
-        </div>
-        <hr class="hrManagers">
-        <div class="row emoplyeesEveryoneRow no-gutters">
-            <div class="col-1">
-                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
-                <span class="nameOfEmployee">Prajakta Deshpande</span>
-            </div>
-            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
-                <span class="">person@gmail.com</span>
-            </div>
-            <div class="col-2  mt-3">
-                <span class="">Google Home</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
-                <span class="">Ritvik D</span>
-            </div>
-            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
-                <span class="">01/22/2020</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-2">
-                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
-                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
-            </div>
-        </div>
-        <hr class="hrManagers">
-        <div class="row emoplyeesEveryoneRow no-gutters">
-            <div class="col-1">
-                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
-                <span class="nameOfEmployee">Prajakta Deshpande</span>
-            </div>
-            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
-                <span class="">person@gmail.com</span>
-            </div>
-            <div class="col-2  mt-3">
-                <span class="">Google Home</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
-                <span class="">Ritvik D</span>
-            </div>
-            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
-                <span class="">01/22/2020</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-2">
-                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
-                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
-            </div>
-        </div>
-        <hr class="hrManagers">
-        <div class="row emoplyeesEveryoneRow no-gutters">
-            <div class="col-1">
-                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
-                <span class="nameOfEmployee">Prajakta Deshpande</span>
-            </div>
-            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
-                <span class="">person@gmail.com</span>
-            </div>
-            <div class="col-2  mt-3">
-                <span class="">Google Home</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
-                <span class="">Ritvik D</span>
-            </div>
-            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
-                <span class="">01/22/2020</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-2">
-                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
-                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
-            </div>
-        </div>
-        <hr class="hrManagers">
-        <div class="row emoplyeesEveryoneRow no-gutters">
-            <div class="col-1">
-                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
-                <span class="nameOfEmployee">Prajakta Deshpande</span>
-            </div>
-            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
-                <span class="">person@gmail.com</span>
-            </div>
-            <div class="col-2  mt-3">
-                <span class="">Google Home</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
-                <span class="">Ritvik D</span>
-            </div>
-            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
-                <span class="">01/22/2020</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-2">
-                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
-                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
-            </div>
-        </div>
-        <hr class="hrManagers">
-        <div class="row emoplyeesEveryoneRow no-gutters">
-            <div class="col-1">
-                <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
-                <span class="nameOfEmployee">Prajakta Deshpande</span>
-            </div>
-            <div class="col-2  mt-3 mr-md-5 mr-lg-0">
-                <span class="">person@gmail.com</span>
-            </div>
-            <div class="col-2  mt-3">
-                <span class="">Google Home</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-3 mr-lg-0">
-                <span class="">Ritvik D</span>
-            </div>
-            <div class="col-1 col-md-1 col-lg-1 mt-3 mr-md-5 mr-lg-0">
-                <span class="">01/22/2020</span>
-            </div>
-            <div class="col-2 col-md-1 col-lg-2 mt-2">
-                <button class="btn editPersonsDetailsBtn"><i class="fas fa-edit"></i><span>Edit</span></button>
-                <button class="btn terminatePersonBtn"><i class="fas fa-trash"></i><span>Delete</span></button>
-            </div>
-        </div>
-        </div>
+            <hr class="hrManagers">
+        <% }) %> 
     </div>
 
 </div>

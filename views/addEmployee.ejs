@@ -3,59 +3,75 @@
 <div class="addEmployeeDiv">
     <h2>Add Employee</h2>
     <div class="addEmployeeForm">
-        <form action="">
+        <form action="/employees/create" method="POST">
             <h4>Personal</h4>
             <hr>
 
             <div class="indentedInfo">
+                <div class="row pl-3 mb-3">
+                    <div class="form-group mr-2 mb-0">
+                        <label class="mb-0" for="">Username</label>
+                        <input type="text" name="username" placeholder="Username" class="form-control ">
+                    </div>  
+                    <div class="form-group mr-2 mb-0">
+                        <label class="mb-0" for="">Temporary Password</label>
+                        <input type="text" name="password" placeholder="Password" class="form-control  mr-2">
+                    </div>
+                </div>
                 <label class="mb-0" for="">Name</label>
                 <div class="row pl-3 mb-3">
-                    <input type="text" placeholder="First" class="form-control standardInputSize mr-2">
-                    <input type="text" placeholder="Middle" class="form-control standardInputSize mr-2">
-                    <input type="text" placeholder="Last" class="form-control standardInputSize mr-2">
+                    <input type="text" placeholder="First" name="firstName" class="form-control standardInputSize mr-2">
+                    <input type="text" placeholder="Middle" name="middleName" class="form-control standardInputSize mr-2">
+                    <input type="text" placeholder="Last" name="lastName" class="form-control standardInputSize mr-2">
                 </div>
                 <label class="mb-0" for="">Gender</label>
                 <div class="row pl-3 mb-3">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle selectBtn selection1" name="gender" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=" the">
                           ~Select~   
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-menu menu1" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" >Male</a>
+                          <a class="dropdown-item" >Female</a>
+                          <a class="dropdown-item" >Other</a>
                         </div>
                     </div>                      
                 </div>
-                <label class="mb-0" for="">Birth Date</label>
+                <label class="mb-0" for="">Hire Date</label>
                 <div class="row pl-3 mb-3">
-                    <input type="text" placeholder="01/02/2002" class="form-control standardInputSize mr-2">
+                    <input type="text" name="hireDate" placeholder="01/02/2002" class="form-control standardInputSize mr-2">
                 </div>
                 <div class="row pl-3 mb-3">
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">Address</label>
-                        <input type="text" placeholder="123 Drew Lane" class="form-control ">
+                        <input type="text" name="address" placeholder="123 Drew Lane" class="form-control ">
                     </div>
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">City</label>
-                        <input type="text" placeholder="Sydney" class="form-control  mr-2">
+                        <input type="text" name="city" placeholder="Sydney" class="form-control  mr-2">
                     </div>
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">Postal Code</label>
-                        <input type="text" placeholder="R45 42R" class="form-control mr-2">
+                        <input type="text" name="postalCode" placeholder="R45 42R" class="form-control mr-2">
                     </div>
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">Country</label>
-                        <input type="text" placeholder="Australia" class="form-control mr-2">
+                        <input type="text" name="country" placeholder="Australia" class="form-control mr-2">
                     </div>
                 </div>
                 <label class="mb-0" for="">Work Email</label>
                 <div class="row pl-3 mb-3">
-                    <input type="text" placeholder="email@gmail.com" class="form-control standardInputSize mr-2">
+                    <input type="text" name="email" placeholder="email@gmail.com" class="form-control standardInputSize mr-2">
                 </div>
-                <label class="mb-0" for="">Mobile Phone Number</label>
                 <div class="row pl-3 mb-3">
-                    <input type="text" placeholder="234-4234-4234" class="form-control standardInputSize mr-2">
+                    <div class="form-group mr-2 mb-0">
+                        <label class="mb-0" for="">Mobile Phone Number</label>
+                        <input type="text" name="mobilePhoneNumber" placeholder="234-4234-4234" class="form-control ">
+                    </div>
+                    <div class="form-group mr-2 mb-0">
+                        <label class="mb-0" for="">Work Phone Number</label>
+                        <input type="text" name="workPhoneNumber" placeholder="234-4234 ext 234" class="form-control  mr-2">
+                    </div>
                 </div>
             </div>
 
@@ -66,13 +82,13 @@
                 <label class="mb-2" for="">Department</label>
                 <div class="row pl-3 mb-3">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle selectBtn selection2" name="department" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ~Select~   
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-menu menu2" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >Engineering</a>
+                            <a class="dropdown-item" >Sales</a>
+                            <a class="dropdown-item" >Accounting</a>
                         </div>
                     </div>
                     <a class="ml-3" href="">Manage Users</a>
@@ -80,22 +96,21 @@
                 <div class="row pl-3 mb-3">
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">Job Title</label>
-                        <input type="text" placeholder="Head of Sales" class="form-control ">
+                        <input type="text" name="jobTitle" placeholder="Head of Sales" class="form-control ">
                     </div>
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">Reports To</label>
-                        <input type="text" placeholder="Martin Short" class="form-control  mr-2">
+                        <input type="text" name="reportsTo" placeholder="Martin Short" class="form-control  mr-2">
                     </div>
                     <div class="form-group mr-2 mb-0">
                         <label class="mb-0" for="">Manager</label>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle selectBtn selection3" name="manager" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             ~Select~   
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-menu menu3" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" >Yes</a>
+                                <a class="dropdown-item" >No</a>
                             </div>
                         </div>
                     </div>
@@ -103,13 +118,12 @@
                 <label class="mb-2" for="">Working Status</label>
                 <div class="row pl-3 mb-3">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle selectBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle selectBtn selection4" name="workingStatus" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ~Select~   
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-menu menu4" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" >Part-time</a>
+                            <a class="dropdown-item" >Full-time</a>
                         </div>
                     </div>
                 </div>
@@ -141,10 +155,81 @@
                 <button class="btn saveEmployeeBtn">Save</button>
                 <button class="btn cancelEmployeeBtn">Cancel</button>
             </div>
-
+            <button name="button">1</button>
         </form>
 
     </div>
 </div>
 
-<%- include ("./partials/footer") %> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+    $(".menu1 a").click(function () {
+        var selText1 = $(this).text();
+         $(".selection1").html(selText1);
+        //  $(".menu1").val(selText1);
+
+         $.ajax({
+            url:'localhost:3000/employees/create',
+            type: "POST",
+            data:{
+                button: $('button[name="button"]').attr('name')
+            },
+            success:function(data){
+                console.log(data); // logs the response from the server.
+            },
+            error:function(){
+                console.log("there was an error in the ajax request");
+            }
+        });
+    })
+})
+
+
+ 
+
+$(function () {
+    $(".menu2 a").click(function () {
+        var selText2 = $(this).text();
+         $(".selection2").html(selText2);
+    })
+})
+
+$(function () {
+    $(".menu3 a").click(function () {
+        var selText3 = $(this).text();
+         $(".selection3").html(selText3);
+    })
+})
+
+$(function () {
+    $(".menu4 a").click(function () {
+        var selText4 = $(this).text();
+         $(".selection4").html(selText4);
+    })
+})
+
+// add padding top to show content behind navbar
+$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+// detect scroll top or down
+if ($('.smart-scroll').length > 0) { // check if element exists
+    var last_scroll_top = 0;
+    $(window).on('scroll', function() {
+        scroll_top = $(this).scrollTop();
+        if(scroll_top < last_scroll_top) {
+            $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+        }
+        else {
+            $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+        }
+        last_scroll_top = scroll_top;
+    });
+}
+</script>
+
+    </body>
+    </html>

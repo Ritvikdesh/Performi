@@ -13,7 +13,7 @@
 <body>
 
     <nav class="navbar fixed-top navbar-expand navbar-custom smart-scroll" style="background-color: #457b9d;">
-        <a class="navbar-brand" href="#">Company Name</a>
+        <a class="navbar-brand" href="#"> <%= currentUser.companyName %> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,17 +21,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                     <li class="nav-item active mr-2">
-                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item mr-2">
-                    <a class="nav-link" href="#">Tasks</a>
+                        <a class="nav-link" href="#">Tasks</a>
                     </li>
                     <li class="nav-item mr-2">
-                    <a class="nav-link"  href="#">My Performance</a>
+                        <a class="nav-link"  href="#">My Performance</a>
                     </li>
                     <li class="nav-item mr-2">
-                    <a class="nav-link" href="#">360 Feedback</a>
+                        <a class="nav-link" href="#">360 Feedback</a>
                     </li>
+                    <% if(currentUser.isAdmin) { %>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="/employees">Employees</a>
+                        </li>
+                    <% } %> 
+                    
             </ul>
             <ul class="navbar-nav mr-5">
                 <li class="nav-item dropdown ">
@@ -41,7 +47,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">View Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -49,22 +55,22 @@
     </nav>
 
     <nav class="navbar navbar-toggleable-sm bg-inverse navbar-inverse fixed-top smart-scroll-two navbar2">
-        <span class="navbar-brand nameJob" href="#">Ritvik Shirish Deshpande<small>CEO</small></span>
+        <span class="navbar-brand nameJob" href="#"> <%= currentUser.firstName %> <%= currentUser.lastName %> <small>CEO</small></span>
     </nav>
 
     <img id="profilePic" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
     <div class="row justify-content-left mainRow">
         <div class="col-2 col-md-3 col-lg-2" id="personalInfo" >
-            <p id="line1" ><i class="fas fa-briefcase"></i> 905-230-6754</p>
-            <p ><i class="fas fa-mobile-alt"></i> 905-230-6754</p>
-            <p ><i class="fas fa-envelope"></i> random@gmail.com</p>
+            <p id="line1" ><i class="fas fa-briefcase"></i> <%= currentUser.workPhoneNumber %></p>
+            <p ><i class="fas fa-mobile-alt"></i> <%= currentUser.mobilePhoneNumber %></p>
+            <p ><i class="fas fa-envelope"></i> <%= currentUser.email %> </p>
             <hr>
             <p class="heading">Hire Date</p>
-            <p>Sep 4, 2020</p>
+            <p><%= currentUser.hireDate %></p>
             <hr>
             <p ><i class="fas fa-thumbtack"></i> Part-time</p>
             <p ><i class="fas fa-user-friends"></i> Admin</p>
-            <p ><i class="fas fa-map-marker-alt"></i> Melbourne, Australia</p>
+            <p ><i class="fas fa-map-marker-alt"></i> <%= currentUser.city %>, <%= currentUser.country %></p>
             <hr>
             <p class="heading">Manager</p>
             <div class="row">
@@ -72,7 +78,7 @@
                     <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="col-10 pl-0 besidePic">
-                    <p id="besidePic" >Prajakta Deshpande</p>
+                    <p id="besidePic" ><%= currentUser.reportsTo %></p>
                 </div>
             </div>
             

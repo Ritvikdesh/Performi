@@ -13,15 +13,15 @@
 <body>
 
 <div class="container loginDiv">
-    <form method="GET" action="/home">
+    <form method="POST" action="/login">
         <h1 id="appTitle">performi</h1>
         <div class="form-group">
             <label for="username">Username</label>
-            <input class="form-control" type="text" name="content[username]" id="username">
+            <input class="form-control" type="text" name="username" id="username">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="text" name="content[password]" id="username">
+            <input class="form-control" type="text" name="password" id="username">
         </div>
         <a id="forgotPassword" href="/forgotPassword">Forgot your password?</a>
         <button id="loginBtn" class="btn btn-info">LOGIN</button>
