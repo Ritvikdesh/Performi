@@ -7,11 +7,11 @@
             <span>Filters</span>
         </div>
         <div class="greyBarEmployee">
-            <form action="">
+            <form action="/employees" method="GET">
                 <div class="form-row">
                     <span>Employee</span>
                     <input type="text" class="form-control" name="employee" id="employeeName">
-                    <input type="text" placeholder="Search" class="form-control" id="searchEmployee">
+                    <input type="submit" value="Search" class="form-control" id="searchEmployee">
                     <span>Department</span>
                     <div class="dropdown findDepartmentDiv">
                         <a class="btn btn-secondary dropdown-toggle departmentDropdownBtn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,5 +73,38 @@
 </div>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<%- include ("./partials/footer") %> 
+<script>
+
+
+
+
+
+
+
+
+  // add padding top to show content behind navbar
+$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+// detect scroll top or down
+if ($('.smart-scroll').length > 0) { // check if element exists
+var last_scroll_top = 0;
+$(window).on('scroll', function() {
+    scroll_top = $(this).scrollTop();
+    if(scroll_top < last_scroll_top) {
+        $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+    }
+    else {
+        $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+    }
+    last_scroll_top = scroll_top;
+});
+}
+</script>
+</body>
+</html>

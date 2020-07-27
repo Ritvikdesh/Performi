@@ -6,11 +6,11 @@
         <div class="redBarEmployee">
             <span>Filters</span>
         </div>
-        <form action="">
+        <form action="/manageUsers" method="GET">
             <div class="form-row employeeFilterRow">
                 <span>Employee</span>
                 <input type="text" class="form-control" name="employee" id="employeeName">
-                <input type="text" placeholder="Search" class="form-control" id="searchEmployee">
+                <input type="submit" value="Search" class="form-control" id="searchEmployee">
                 <span>Department</span>
                 <div class="dropdown findDepartmentDiv">
                     <a class="btn btn-secondary dropdown-toggle departmentDropdownBtn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,5 +1,7 @@
 <%- include ("./partials/header") %> 
 
+
+
 <div class="content">
     <div class="divNavTab">
         <ul class="nav nav-tabs">
@@ -31,13 +33,13 @@
 
     <div class="tab-content" id="nav-tabContent">
 
-        <div id="goals" class="tab-pane fade in active">
+        <div id="goals" class="tab-pane fade in">
            
-            <button id="addGoalBtn" class="btn"><i class="fas fa-plus"></i> <span> Add a Goal</span> </button>
+            <button id="addGoalBtn" class="btn" ><i class="fas fa-plus"></i> <span> Add a Goal</span> </button>
             <hr>
 
             <div class="newGoalDiv">
-                <form action="">
+                <form action="/myPerformance/goals/create" method="POST">
                     <div class="row no-gutters">
                         <div class="col-auto ml-3 mt-3 mr-2">
                             <i class="fas fa-bullseye"></i> 
@@ -52,13 +54,13 @@
                         <div class="col-8 mt-2 ml-5 pr-5">
                             <div id="titleForm" class="form-group pl-3">
                                 <Label class="labels" for="title">Title</Label>
-                                <input class="form-control" type="text" name="title" id="title">
+                                <input class="form-control" type="text" name="goal[title]" id="title">
                             </div>
                         </div>
                         <div class="col mt-2 pr-5 ">
                             <div class="form-group">
                                 <Label class="labels" for="dueDate">Due Date</Label>
-                                <input class="form-control" type="text" name="dueDate" id="dueDate">
+                                <input class="form-control" type="text" name="goal[dueDate]" id="dueDate">
                             </div>
                         </div>
                     </div>
@@ -68,7 +70,7 @@
                         <div class="col ml-5 mt-0 pr-5">
                              <div id="goalDesDiv" class="form-group pl-3">
                                 <Label class="labels" for="goal">Goal</Label>
-                                <input class="form-control" type="text" name="goal" id="goal" placeholder="Detail a S.M.A.R.T goal that you want to accomplish">
+                                <input class="form-control" type="text" name="goal[description]" id="goal" placeholder="Detail a S.M.A.R.T goal that you want to accomplish">
                             </div>
                         </div>
                     </div>
@@ -84,7 +86,6 @@
                             <button id="cancelGoal" class="btn w-100">Cancel</button>
                         </div>
                     </div>
-  
                 </form>
             </div>
 
@@ -144,7 +145,7 @@
         </div>
     
 
-        <div id="assessment" class="tab-pane fade in active">
+        <div id="assessment" class="tab-pane fade in">
             <div class="row assessmentRow">
                 <div class="col-6 ">
                     <div class="selfAssessment">
@@ -220,7 +221,7 @@
             </div>
         </div>
 
-        <div id="feedback" class="tab-pane fade in active">
+        <div id="feedback" class="tab-pane fade in ">
             <div class="row">
                 <div class="col-6">
                     <div class="peerFeedback">
@@ -286,8 +287,57 @@
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <script>
+
+        alert("you are on the perforamcne page");
+      
+    $( "#addGoalBtn" ).click(function() {
+        $( ".newGoalDiv" ).toggle("slow");
+    });
+
+    $( "#saveGoal" ).click(function() {
+        var goToGoalsTab = true;
+        alert("please go to goals tab");
+    });
+
+    // if(goToGoalsTab){
+    //     alert("please go to goals tab");
+    //     // $('#goalsHeading').tab('show');
+    // }
+
+    
+
+    // $( "#cancelGoal" ).click(function() {
+    //     $( ".newGoalDiv" ).hide("slow");
+    // });
+
+    
 
 
 
 
-<%- include ("./partials/footer") %> 
+      // add padding top to show content behind navbar
+$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+// detect scroll top or down
+if ($('.smart-scroll').length > 0) { // check if element exists
+    var last_scroll_top = 0;
+    $(window).on('scroll', function() {
+        scroll_top = $(this).scrollTop();
+        if(scroll_top < last_scroll_top) {
+            $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+        }
+        else {
+            $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+        }
+        last_scroll_top = scroll_top;
+    });
+}
+    </script>
+    
+        </body>
+        </html>

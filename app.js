@@ -5,6 +5,7 @@ var express     = require("express"),
     passport    = require("passport"),
     LocalStrategy = require("passport-local"),
     User        = require("./models/user"),
+    Goal        = require("./models/goals"),
     methodOverride  = require("method-override"),
     flash       = require("connect-flash"),
     async       = require("async"),
@@ -202,22 +203,54 @@ app.get("/tasks", isLoggedIn, function(req, res){
     res.render("tasks");
 })
 
-//MY PERFORMANCE PAGE
+//MY PERFORMANCE PAGE (INDEX FOR GOALS)
 app.get("/myPerformance", isLoggedIn, function(req, res){
-    res.render("goals");
+    Goal.find({}, function(err, allGoals){
+        if (err){
+            console.log(err);
+        }
+        else{
+            res.render("goals", {goals: allGoals});
+        }
+    })
+})
+
+//CREATE PAGE FOR GOALS
+app.post("/myPerformance/goals/create", isLoggedIn, function(req, res){
+    Goal.create(req.body.goal, function(err, goal){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(goal);
+            res.redirect("/myPerformance");
+        }
+    })
 })
 
 
 // MANAGE USERS PAGE
 app.get("/manageUsers", isAdmin, function(req, res){
-    User.find({}, function(err, allUsers){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render("manageUsers", {users: allUsers});
-        }
-    })
+    if(req.query.employee){
+        const regex = new RegExp(escapeRegex(req.query.employee), 'gi');
+        User.find({firstName: regex}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("manageUsers", {users: allUsers});
+            }
+        })
+    }else{
+        User.find({}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("manageUsers", {users: allUsers});
+            }
+        })
+    }
 })
 
 // MANAGE ACCOUNT PAGE
@@ -232,14 +265,26 @@ app.get("/generalSettings", function(req, res){
 
 // EMPLOYEES INDEX
 app.get("/employees", isLoggedIn, function(req, res){
-    User.find({}, function(err, allUsers){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render("employees", {users: allUsers});
-        }
-    })
+    if(req.query.employee){
+        const regex = new RegExp(escapeRegex(req.query.employee), 'gi');
+        User.find({firstName: regex}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("employees", {users: allUsers});
+            }
+        })
+    }else{
+        User.find({}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("employees", {users: allUsers});
+            }
+        })
+    }
 })
 
 // ADD EMDPLOYEE 
@@ -345,14 +390,26 @@ app.get("/editPersonalInfo", isLoggedIn, function(req, res){
 
 //360 FEEDBACK PAGE
 app.get("/360feedback", isLoggedIn, function(req, res){
-    User.find({}, function(err, allUsers){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render("360feedback", {users: allUsers});
-        }
-    })
+    if(req.query.employee){
+        const regex = new RegExp(escapeRegex(req.query.employee), 'gi');
+        User.find({firstName: regex}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("360feedback", {users: allUsers});
+            }
+        })
+    }else{
+        User.find({}, function(err, allUsers){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("360feedback", {users: allUsers});
+            }
+        })
+    }
 })
 
 //DEMO LOGIN PAGE
@@ -372,6 +429,10 @@ function isAdmin(req,res, next){
         return next();
     }
     res.redirect("/home");
+}
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
 // running app at local host 3000
