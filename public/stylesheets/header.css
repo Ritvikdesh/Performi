@@ -558,7 +558,7 @@ button{
   margin-left: 3.5%;
   width: 93%;
   /* background-color: #dddddd; */
-  height: 100%;
+  height: auto;
 }
 
 .goalsCommentsDiv i{
@@ -1397,7 +1397,7 @@ button{
   padding: 1rem;
   height: auto;
   margin-top: 3.35rem;
-
+  display: none;
 }
 
 .giveFeedbackDiv h3{
@@ -1582,4 +1582,11 @@ button{
   .viewDirectoryDiv h1{
     margin-top: 10%;
   }
+}
+
+.alertSuccess{
+  background-color: #f1faee;
+  /* opacity: 0.75; */
+  box-shadow: 1px 1px 3px;
+  color: #1d3557;
 }

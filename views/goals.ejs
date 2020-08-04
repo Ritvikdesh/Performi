@@ -3,6 +3,16 @@
 
 
 <div class="content">
+    <% if(error && error.length > 0) { %>
+        <div class="alert alertError" role="alert">
+            <%= error %> 
+        </div>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+        <div class="alert alertSuccess" role="alert">
+            <%= success %> 
+        </div>
+    <% } %>
     <div class="divNavTab">
         <ul class="nav nav-tabs">
             <div class="row no-gutters w-100">
@@ -54,13 +64,13 @@
                         <div class="col-8 mt-2 ml-5 pr-5">
                             <div id="titleForm" class="form-group pl-3">
                                 <Label class="labels" for="title">Title</Label>
-                                <input class="form-control" type="text" name="goal[title]" id="title">
+                                <input class="form-control" type="text" name="title" id="title">
                             </div>
                         </div>
                         <div class="col mt-2 pr-5 ">
                             <div class="form-group">
                                 <Label class="labels" for="dueDate">Due Date</Label>
-                                <input class="form-control" type="text" name="goal[dueDate]" id="dueDate">
+                                <input class="form-control" type="text" name="dueDate" id="dueDate">
                             </div>
                         </div>
                     </div>
@@ -70,7 +80,7 @@
                         <div class="col ml-5 mt-0 pr-5">
                              <div id="goalDesDiv" class="form-group pl-3">
                                 <Label class="labels" for="goal">Goal</Label>
-                                <input class="form-control" type="text" name="goal[description]" id="goal" placeholder="Detail a S.M.A.R.T goal that you want to accomplish">
+                                <input class="form-control" type="text" name="description" id="goal" placeholder="Detail a S.M.A.R.T goal that you want to accomplish">
                             </div>
                         </div>
                     </div>
@@ -89,59 +99,54 @@
                 </form>
             </div>
 
-            <div class="goalsCommentsDiv">
-                <div class="row no-gutters">
-                    <div class="col-auto">
-                    </div>
-                    <div class="col-8 mt-2 ml-5 pr-5">
-                        <h2>Transfering reconcilations from word to pdf</h2>
-                    </div>
-                </div>
-                <div class="indented-content">
-                    <small>I will change the stylings of all my reconcilations to make it easier for my manager to look through.</small>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                    </div>
-                    <div class="comment">
-                        <div class="row no-gutters">
-                            <div class="col-1 mt-2 ml-2 mr-md-5 mr-lg-4 mr-xl-0">
-                                <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="col-8 col-md-7 col-lg-8">
-                                <p class="nameOfPerson mb-0 mt-4" >Prajakta Deshpande Oct 25, 2020 8:44 PM</p>
-                                <p class="commentDetail ml-2" >Good start towards your goal! Make sure to format the tables too.</p>
-                            </div>
-                            <div class="col-2 ml-md-4 ml-lg-0 ml-xl-5">
-                                <span id="dueDateGoal" >Due: Jan 31, 2021</span>
-                            </div>
+            <% goals.forEach(function(goal){ %>
+                <div class="goalsCommentsDiv">
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                        </div>
+                        <div class="col-8 mt-2 ml-5 pr-5">
+                            <h2><%= goal.title %> </h2>
                         </div>
                     </div>
-                    <div class="comment">
-                        <div class="row no-gutters">
-                            <div class="col-1 mt-2 ml-2 mr-md-5 mr-lg-4 mr-xl-0">
-                                <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="col-8 col-md-7 col-lg-8">
-                                <p class="nameOfPerson mb-0 mt-4" >Prajakta Deshpande Oct 25, 2020 8:44 PM</p>
-                                <p class="commentDetail ml-2" >Good start towards your goal! Make sure to format the tables too.</p>
-                            </div>
+                    <div class="indented-content">
+                        <small><%= goal.description %></small>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                         </div>
-                    </div>
-                    <div class="addComment">
-                        <div class="row no-gutters">
-                            <div class="col-1 mt-1 ml-3 mr-md-5 mr-lg-4 mr-xl-0">
-                                <img  id="addCommentProfilePic" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                        <% goal.comments.forEach(function(comment){ %>
+                            <div class="comment">
+                                <div class="row no-gutters">
+                                    <div class="col-1 mt-2 ml-2 mr-md-5 mr-lg-4 mr-xl-0">
+                                        <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="col-8 col-md-7 col-lg-8">
+                                        <p class="nameOfPerson mb-0 mt-4" >Prajakta Deshpande Oct 25, 2020 8:44 PM</p>
+                                        <p class="commentDetail ml-2" ><%= comment.description %> </p>
+                                    </div>
+                                    <div class="col-2 ml-md-4 ml-lg-0 ml-xl-5">
+                                        <span id="dueDateGoal" >Due: Jan 31, 2021</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-9 col-md-7 col-lg-7 mt-2">
-                                <input id="addingAComment" class="form-control" type="text" placeholder="Add a Comment">
-                            </div>
-                            <div class="col-2 ml-md-4 ml-lg-5 ml-xl-5 mt-2">
-                                <button id="postComment" class="btn w-100 "><i class="fas fa-paper-plane"></i> <span> Post</span></button>
-                            </div>
+                        <% })  %> 
+                        <div class="addComment">
+                            <form action="/myPerformance/goals/<%= goal._id %>/comments/create" method="POST">
+                                <div class="row no-gutters">
+                                    <div class="col-1 mt-1 ml-3 mr-md-5 mr-lg-4 mr-xl-0">
+                                        <img  id="addCommentProfilePic" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="col-9 col-md-7 col-lg-7 mt-2">
+                                        <input id="comment[addingAComment]" name="comment[description]" class="form-control" type="text" placeholder="Add a Comment">
+                                    </div>
+                                    <div class="col-2 ml-md-4 ml-lg-5 ml-xl-5 mt-2">
+                                        <button id="postComment" class="btn w-100 " type="submit"><i class="fas fa-paper-plane"></i> <span> Post</span></button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            <% })  %> 
         </div>
     
 
@@ -223,56 +228,26 @@
 
         <div id="feedback" class="tab-pane fade in ">
             <div class="row">
-                <div class="col-6">
-                    <div class="peerFeedback">
-                        <div class="row no-gutters">
-                            <div class="col-2 col-md-2 col-lg-1 col-xl-1 mr-md-3 mr-lg-2 mr-xl-3">
-                                <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                <% feedbacks.forEach(function(feedback) { %>
+                    <div class="col-6">
+                        <div class="peerFeedback">
+                            <div class="row no-gutters">
+                                <div class="col-2 col-md-2 col-lg-1 col-xl-1 mr-md-3 mr-lg-2 mr-xl-3">
+                                    <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                                </div>
+                                <div class="col-9 col-md-9 col-lg-8 col-xl-9 mt-3">
+                                    <h2><%= feedback.firstName %> <%= feedback.lastName %></h2>
+                                    <p id="feedbackCompletedDate" >Completed: Jan 8, 2020 at 2:12 PM</p>
+                                </div>
                             </div>
-                            <div class="col-9 col-md-9 col-lg-8 col-xl-9 mt-3">
-                                <h2>John Richards</h2>
-                                <p id="feedbackCompletedDate" >Completed: Jan 8, 2020 at 2:12 PM</p>
-                            </div>
+                            <hr>
+                            <h3>What are some things that Ritvik does well?</h3>
+                            <p><%= feedback.pros %> </p>
+                            <h3>How could Ritvik improve?</h3>
+                            <p><%= feedback.cons %></p>
                         </div>
-                        <hr>
-                        <h3>What are some things that Ritvik does well?</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-                        <h3>How could Ritvik improve?</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="peerFeedbackBlank">
-                        <div class="row no-gutters">
-                            <div class="col-2 col-md-2 col-lg-1 col-xl-1 mr-md-3 mr-lg-2 mr-xl-3">
-                                <img class="profilePicPeerReviewBlank" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="col-9 col-md-9 col-lg-8 col-xl-9 mt-3">
-                                <h2>Jacob Collins</h2>
-                            </div>
-                        </div>
-                        <hr>
-                        <h3>What are some things that Ritvik does well?</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-                        <h3>How could Ritvik improve?</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-                        <img class="profilePicPeerReviewCenter" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                        <span>360 Feedback has not been completed yet</span>
-                    </div>
-                </div>
-                <!-- <div class="col-6">
-                    <div class="peerFeedbackBlank">
-                        <img class="profilePicPeerReviewBlank" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                        <h2>Jacob Collins</h2>
-                        <hr>
-                        <h3>What are some things that Ritvik does well?</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-                        <h3>How could Ritvik improve?</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aliquid ipsum, natus molestiae error corporis cumque neque impedit repellendus provident temporibus exercitationem facilis quasi tempore totam voluptates omnis veritatis aut perspiciatis expedita ex ut necessitatibus. Perspiciatis excepturi, rerum officiis iure nulla reprehenderit quos repudiandae earum labore. Sint sunt rerum provident amet. Provident exercitationem ipsam modi nostrum eveniet hic, voluptates, perferendis optio, velit nesciunt officia quod qui quas nobis odit tempora omnis fugit? Officia minima tempora delectus quisquam labore, laboriosam minus quos molestias ullam dolore veniam iure quo dignissimos. Voluptas voluptatum veniam sequi deleniti minima qui velit ullam aspernatur temporibus ipsa!</p>
-                        <img class="profilePicPeerReviewCenter" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                        <span>360 Feedback has not been completed yet</span>
-                    </div>
-                </div> -->
+                <% }) %> 
             </div>
         </div>
 
@@ -293,50 +268,43 @@
     
     <script>
 
-        alert("you are on the perforamcne page");
+$(document).ready(function() {  
+    var addedGoal = localStorage.getItem("addedGoalKey");
+
+    if ( addedGoal == "true" ) {
+        $('#goalsHeading').tab('show')
+        localStorage.setItem("addedGoalKey", "false");  
+    }
+
+        // add padding top to show content behind navbar
+    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+    // detect scroll top or down
+    if ($('.smart-scroll').length > 0) { // check if element exists
+        var last_scroll_top = 0;
+        $(window).on('scroll', function() {
+            scroll_top = $(this).scrollTop();
+            if(scroll_top < last_scroll_top) {
+                $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+            }
+            else {
+                $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+            }
+            last_scroll_top = scroll_top;
+        });
+    }
+});
       
     $( "#addGoalBtn" ).click(function() {
         $( ".newGoalDiv" ).toggle("slow");
     });
 
     $( "#saveGoal" ).click(function() {
-        var goToGoalsTab = true;
-        alert("please go to goals tab");
+        var addedGoal = "true";
+        localStorage.setItem("addedGoalKey", addedGoal);
     });
 
-    // if(goToGoalsTab){
-    //     alert("please go to goals tab");
-    //     // $('#goalsHeading').tab('show');
-    // }
-
-    
-
-    // $( "#cancelGoal" ).click(function() {
-    //     $( ".newGoalDiv" ).hide("slow");
-    // });
-
-    
-
-
-
-
-      // add padding top to show content behind navbar
-$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
-
-// detect scroll top or down
-if ($('.smart-scroll').length > 0) { // check if element exists
-    var last_scroll_top = 0;
-    $(window).on('scroll', function() {
-        scroll_top = $(this).scrollTop();
-        if(scroll_top < last_scroll_top) {
-            $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
-        }
-        else {
-            $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
-        }
-        last_scroll_top = scroll_top;
-    });
-}
+ 
     </script>
     
         </body>

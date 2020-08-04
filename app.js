@@ -6,6 +6,8 @@ var express     = require("express"),
     LocalStrategy = require("passport-local"),
     User        = require("./models/user"),
     Goal        = require("./models/goals"),
+    Feedback        = require("./models/feedback"),
+    Comment        = require("./models/comment"),
     methodOverride  = require("method-override"),
     flash       = require("connect-flash"),
     async       = require("async"),
@@ -203,21 +205,36 @@ app.get("/tasks", isLoggedIn, function(req, res){
     res.render("tasks");
 })
 
-//MY PERFORMANCE PAGE (INDEX FOR GOALS)
+//MY PERFORMANCE PAGE (INDEX FOR GOALS, FEedback)
 app.get("/myPerformance", isLoggedIn, function(req, res){
-    Goal.find({}, function(err, allGoals){
+    Goal.find({}).populate("comments").exec(function(err, allGoals){
         if (err){
-            console.log(err);
+            console.log("goals error: " + err);
         }
         else{
-            res.render("goals", {goals: allGoals});
+            Feedback.find({}, function(err, allFeedbacks){
+                if (err){
+                    console.log("Feedback error: " + err);
+                }
+                else{
+                    res.render("goals", {feedbacks: allFeedbacks, goals: allGoals});
+                }
+            })
         }
     })
 })
 
 //CREATE PAGE FOR GOALS
 app.post("/myPerformance/goals/create", isLoggedIn, function(req, res){
-    Goal.create(req.body.goal, function(err, goal){
+    var title = req.body.title;
+    var dueDate = req.body.dueDate;
+    var description = req.body.description;
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var goal = {title: title, dueDate: dueDate, description: description, author: author}; 
+    Goal.create(goal, function(err, goal){
         if(err){
             console.log(err);
         }
@@ -228,6 +245,33 @@ app.post("/myPerformance/goals/create", isLoggedIn, function(req, res){
     })
 })
 
+
+//CREATE COMMENTS
+app.post("/myPerformance/goals/:id/comments/create", isLoggedIn, function(req, res){
+    //look up camground using id 
+    Goal.findById(req.params.id, function(err, goal){
+        if(err){
+            console.log(err);
+            res.redirect("/home");
+        }else{
+            Comment.create(req.body.comment, function(err, comment){
+                if(err){
+                    req.flash("error", "Something went wrong");
+                    console.log(err);
+                }else{
+                    // add username and id to comment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    //save comment
+                    comment.save();
+                    goal.comments.push(comment);
+                    goal.save();
+                    req.flash("success", "Successfully added comment");
+                }
+            })
+        }
+    });
+})
 
 // MANAGE USERS PAGE
 app.get("/manageUsers", isAdmin, function(req, res){
@@ -259,8 +303,10 @@ app.get("/manageAccount", isAdmin, function(req, res){
 })
 
 // POST ROUTE FOR GENERAL SETTINGS
-app.get("/generalSettings", function(req, res){
-    res.send("hey");
+app.post("/generalSettings", function(req, res){
+    req.user.companyName = req.body.companyName;
+    req.user.save();    
+    res.redirect("/manageAccount");
 })
 
 // EMPLOYEES INDEX
@@ -296,6 +342,7 @@ app.get("/employees/new", isAdmin, function(req, res){
 app.post("/employees/create", isAdmin, function(req,res){
     var newUser = new User(
         {
+            photo: req.body.photo,
             username: req.body.username,
             firstName: req.body.firstName,
             middleName: req.body.middleName, 
@@ -316,7 +363,7 @@ app.post("/employees/create", isAdmin, function(req,res){
             workingStatus: req.body.workingStatus,
             companyName: req.user.companyName
         });
-        console.log(req.body.button);
+        console.log(newUser);
     User.register(newUser, req.body.password, function(err, user){
         if (err){
             console.log(err);
@@ -345,6 +392,7 @@ app.get("/employees/:id/edit", function(req, res){
 //UPDATE USER ROUTE
 app.put("/employees/:id", function(req, res){
     var data = {
+        photo: req.body.photo, 
         firstName: req.body.firstName,
         middleName: req.body.middleName, 
         lastName: req.body.lastName, 
@@ -411,6 +459,51 @@ app.get("/360feedback", isLoggedIn, function(req, res){
         })
     }
 })
+
+//360Feedback index
+
+
+//360 FEEDBACK CREATE
+app.post("/360feedback", function(req, res){
+    var feedback = {
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        pros: req.body.pros,
+        cons: req.body.cons
+    };
+    console.log(feedback);
+
+    Feedback.create(feedback, function(err){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect("/360feedback");
+        }
+    })
+})
+
+app.post("/360feedback/:id", function(req,res){
+    User.findById(req.params.id, function(err, person){
+        req.user.feedbackFirstName = person.firstName;
+        req.user.feedbackLastName = person.lastName;
+        req.user.save();
+        console.log("first name: " + req.user.feedbackFirstName);
+        console.log("last name: " + req.user.feedbackFirstName);
+        res.redirect("/360feedback");
+    })
+}) 
+
+
+//SEND 360 FEEDBACK FORM
+app.post("/360feedback/sendFeedback/:id", function(req,res){
+    User.findById(req.params.id, function(err, user){
+        req.flash("success", "You sent a peer feedback form to: " + user.firstName);
+        req.user.sendFeedbackFormTo.push(req.params.id);
+        req.user.save();
+        res.redirect("/360feedback");
+    })
+}) 
+
 
 //DEMO LOGIN PAGE
 app.get("/demo", function(req, res){

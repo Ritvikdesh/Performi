@@ -1,6 +1,16 @@
 <%- include ("./partials/header2") %> 
 
 <div class="viewFeedbackDiv">
+    <% if(error && error.length > 0) { %>
+        <div class="alert alertError" role="alert">
+            <%= error %> 
+        </div>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+        <div class="alert alertSuccess" role="alert">
+            <%= success %> 
+        </div>
+    <% } %>
     <div class="row">
         <div class="col-6">
             <h2>360 Feedback</h2>
@@ -48,17 +58,29 @@
                 <% users.forEach(function(user){ %>
                     <div class="row mt-2 mb-3 no-gutters"> 
                         <div class="col-2 pl-1 pl-xl-4"> 
-                            <img class="profilePicFeedbackPage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                            <img class="profilePicFeedbackPage" src="<%= user.photo %> " class="img-fluid" alt="Responsive image">
                         </div>
                         <div class="col-3 employeeNameFeedback mt-3">
                             <h3><%= user.firstName %> <%= user.lastName %> </h3>
                         </div>
-                        <div class="col-4 mt-2 pr-5">    
-                            <button class="btn sendButton w-100"><i class="fas fa-share pr-2"></i>Send</button>
+                        <div class="col-4 mt-2 pr-5">
+                            <form action="/360feedback/sendFeedback/<%= user._id %>" method="POST" style="display: inline" id="form1">
+                                <button class="btn sendButton w-100" id="send"><i class="fas fa-share pr-2"></i>Send</button>
+                            </form>    
                         </div>
-                        <div class="col-3 mt-2 pr-4">
-                            <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
-                        </div>
+                        
+                        <% for (var i = 0; i < user.sendFeedbackFormTo.length ; i++) { %>
+                            <% if(user.sendFeedbackFormTo[i] == currentUser._id) { %>
+                                <form action="/360feedback/<%= user._id %>" method="POST" style="display: inline">
+                                    <div class="col-12 mt-2 pr-4">
+                                        <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
+                                    </div>
+                                </form>
+                                
+                            <% } %> 
+                        <% } %>
+
+
                     </div>
                     <hr>
                 <% })  %> 
@@ -71,32 +93,102 @@
                         <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
                     </div>
                     <div class="col-10 mt-3">
-                        <h3>Give Feedback for: Shirish Deshpande</h3>
+                        <h3>Give Feedback for: <%= currentUser.feedbackFirstName %> <%= currentUser.feedbackLastName %></h3>
                     </div>  
                 </div>
-                    <form action="">
+                    <form action="/360feedback" method="POST">
                         <div class="form-group">
-                            <label for="prosTextArea">What are some things that Shirish does well?</label>
-                            <textarea name="prosTextArea" id="prosTextArea" cols="30" rows="9" class="form-control"></textarea>
+                            <label for="prosTextArea">What are some things that <%= currentUser.feedbackFirstName %> does well?</label>
+                            <textarea name="pros" id="prosTextArea" cols="30" rows="9" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="consTextArea">How could Shirish improve?</label>
-                            <textarea name="consTextArea" id="consTextArea" cols="30" rows="9" class="form-control"></textarea>
+                            <label for="consTextArea">How could <%= currentUser.feedbackFirstName %> improve?</label>
+                            <textarea name="cons" id="consTextArea" cols="30" rows="9" class="form-control"></textarea>
                         </div>
-                        <button class="btn submitFeedback mr-2">Submit</button>
+                        <button typ="submit" class="btn submitFeedback mr-2">Submit</button>
                         <button class="btn saveFeedback">Save & Finish Later</button>
                     </form>
             </div>
         </div>
-
-
-
     </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+
+// var buttons = document.querySelectorAll(".sendButton");
+// for ( var counter = 0; counter < buttons.length; counter++)
+// {
+//     buttons[counter].addEventListener("click", function(){
+      
+//    });
+// }
+
+
+$(document).ready(function() {  
+    var someVarName = localStorage.getItem("someVarKey");
+    var clickedViewButton = localStorage.getItem("clickedViewButtonKey");
+
+    if ( someVarName == "value" ) {
+        // alert("thing is true");
+        $(".sending").hide();
+    }
+
+    if ( clickedViewButton == "true" ) {
+        // alert("thing is true");
+        $(".giveFeedbackDiv").toggle();
+        localStorage.setItem("clickedViewButtonKey", "false");
+    }
+
+        // add padding top to show content behind navbar
+    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+    // detect scroll top or down
+    if ($('.smart-scroll').length > 0) { // check if element exists
+        var last_scroll_top = 0;
+        $(window).on('scroll', function() {
+            scroll_top = $(this).scrollTop();
+            if(scroll_top < last_scroll_top) {
+                $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+            }
+            else {
+                $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+            }
+            last_scroll_top = scroll_top;
+        });
+    }
+});
+
+$(".sendButton").on("click", function() {
+    var someVarName = "value";
+    localStorage.setItem("someVarKey", someVarName);
+    $(this).addClass("sending");
+});
+
+
+$(".viewButton").on("click", function() {
+    var clickedViewButton = "true";
+    localStorage.setItem("clickedViewButtonKey", clickedViewButton);
+});
+
+$(".saveFeedback").on("click", function() {
+    $(".giveFeedbackDiv").toggle();
+});
+
+
+  
 
 
 
 
 
+ 
+</script>
 
-
-<%- include ("./partials/footer") %> 
+    </body>
+    </html>

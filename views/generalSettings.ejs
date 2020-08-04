@@ -14,15 +14,12 @@
 
 <div class="tab-content" id="nav-tabContent">
 
-    <div id="generalSettings" class="tab-pane fade in active">
+    <div id="generalSettings" class="tab-pane fade in">
         
         <div class="generalSettings2">
-            <div class="col-2 col-md-3 col-xl-2 pr-3">
-                <input type="text" class="form-control">
-            </div>
             <h2>General</h2>
             <hr>
-            <form action="generalSettings" method="POST">
+            <form action="/generalSettings" method="POST">
                 <div class="form-group">
                     <Label for="companyName"> Change Company Name</Label>
                     <input type="text" name="companyName" id="companyName" class="form-control">
@@ -46,13 +43,13 @@
         </div>
     </div>
 
-    <div id="reviewCycles" class="tab-pane fade in active">
+    <div id="reviewCycles" class="tab-pane fade in">
         <div class="changeSettings">
             <h2>Review Cycles</h2>
             <hr>
             <p>In this section you can decide how many times you want your employees to be reviewed per annum. This can be based on several factors such as the size of your company, organizational structure, manager to employee ratio etc.</p>
             <div class="row no-gutters">
-                <div class="col-auto mr-4">
+                <div class="col-auto mr-4 ">
                     <h4 class="noDisplay">#1 </h4>
                 </div>
                 <div class="col-2 col-md-3 col-xl-2 pr-3">
@@ -67,7 +64,7 @@
             </div>
             <div class="row no-gutters mb-2">
                 <div class="col-auto mr-4 ">
-                    <h4>#1 </h4>
+                    <h4 class="pt-2">#1 </h4>
                 </div>
                 <div class="col-2 col-md-3 col-xl-2 pr-3">
                     <input type="text" class="form-control">
@@ -78,60 +75,9 @@
                 <div class="col-2 col-md-3 col-xl-2 pr-3">
                     <input type="text" class="form-control">
                 </div>
-                <div class="col-1 ">
-                    <i class="fas fa-trash faded"></i>
-                </div>
-            </div>
-            <div class="row no-gutters mb-2">
-                <div class="col-auto mr-4 ">
-                    <h4>#2 </h4>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-1 ">
-                    <i class="fas fa-trash faded"></i>
-                </div>
-            </div>
-            <div class="row no-gutters mb-2">
-                <div class="col-auto mr-4 ">
-                    <h4>#3 </h4>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-1 ">
-                    <i class="fas fa-trash faded"></i>
-                </div>
-            </div>
-            <div class="row no-gutters mb-2">
-                <div class="col-auto mr-4 ">
-                    <h4>#4 </h4>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-auto ">
-                    <i class="fas fa-trash "></i>
-                    <i class="fas fa-plus "></i>
+                <div class="col-1 pt-1" id="first">
+                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-plus" ></i>
                 </div>
             </div>
             
@@ -142,6 +88,63 @@
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script>
+   
+    // when the user clicks the add button
+    // $(".fa-plus").on("click", function () {
+    //     //'<div class="row no-gutters mb-2 divRow"> </div>'
+    //     var divRow = $("<div>", {"class": "row no-gutters mb-2 divRow"});
+    //     var divNumCol = '<div class="col-auto mr-4"> <h4 class="pt-2">#1 </h4> </div>';
+    //     var divCol = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control"> </div>';
+    //     //var divIcons = '<div class="col-1 pt-1"> <i class="fas fa-trash"></i> <i class="fas fa-plus "></i></div>';
+    //     var divIcons = $("<i>", {"class": "fas fa-plus"});
+
+    //     $(".changeSettings").append(divRow);
+    //     $(".divRow").append( divIcons);
+    //     $("#first").hide();
+    // })
+
+    $(".changeSettings").on("click", "i.fa-plus", function(){
+        //'<div class="row no-gutters mb-2 divRow"> </div>'
+        var divRow = $("<div>", {"class": "row no-gutters mb-2 divRow"});
+        var divNumCol = '<div class="col-auto mr-4"> <h4 class="pt-2">#1 </h4> </div>';
+        var divCol = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control"> </div>';
+        //var divIcons = '<div class="col-1 pt-1"> <i class="fas fa-trash"></i> <i class="fas fa-plus "></i></div>';
+        var divIcons = $("<div>", {"class": "col-1 pt-1 divIcons"});
+        var trash = $("<i>", {"class": "fas fa-trash mr-1"});
+        var plus = $("<i>", {"class": "fas fa-plus"});
+
+        $(".changeSettings").append(divRow);
+        $(".divRow").append(divNumCol, divCol, divCol, divCol, divIcons);
+        $(".divIcons").append(trash, plus);
+        $("#first").hide();
+    // alert("heyfdsa");
+});
 
 
-<%- include ("./partials/footer.ejs") %> 
+
+// add padding top to show content behind navbar
+$('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+
+// detect scroll top or down
+if ($('.smart-scroll').length > 0) { // check if element exists
+    var last_scroll_top = 0;
+    $(window).on('scroll', function() {
+        scroll_top = $(this).scrollTop();
+        if(scroll_top < last_scroll_top) {
+            $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+        }
+        else {
+            $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+        }
+        last_scroll_top = scroll_top;
+    });
+}
+</script>
+
+    </body>
+    </html>
