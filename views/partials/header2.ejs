@@ -8,41 +8,59 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 <link rel="stylesheet" href="/stylesheets/header.css">
+<link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <title>Title</title>
 </head>
 <body>
 
     <nav class="navbar fixed-top navbar-expand navbar-custom smart-scroll" style="background-color: #457b9d;">
-        <a class="navbar-brand" href="#"><%= currentUser.companyName %></a>
+        <div id="navbarBrandDiv">
+            <p class="navbar-brand" href="#"><%= currentUser.companyName %></p>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto tabs">
                     <li class="nav-item active mr-2">
-                    <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/home">HOME<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item mr-2">
-                    <a class="nav-link" href="/tasks">Tasks</a>
+                        <a class="nav-link" href="/tasks">TASKS</a>
                     </li>
                     <li class="nav-item mr-2">
-                    <a class="nav-link"  href="/myPerformance">My Performance</a>
+                        <a class="nav-link"  href="/myPerformance">MY PERFORMANCE</a>
                     </li>
                     <li class="nav-item mr-2">
-                    <a class="nav-link" href="/360feedback">360 Feedback</a>
+                        <a class="nav-link" href="/360feedback">360 FEEDBACK</a>
                     </li>
+                    <% if(currentUser.isAdmin) { %>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" href="/employees">EMPLOYEES</a>
+                        </li>
+                    <% } %> 
             </ul>
-            <ul class="navbar-nav mr-5">
+            <ul class="navbar-nav" style="margin-right: 5%">
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i id="settings"  class="fas fa-user-cog"></i>
+                        <i class="fas fa-cog settings"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">View Profile</a>
+                        <a class="dropdown-item dropdownColor" href="/manageAccount" >Manage Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/logout">Logout</a>
+                        <a class="dropdown-item dropdownColor" href="/manageUsers">Manage Users</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-cog settings"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item dropdownColor" href="#">View Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item dropdownColor" href="/logout">Logout</a>
                     </div>
                 </li>
             </ul>

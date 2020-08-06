@@ -44,46 +44,48 @@
     </div>
 
     <div id="reviewCycles" class="tab-pane fade in">
-        <div class="changeSettings">
-            <h2>Review Cycles</h2>
-            <hr>
-            <p>In this section you can decide how many times you want your employees to be reviewed per annum. This can be based on several factors such as the size of your company, organizational structure, manager to employee ratio etc.</p>
-            <div class="row no-gutters">
-                <div class="col-auto mr-4 ">
-                    <h4 class="noDisplay">#1 </h4>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <h3>Cycle Name</h3>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <h3>Start Date</h3>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <h3>End Date</h3>
-                </div>
+        <form action="/reviewCycles" method="POST">
+            <div class="changeSettings">
+                <h2>Review Cycles</h2>
+                <hr>
+                <p>In this section you can decide how many times you want your employees to be reviewed per annum. This can be based on several factors such as the size of your company, organizational structure, manager to employee ratio etc.</p>
+                    <div class="row no-gutters">
+                        <div class="col-auto mr-4 ">
+                            <h4 class="noDisplay">#1 </h4>
+                        </div>
+                        <div class="col-2 col-md-3 col-xl-2 pr-3">
+                            <h3>Cycle Name</h3>
+                        </div>
+                        <div class="col-2 col-md-3 col-xl-2 pr-3">
+                            <h3>Start Date</h3>
+                        </div>
+                        <div class="col-2 col-md-3 col-xl-2 pr-3">
+                            <h3>End Date</h3>
+                        </div>
+                    </div>
+                    <div class="row no-gutters mb-2 firstRow">
+                        <div class="col-auto mr-4 ">
+                            <h4 class="pt-2">#1 </h4>
+                        </div>
+                        <div class="col-2 col-md-3 col-xl-2 pr-3">
+                            <input type="text" class="form-control" name="cycleName">
+                        </div>
+                        <div class="col-2 col-md-3 col-xl-2 pr-3">
+                            <input type="text" class="form-control" id="startDate1" name="startDate1" autocomplete="off">
+                        </div>
+                        <div class="col-2 col-md-3 col-xl-2 pr-3">
+                            <input type="text" class="form-control" id="endDate1"  name="endDate1" autocomplete="off">
+                        </div>
+                        <div class="col-1 pt-1 divIcons" id="first">
+                            <i class="fas fa-trash"></i>
+                            <i class="fas fa-plus" ></i>
+                        </div>
+                    </div>
+                    <hr class="saveChanges" id="changeSettingsHr">
+                    <button class="btn saveChangesBtn">Save Changes</button>  
             </div>
-            <div class="row no-gutters mb-2">
-                <div class="col-auto mr-4 ">
-                    <h4 class="pt-2">#1 </h4>
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-2 col-md-3 col-xl-2 pr-3">
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-1 pt-1" id="first">
-                    <i class="fas fa-trash"></i>
-                    <i class="fas fa-plus" ></i>
-                </div>
-            </div>
-            
-            <hr class="saveChanges">
-            <button class="btn saveChangesBtn">Save Changes</button>  
-        </div>
+        </form>
+        
     </div>
 
 </div>
@@ -91,40 +93,100 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/js-datepicker"></script>
 
 <script>
-   
-    // when the user clicks the add button
-    // $(".fa-plus").on("click", function () {
-    //     //'<div class="row no-gutters mb-2 divRow"> </div>'
-    //     var divRow = $("<div>", {"class": "row no-gutters mb-2 divRow"});
-    //     var divNumCol = '<div class="col-auto mr-4"> <h4 class="pt-2">#1 </h4> </div>';
-    //     var divCol = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control"> </div>';
-    //     //var divIcons = '<div class="col-1 pt-1"> <i class="fas fa-trash"></i> <i class="fas fa-plus "></i></div>';
-    //     var divIcons = $("<i>", {"class": "fas fa-plus"});
 
-    //     $(".changeSettings").append(divRow);
-    //     $(".divRow").append( divIcons);
-    //     $("#first").hide();
+    // const start = datepicker('#startDate1', {
+    //     formatter: (input, date, instance) => {
+    //         const value = date.toLocaleDateString()
+    //         input.value = value // => '1/1/2099'
+    //     },
+    //     id: 1
     // })
 
+    // const end = datepicker('#endDate1', {
+    //     formatter: (input, date, instance) => {
+    //         const value = date.toLocaleDateString()
+    //         input.value = value // => '1/1/2099'
+    //     },
+    //     id: 1
+    // })
+
+    var counter = 1;
     $(".changeSettings").on("click", "i.fa-plus", function(){
+        counter++;
+        addRow();
+    });
+
+    $(".changeSettings").on("click", "i.fa-trash", function(){
+        removeRow();
+    });
+
+    $(".changeSettings").on("click", "button.saveChangesBtn", function(){
+        addHiddenInput();
+    });
+ 
+    function addHiddenInput() {
+        var hiddenInput  = '<input type="hidden" class="form-control" name="counter" value="'+ counter +'" >';
+        $(".changeSettings").append(hiddenInput);
+    }
+
+    function removeRow() {
+        $(".divRow").last().hide();
+        $(".divIcons:eq(-2)").show();
+
+    }
+
+    function addRow(){
         //'<div class="row no-gutters mb-2 divRow"> </div>'
         var divRow = $("<div>", {"class": "row no-gutters mb-2 divRow"});
-        var divNumCol = '<div class="col-auto mr-4"> <h4 class="pt-2">#1 </h4> </div>';
-        var divCol = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control"> </div>';
-        //var divIcons = '<div class="col-1 pt-1"> <i class="fas fa-trash"></i> <i class="fas fa-plus "></i></div>';
+        var divNumCol = `<div class="col-auto mr-4"> <h4 class="pt-2">#${counter} </h4> </div>`;
+        var divCycleName = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control" name="cycleName'+ counter + '" id="cycleName'+ counter + '" autocomplete="off"> </div>';
+        var divStartDate = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control" name="startDate'+ counter + '" id="startDate'+ counter + '" autocomplete="off"> </div>';
+        var divEndDate   = '<div class="col-2 col-md-3 col-xl-2 pr-3"> <input type="text" class="form-control" name="endDate'+ counter + '"   id="endDate'+ counter + '" autocomplete="off"> </div>';
         var divIcons = $("<div>", {"class": "col-1 pt-1 divIcons"});
         var trash = $("<i>", {"class": "fas fa-trash mr-1"});
         var plus = $("<i>", {"class": "fas fa-plus"});
 
-        $(".changeSettings").append(divRow);
-        $(".divRow").append(divNumCol, divCol, divCol, divCol, divIcons);
-        $(".divIcons").append(trash, plus);
-        $("#first").hide();
-    // alert("heyfdsa");
-});
+        $(".divIcons").last().hide();
+        $("#changeSettingsHr").before(divRow);
+        $(".divRow").last().append(divNumCol, divCycleName, divStartDate, divEndDate, divIcons);
+        $(".divIcons").last().append(trash, plus);
 
+        datepicker(`#startDate${counter}`, {
+            formatter: (input, date, instance) => {
+                const value = date.toLocaleDateString();
+                input.value = value; // => '1/1/2099'
+            },
+            id: counter
+        });
+
+        datepicker(`#endDate${counter}`, {
+            formatter: (input, date, instance) => {
+                const value = date.toLocaleDateString();
+                input.value = value; // => '1/1/2099'
+            },
+            id: counter
+        });
+        
+    }
+
+    var start = datepicker(`#startDate1`, {
+            formatter: (input, date, instance) => {
+                const value = date.toLocaleDateString();
+                input.value = value; // => '1/1/2099'
+            },
+            id: 1
+        });
+
+        var end = datepicker(`#endDate1`, {
+            formatter: (input, date, instance) => {
+                const value = date.toLocaleDateString();
+                input.value = value; // => '1/1/2099'
+            },
+            id: 1
+        });
 
 
 // add padding top to show content behind navbar

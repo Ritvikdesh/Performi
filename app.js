@@ -10,10 +10,11 @@ var express     = require("express"),
     Comment        = require("./models/comment"),
     methodOverride  = require("method-override"),
     flash       = require("connect-flash"),
+    cron = require('node-cron'),
     async       = require("async"),
     nodemailer       = require("nodemailer"),
     crypto      = require("crypto"),
-        app     = express()
+        app     = express();
 
 // setting up defaults that app requires
 mongoose.connect("mongodb://localhost/performi_app");
@@ -38,8 +39,9 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
-    res.locals.error = req.flash("error")
-    res.locals.success = req.flash("success")
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    res.locals.sendForm = app.locals.sendForm;
     next();
 })
 
@@ -234,6 +236,7 @@ app.post("/myPerformance/goals/create", isLoggedIn, function(req, res){
         username: req.user.username
     }
     var goal = {title: title, dueDate: dueDate, description: description, author: author}; 
+    console.log(goal);
     Goal.create(goal, function(err, goal){
         if(err){
             console.log(err);
@@ -267,10 +270,16 @@ app.post("/myPerformance/goals/:id/comments/create", isLoggedIn, function(req, r
                     goal.comments.push(comment);
                     goal.save();
                     req.flash("success", "Successfully added comment");
+                    res.redirect("/myPerformance");
                 }
             })
         }
     });
+})
+
+app.post("/sendForm", function(req, res){
+    app.locals.sendForm = false;
+    res.redirect("/myPerformance");
 })
 
 // MANAGE USERS PAGE
@@ -307,6 +316,27 @@ app.post("/generalSettings", function(req, res){
     req.user.companyName = req.body.companyName;
     req.user.save();    
     res.redirect("/manageAccount");
+})
+
+// POST ROUTE FOR REVIEW CYCLES
+app.post("/reviewCycles", function(req, res){
+    var today = new Date();
+    var counter = Number(req.body.counter)
+
+    for(var i = 1; i <= counter; i++){
+        var startDate = req.body['startDate' + i];
+        var month = Number(startDate.charAt(0));
+        var date = Number(startDate.charAt(2));
+        if(today.getDate() == date){
+                app.locals.sendForm = true;
+        }else{
+            cron.schedule(`* * ${date} ${month} *`, function() {
+                app.locals.sendForm = true;
+            });
+        }
+    }
+    
+    res.redirect("/home");
 })
 
 // EMPLOYEES INDEX
