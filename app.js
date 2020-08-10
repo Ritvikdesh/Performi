@@ -377,7 +377,7 @@ app.post("/employees/create", isAdmin, function(req,res){
             firstName: req.body.firstName,
             middleName: req.body.middleName, 
             lastName: req.body.lastName, 
-            // gender: req.body.button,
+            gender: req.body.gender,
             hireDate: req.body.hireDate,
             address: req.body.address,
             city: req.body.city,
@@ -468,6 +468,7 @@ app.get("/editPersonalInfo", isLoggedIn, function(req, res){
 
 //360 FEEDBACK PAGE
 app.get("/360feedback", isLoggedIn, function(req, res){
+   
     if(req.query.employee){
         const regex = new RegExp(escapeRegex(req.query.employee), 'gi');
         User.find({firstName: regex}, function(err, allUsers){

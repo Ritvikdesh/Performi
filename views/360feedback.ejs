@@ -105,9 +105,9 @@
                             <label for="consTextArea">How could <%= currentUser.feedbackFirstName %> improve?</label>
                             <textarea name="cons" id="consTextArea" cols="30" rows="9" class="form-control"></textarea>
                         </div>
-                        <button typ="submit" class="btn submitFeedback mr-2">Submit</button>
-                        <button class="btn saveFeedback">Save & Finish Later</button>
+                        <button type="submit" class="btn submitFeedback mr-2">Submit</button>
                     </form>
+                    <button class="btn saveFeedback">Save & Finish Later</button>
             </div>
         </div>
     </div>
@@ -176,9 +176,9 @@ $(".viewButton").on("click", function() {
     localStorage.setItem("clickedViewButtonKey", clickedViewButton);
 });
 
-$(".saveFeedback").on("click", function() {
-    $(".giveFeedbackDiv").toggle();
-});
+// $(".saveFeedback").on("click", function() {
+//     $(".giveFeedbackDiv").toggle();
+// });
 
 
   

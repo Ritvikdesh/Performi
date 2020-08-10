@@ -26,16 +26,14 @@
                 </div>
                 <label class="mb-0" for="">Name</label>
                 <div class="row pl-3 mb-3">
-                    <input type="text" placeholder="First" name="firstName" class="form-control standardInputSize mr-2">
+                    <input type="text" placeholder="First" name="firstName"  class="form-control standardInputSize mr-2">
                     <input type="text" placeholder="Middle" name="middleName" class="form-control standardInputSize mr-2">
                     <input type="text" placeholder="Last" name="lastName" class="form-control standardInputSize mr-2">
                 </div>
                 <label class="mb-0" for="">Gender</label>
                 <div class="row pl-3 mb-3">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle selectBtn selection1" name="gender" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=" the">
-                          ~Select~   
-                        </button>
+                        <input class="btn btn-secondary dropdown-toggle selectBtn selection1" name="gender" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=" ~Select~">
                         <div class="dropdown-menu menu1" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" >Male</a>
                           <a class="dropdown-item" >Female</a>
@@ -142,26 +140,25 @@
                 <label class="mb-2" for="">Privleges</label>
                 <div class="boxPrivleges mb-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="Administrator">
+                        <input class="form-check-input" type="radio" value="" id="Administrator" name="privilege">
                         <label class="form-check-label" for="Administrator">Administrator</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="hr">
+                        <input class="form-check-input" type="radio" value="" id="hr" name="privilege">
                         <label class="form-check-label" for="hr">HR</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="manager">
+                        <input class="form-check-input" type="radio" value="" id="manager" name="privilege">
                         <label class="form-check-label" for="manager">Manager</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="Employee">
+                        <input class="form-check-input" type="radio" value="" id="Employee" name="privilege">
                         <label class="form-check-label" for="Employee">Employee</label>
                     </div>
                 </div>
                 <button class="btn saveEmployeeBtn">Save</button>
                 <button class="btn cancelEmployeeBtn">Cancel</button>
             </div>
-            <button name="button">1</button>
         </form>
 
     </div>
@@ -175,22 +172,8 @@
     $(function () {
     $(".menu1 a").click(function () {
         var selText1 = $(this).text();
-         $(".selection1").html(selText1);
-        //  $(".menu1").val(selText1);
-
-         $.ajax({
-            url:'localhost:3000/employees/create',
-            type: "POST",
-            data:{
-                button: $('button[name="button"]').attr('name')
-            },
-            success:function(data){
-                console.log(data); // logs the response from the server.
-            },
-            error:function(){
-                console.log("there was an error in the ajax request");
-            }
-        });
+        $(".selection1").val(selText1);
+        //  $(".selection1").html(selText1); 
     })
 })
 

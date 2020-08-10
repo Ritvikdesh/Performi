@@ -1547,6 +1547,7 @@ button{
   background-color :#f1faee ;
   color: #457b9d;
   box-shadow: 1px 1px 3px;
+  display: inline-block;
 }
 
 /* Add employees */
