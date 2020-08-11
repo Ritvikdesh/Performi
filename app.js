@@ -61,7 +61,7 @@ app.get("/companySignUp", function(req, res){
 
 
 app.post("/companySignUp", function(req,res){
-    var newUser = new User({username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName, companyName: req.body.companyName, isAdmin: true});
+    var newUser = new User({username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName, companyName: req.body.companyName, privilege: "admin"});
     console.log(newUser);
     User.register(newUser, req.body.password, function(err, user){
         if (err){
@@ -363,7 +363,7 @@ app.post("/reviewCycles", function(req, res){
 })
 
 // EMPLOYEES INDEX
-app.get("/employees", isLoggedIn, function(req, res){
+app.get("/employees", isManager, function(req, res){
     if(req.query.employee){
         const regex = new RegExp(escapeRegex(req.query.employee), 'gi');
         User.find({firstName: regex}, function(err, allUsers){
@@ -414,17 +414,27 @@ app.post("/employees/create", isAdmin, function(req,res){
             reportsTo: req.body.reportsTo,
             manager: req.body.manager,
             workingStatus: req.body.workingStatus,
-            companyName: req.user.companyName
+            companyName: req.user.companyName,
+            privilege: req.body.privilege
         });
         console.log(newUser);
-    User.register(newUser, req.body.password, function(err, user){
+    User.register(newUser, req.body.password, function(err, newUser){
         if (err){
             console.log(err);
            return res.redirect("/employees/new")
         }
-        // passport.authenticate("local")(req, res, function(){
-        //     res.redirect("/employees"); 
-        // }); 
+
+        // if new user reports to a manager, adds the new user to the managers suboordinates list
+        User.find({}, function(err, allUsers){
+           allUsers.forEach(function(manager){
+               if(newUser.reportsTo == manager.firstName){
+                //    manager.suboordinates.push(newUser);
+                //    manager.save();
+                   console.log(manager);
+                   console.log("The manager of: " + newUser.firstName + " is " + manager.firstName);
+               }
+           })
+        })
         
     });
     res.redirect("/home"); 
@@ -459,7 +469,8 @@ app.put("/employees/:id", function(req, res){
         mobilePhoneNumber: req.body.mobilePhoneNumber,
         jobTitle: req.body.jobTitle,
         reportsTo: req.body.reportsTo,
-        companyName: req.user.companyName
+        companyName: req.user.companyName,
+        privilege: req.body.privilege
     }
 
     User.findByIdAndUpdate(req.params.id, data, function(err, updatedUser){
@@ -482,11 +493,6 @@ app.delete("/employees/:id", isAdmin , function(req,res){
 //VIEW DIRECTORY PAGE
 app.get("/viewDirectory", isLoggedIn, function(req, res){
     res.render("viewDirectory");
-})
-
-//EDIT PERSONAL INFO PAGE
-app.get("/editPersonalInfo", isLoggedIn, function(req, res){
-    res.render("editPersonalInfo");
 })
 
 ////////////////////////////////////////////////////////////
@@ -603,7 +609,14 @@ function isLoggedIn(req,res,next){
 }
 
 function isAdmin(req,res, next){
-    if(req.user.isAdmin && req.isAuthenticated()){
+    if(req.user.privilege == "admin" && req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/home");
+}
+
+function isManager(req,res, next){
+    if(req.user.privilege == "manager" && req.isAuthenticated()){
         return next();
     }
     res.redirect("/home");

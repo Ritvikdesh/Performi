@@ -21,6 +21,7 @@ var UserSchema = new mongoose.Schema({
     jobTitle: String,
     reportsTo: String,
     manager: String,
+    privilege: String,
     workingStatus: String,
     companyName: String,
     resetPasswordToken: String,

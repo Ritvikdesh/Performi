@@ -36,7 +36,7 @@
                     <li class="nav-item mr-2">
                         <a class="nav-link" href="/360feedback">360 FEEDBACK</a>
                     </li>
-                    <% if(currentUser.isAdmin) { %>
+                    <% if(currentUser.privilege == "manager") { %>
                         <li class="nav-item mr-2">
                             <a class="nav-link" href="/employees">EMPLOYEES</a>
                         </li>
@@ -58,7 +58,7 @@
                         <i class="fas fa-user-cog settings"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item dropdownColor" href="/editPersonalInfo">View Profile</a>
+                        <a class="dropdown-item dropdownColor" href="/employees/<%= currentUser.id %>/edit">View Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item dropdownColor" href="/logout">Logout</a>
                     </div>
