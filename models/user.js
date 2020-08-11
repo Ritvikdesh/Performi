@@ -27,8 +27,19 @@ var UserSchema = new mongoose.Schema({
     resetPasswordExpires: Date,
     isAdmin: {type: Boolean, default: false},
     sendFeedbackFormTo : [String],
-    feedbackFirstName: String,
-    feedbackLastName: String
+    viewFeedback: String,
+    goals: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Goal"
+        }
+    ],
+    feedbacks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Feedback"
+        }
+    ]
 })
 UserSchema.plugin(passportLocalMongoose);
 

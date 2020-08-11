@@ -56,6 +56,7 @@
                 </div>
                 <hr>
                 <% users.forEach(function(user){ %>
+                    
                     <div class="row mt-2 mb-3 no-gutters"> 
                         <div class="col-2 pl-1 pl-xl-4"> 
                             <img class="profilePicFeedbackPage" src="<%= user.photo %> " class="img-fluid" alt="Responsive image">
@@ -65,13 +66,13 @@
                         </div>
                         <div class="col-4 mt-2 pr-5">
                             <form action="/360feedback/sendFeedback/<%= user._id %>" method="POST" style="display: inline" id="form1">
-                                <button class="btn sendButton w-100" id="send"><i class="fas fa-share pr-2"></i>Send</button>
+                                <button class="btn sendButton w-100" id="test"><i class="fas fa-share pr-2" ></i>Send</button>
                             </form>    
                         </div>
                         
                         <% for (var i = 0; i < user.sendFeedbackFormTo.length ; i++) { %>
                             <% if(user.sendFeedbackFormTo[i] == currentUser._id) { %>
-                                <form action="/360feedback/<%= user._id %>" method="POST" style="display: inline">
+                                <form action="/360feedback/<%= user._id %>" method="GET" style="display: inline">
                                     <div class="col-12 mt-2 pr-4">
                                         <button class="btn viewButton w-100"><i class="fas fa-eye pr-2"></i>View</button>
                                     </div>
@@ -88,26 +89,38 @@
         </div>
         <div class="col-6">
             <div class="giveFeedbackDiv">
-                <div class="row mb-2 no-gutters">
-                    <div class="col-1 col-md-2 col-lg-2 col-xl-1 mr-xl-2">
-                        <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                    </div>
-                    <div class="col-10 mt-3">
-                        <h3>Give Feedback for: <%= currentUser.feedbackFirstName %> <%= currentUser.feedbackLastName %></h3>
-                    </div>  
-                </div>
-                    <form action="/360feedback" method="POST">
-                        <div class="form-group">
-                            <label for="prosTextArea">What are some things that <%= currentUser.feedbackFirstName %> does well?</label>
-                            <textarea name="pros" id="prosTextArea" cols="30" rows="9" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="consTextArea">How could <%= currentUser.feedbackFirstName %> improve?</label>
-                            <textarea name="cons" id="consTextArea" cols="30" rows="9" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn submitFeedback mr-2">Submit</button>
-                    </form>
-                    <button class="btn saveFeedback">Save & Finish Later</button>
+                
+                        <% users.forEach(function(user){ %>
+                            <% for (var i = 0; i < user.sendFeedbackFormTo.length ; i++) { %>
+                                <% if (user.sendFeedbackFormTo[i] == currentUser._id) { %>
+                                    <% user.feedbacks.forEach(function(feedback){ %>
+                                        <% if (feedback.sendFeedbackTo == currentUser._id) { %>
+                                            <div class="row mb-2 no-gutters">
+                                                <div class="col-1 col-md-2 col-lg-2 col-xl-1 mr-xl-2">
+                                                    <img class="profilePicPeerReview" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                                                </div>
+                                                <div class="col-10 mt-3">
+                                                    <h3>Give Feedback for: <%= feedback.firstName %> <%= feedback.lastName %></h3>
+                                                </div>  
+                                            </div>
+
+                                            <form action="360feedback/<%= feedback.id %>" method="POST">
+                                                <div class="form-group">
+                                                    <label for="prosTextArea">What are some things that <%= feedback.firstName %> does well?</label>
+                                                    <textarea name="pros" id="prosTextArea" cols="30" rows="9" class="form-control"><%= feedback.pros %></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="consTextArea">How could <%= feedback.firstName %> improve?</label>
+                                                    <textarea name="cons" id="consTextArea" cols="30" rows="9" class="form-control"><%= feedback.cons %> </textarea> 
+                                                </div>
+                                                <button class="btn submitFeedback mr-2">Submit</button>
+                                                <button class="btn saveFeedback">Save & Finish Later</button>
+                                            </form>
+                                        <% } %> 
+                                    <% }) %>
+                                <% } %>
+                            <% } %> 
+                        <% }) %> 
             </div>
         </div>
     </div>
@@ -133,10 +146,12 @@
 $(document).ready(function() {  
     var someVarName = localStorage.getItem("someVarKey");
     var clickedViewButton = localStorage.getItem("clickedViewButtonKey");
+    var something = localStorage.getItem("something");
 
     if ( someVarName == "value" ) {
-        // alert("thing is true");
-        $(".sending").hide();
+        // $(".sendButton").attr('id', 'thing');
+        // $(`#${something}`).hide();
+
     }
 
     if ( clickedViewButton == "true" ) {
@@ -164,10 +179,13 @@ $(document).ready(function() {
     }
 });
 
-$(".sendButton").on("click", function() {
+$(".sendButton").on("click", function() { 
+    var counter = 2;
     var someVarName = "value";
+    var something = this.id;
     localStorage.setItem("someVarKey", someVarName);
-    $(this).addClass("sending");
+    localStorage.setItem("something", something);
+    
 });
 
 
@@ -176,9 +194,9 @@ $(".viewButton").on("click", function() {
     localStorage.setItem("clickedViewButtonKey", clickedViewButton);
 });
 
-// $(".saveFeedback").on("click", function() {
-//     $(".giveFeedbackDiv").toggle();
-// });
+$(".saveFeedback").on("click", function() {
+    $(".giveFeedbackDiv").toggle();
+});
 
 
   

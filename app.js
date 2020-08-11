@@ -209,21 +209,27 @@ app.get("/tasks", isLoggedIn, function(req, res){
 
 //MY PERFORMANCE PAGE (INDEX FOR GOALS, FEedback)
 app.get("/myPerformance", isLoggedIn, function(req, res){
-    Goal.find({}).populate("comments").exec(function(err, allGoals){
-        if (err){
-            console.log("goals error: " + err);
-        }
-        else{
-            Feedback.find({}, function(err, allFeedbacks){
+    User.find({}).populate("goals").exec(function(err, allUsers){
+        if(err){
+            console.log(err);
+        }else{
+            Goal.find({}).populate("comments").exec(function(err, allGoals){
                 if (err){
-                    console.log("Feedback error: " + err);
+                    console.log("goals error: " + err);
                 }
                 else{
-                    res.render("goals", {feedbacks: allFeedbacks, goals: allGoals});
+                    Feedback.find({firstName: req.user.firstName}, function(err, allFeedbacks){
+                        if (err){
+                            console.log("Feedback error: " + err);
+                        }
+                        else{
+                            res.render("goals", {feedbacks: allFeedbacks, goals: allGoals, users: allUsers});
+                        }
+                    })
                 }
             })
         }
-    })
+    });
 })
 
 //CREATE PAGE FOR GOALS
@@ -237,13 +243,21 @@ app.post("/myPerformance/goals/create", isLoggedIn, function(req, res){
     }
     var goal = {title: title, dueDate: dueDate, description: description, author: author}; 
     console.log(goal);
-    Goal.create(goal, function(err, goal){
+    User.findById(req.user._id, function(err, foundUser){
         if(err){
             console.log(err);
-        }
-        else{
-            console.log(goal);
-            res.redirect("/myPerformance");
+        }else{
+            Goal.create(goal, function(err, goal){
+                if(err){
+                    console.log(err);
+                }
+                else{
+                    foundUser.goals.push(goal);
+                    foundUser.save();
+                    console.log(goal);
+                    res.redirect("/myPerformance");
+                }
+            })
         }
     })
 })
@@ -251,30 +265,39 @@ app.post("/myPerformance/goals/create", isLoggedIn, function(req, res){
 
 //CREATE COMMENTS
 app.post("/myPerformance/goals/:id/comments/create", isLoggedIn, function(req, res){
-    //look up camground using id 
-    Goal.findById(req.params.id, function(err, goal){
+    User.findById(req.user._id, function(err, user){
         if(err){
             console.log(err);
-            res.redirect("/home");
         }else{
-            Comment.create(req.body.comment, function(err, comment){
+            //look up camground using id 
+            Goal.findById(req.params.id, function(err, goal){
                 if(err){
-                    req.flash("error", "Something went wrong");
                     console.log(err);
+                    res.redirect("/home");
                 }else{
-                    // add username and id to comment
-                    comment.author.id = req.user._id;
-                    comment.author.username = req.user.username;
-                    //save comment
-                    comment.save();
-                    goal.comments.push(comment);
-                    goal.save();
-                    req.flash("success", "Successfully added comment");
-                    res.redirect("/myPerformance");
+                    Comment.create(req.body.comment, function(err, comment){
+                        if(err){
+                            req.flash("error", "Something went wrong");
+                            console.log(err);
+                        }else{
+                            // add username and id to comment
+                            comment.author.id = req.user._id;
+                            comment.author.username = req.user.username;
+                            //save comment
+                            comment.save();
+                            goal.comments.push(comment);
+                            goal.save();
+                            user.goals.push(goal);
+                            user.save();
+                            req.flash("success", "Successfully added comment");
+                            res.redirect("/myPerformance");
+                        }
+                    })
                 }
-            })
+            });
         }
-    });
+    })
+    
 })
 
 app.post("/sendForm", function(req, res){
@@ -466,12 +489,19 @@ app.get("/editPersonalInfo", isLoggedIn, function(req, res){
     res.render("editPersonalInfo");
 })
 
-//360 FEEDBACK PAGE
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+/////////////////////360 FEEDBACK ROUTE///////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+//INDEX
 app.get("/360feedback", isLoggedIn, function(req, res){
    
     if(req.query.employee){
         const regex = new RegExp(escapeRegex(req.query.employee), 'gi');
-        User.find({firstName: regex}, function(err, allUsers){
+        User.find({firstName: regex}).populate("feedbacks").exec(function(err, allUsers){
             if(err){
                 console.log(err);
             }
@@ -480,7 +510,7 @@ app.get("/360feedback", isLoggedIn, function(req, res){
             }
         })
     }else{
-        User.find({}, function(err, allUsers){
+        User.find({}).populate("feedbacks").exec(function(err, allUsers){
             if(err){
                 console.log(err);
             }
@@ -491,49 +521,73 @@ app.get("/360feedback", isLoggedIn, function(req, res){
     }
 })
 
-//360Feedback index
+//CREATE
+app.post("/360feedback/sendFeedback/:id", function(req,res){
 
-
-//360 FEEDBACK CREATE
-app.post("/360feedback", function(req, res){
     var feedback = {
         firstName: req.user.firstName,
         lastName: req.user.lastName,
-        pros: req.body.pros,
-        cons: req.body.cons
-    };
-    console.log(feedback);
+        sendFeedbackTo: req.params.id
+    }
 
-    Feedback.create(feedback, function(err){
+    User.findById(req.params.id, function(err, user){
+        req.flash("success", "You sent a peer feedback form to: " + user.firstName);
+    });
+
+    User.findById(req.user._id, function(err, currentUser){
         if(err){
             console.log(err);
         }else{
+            Feedback.create(feedback, function(err, feedbackForm){
+                if(err){
+                    console.log(err);
+                }else{
+                    currentUser.sendFeedbackFormTo.push(req.params.id);
+                    User.findById(req.params.id, function(err, user){
+                        feedbackForm.reviewedByFirstName = user.firstName;
+                        feedbackForm.reviewedByLastName = user.lastName;
+                        feedbackForm.save();
+                    });
+                    currentUser.feedbacks.push(feedbackForm);
+                    currentUser.save();
+                    res.redirect("/360feedback");
+                }
+            })
+        }
+    })
+}) 
+
+//VIEW
+app.get("/360feedback/:id", function(req,res){
+
+    //find 360 feedback with provided ID
+    User.findById(req.params.id, function(err, foundUser){
+        if(err){
+            console.log(err);
+        }else{
+            foundUser.viewFeedback = req.params.id;
+            foundUser.save();
+            res.redirect("/360feedback");
+        } 
+    });
+}) 
+
+//UPDATE
+app.post("/360feedback/:id", function(req, res){
+    var feedback = {
+        pros: req.body.pros,
+        cons: req.body.cons 
+    };
+    Feedback.findByIdAndUpdate(req.params.id, feedback, function(err, updatedFeedback){
+        if(err){
+            console.log(err)
+        }else{
+            console.log(updatedFeedback);
             res.redirect("/360feedback");
         }
     })
 })
 
-app.post("/360feedback/:id", function(req,res){
-    User.findById(req.params.id, function(err, person){
-        req.user.feedbackFirstName = person.firstName;
-        req.user.feedbackLastName = person.lastName;
-        req.user.save();
-        console.log("first name: " + req.user.feedbackFirstName);
-        console.log("last name: " + req.user.feedbackFirstName);
-        res.redirect("/360feedback");
-    })
-}) 
-
-
-//SEND 360 FEEDBACK FORM
-app.post("/360feedback/sendFeedback/:id", function(req,res){
-    User.findById(req.params.id, function(err, user){
-        req.flash("success", "You sent a peer feedback form to: " + user.firstName);
-        req.user.sendFeedbackFormTo.push(req.params.id);
-        req.user.save();
-        res.redirect("/360feedback");
-    })
-}) 
 
 
 //DEMO LOGIN PAGE

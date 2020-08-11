@@ -4,7 +4,10 @@ var FeedbackSchema = new mongoose.Schema ({
     firstName: String,
     lastName: String,
     pros: String,
-    cons: String
+    cons: String,
+    sendFeedbackTo: String,
+    reviewedByFirstName: String,
+    reviewedByLastName: String
 })
 
 module.exports = mongoose.model("Feedback", FeedbackSchema);

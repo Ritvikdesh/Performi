@@ -6,16 +6,16 @@
         <div class="editProfileDiv">
             
             
-            <form action="/employees/<%= user.id %>?_method=PUT" method="POST">
+            <form action="/employees/<%= currentUser.id %>?_method=PUT" method="POST">
                 <h4>Personal</h4>
                 <hr>
 
                 <div class="indentedInfo">
                     <label class="mb-0" for="">Name</label>
                     <div class="row pl-3 mb-3">
-                        <input type="text" class="form-control standardInputSize mr-2" name="firstName" value="<%= user.firstName%>">
-                        <input type="text" class="form-control standardInputSize mr-2" name="middleName" value="<%= user.middleName%>">
-                        <input type="text" class="form-control standardInputSize mr-2" name="lastName" value="<%= user.lastName%>">
+                        <input type="text" class="form-control standardInputSize mr-2" name="firstName" value="<%= currentUser.firstName%>">
+                        <input type="text" class="form-control standardInputSize mr-2" name="middleName" value="<%= currentUser.middleName%>">
+                        <input type="text" class="form-control standardInputSize mr-2" name="lastName" value="<%= currentUser.lastName%>">
                     </div>
                     <label class="mb-0" for="">Gender</label>
                     <div class="row pl-3 mb-3">
@@ -32,38 +32,38 @@
                     </div>
                     <label class="mb-0" for="">Hire Date</label>
                     <div class="row pl-3 mb-3">
-                        <input type="text" name="hireDate" class="form-control standardInputSize mr-2" value="<%= user.hireDate%>">
+                        <input type="text" name="hireDate" class="form-control standardInputSize mr-2" value="<%= currentUser.hireDate%>">
                     </div>
                     <div class="row pl-3 mb-3">
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Address</label>
-                            <input type="text" class="form-control " name="address" value="<%= user.address%>">
+                            <input type="text" class="form-control " name="address" value="<%= currentUser.address%>">
                         </div>
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">City</label>
-                            <input type="text" class="form-control  mr-2" name="city" value="<%= user.city%>">
+                            <input type="text" class="form-control  mr-2" name="city" value="<%= currentUser.city%>">
                         </div>
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Postal Code</label>
-                            <input type="text" class="form-control mr-2" name="postalCode" value="<%= user.postalCode%>">
+                            <input type="text" class="form-control mr-2" name="postalCode" value="<%= currentUser.postalCode%>">
                         </div>
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Country</label>
-                            <input type="text" class="form-control mr-2" name="country" value="<%= user.country%>">
+                            <input type="text" class="form-control mr-2" name="country" value="<%= currentUser.country%>">
                         </div>
                     </div>
                     <label class="mb-0" for="">Work Email</label>
                     <div class="row pl-3 mb-3">
-                        <input type="text" class="form-control standardInputSize mr-2" name="email" value="<%= user.email%>">
+                        <input type="text" class="form-control standardInputSize mr-2" name="email" value="<%= currentUser.email%>">
                     </div>
                     <div class="row pl-3 mb-3">
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Mobile Phone Number</label>
-                            <input type="text" name="mobilePhoneNumber" class="form-control " value="<%= user.mobilePhoneNumber%>">
+                            <input type="text" name="mobilePhoneNumber" class="form-control " value="<%= currentUser.mobilePhoneNumber%>">
                         </div>
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Work Phone Number</label>
-                            <input type="text" name="workPhoneNumber" class="form-control  mr-2" value="<%= user.workPhoneNumber%>">
+                            <input type="text" name="workPhoneNumber" class="form-control  mr-2" value="<%= currentUser.workPhoneNumber%>">
                         </div>
                     </div>
                 </div>
@@ -84,16 +84,16 @@
                             <a class="dropdown-item" >Smarketing</a>
                             </div>
                         </div>
-                        <a class="ml-3" href="">Manage Users</a>
+                        <a class="ml-3" href="">Manage currentUsers</a>
                     </div>
                     <div class="row pl-3 mb-3">
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Job Title</label>
-                            <input type="text"  class="form-control " name="jobTitle" value="<%= user.jobTitle%>">
+                            <input type="text"  class="form-control " name="jobTitle" value="<%= currentUser.jobTitle%>">
                         </div>
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Reports To</label>
-                            <input type="text" class="form-control  mr-2" name="reportsTo" value="<%= user.reportsTo%>">
+                            <input type="text" class="form-control  mr-2" name="reportsTo" value="<%= currentUser.reportsTo%>">
                         </div>
                         <div class="form-group mr-2 mb-0">
                             <label class="mb-0" for="">Manager</label>

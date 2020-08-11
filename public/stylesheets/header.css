@@ -47,6 +47,10 @@ button{
   letter-spacing: 0.15rem;
 }
 
+.dropdown-toggle{
+  color: #f1faee;
+}
+
 .tabs{
   margin-left: 1%;
 }
