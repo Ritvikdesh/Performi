@@ -28,15 +28,23 @@
                         <a class="nav-link" href="/home">HOME<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="/tasks">TASKS</a>
+                        <a class="nav-link" href="/tasks">TASKS <span class="badge badge-pill badge-light">
+                            <% var counter = 0 %> 
+                            <% currentUser2.notifications.forEach(function(notification){ %>
+                                <% if (!notification.isRead) { %>
+                                    <% counter = counter + 1 %> 
+                                <% } %> 
+                            <% }) %>
+                            <%= counter  %>  
+                        </span></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link"  href="/myPerformance">MY PERFORMANCE</a>
+                        <a class="nav-link"  href="/myPerformance/<%= currentUser._id %>">MY PERFORMANCE</a>
                     </li>
                     <li class="nav-item mr-2">
                         <a class="nav-link" href="/360feedback">360 FEEDBACK</a>
                     </li>
-                    <% if(currentUser.privilege == "manager") { %>
+                    <% if(currentUser.privilege == "manager" || currentUser.privilege == "admin") { %>
                         <li class="nav-item mr-2">
                             <a class="nav-link" href="/employees">EMPLOYEES</a>
                         </li>
@@ -68,5 +76,5 @@
       </nav>
 
       <nav class="navbar navbar-toggleable-sm bg-inverse navbar-inverse fixed-top smart-scroll-two navbar2">
-        <span class="navbar-brand nameJob" href="#"><%= currentUser.firstName %> <%= currentUser.lastName %><small>CEO</small></span>
+        <span class="navbar-brand nameJob" href="#"><%= currentUser2.firstName %> <%= currentUser2.lastName %><small><%= currentUser2.jobTitle %></small></span>
       </nav>

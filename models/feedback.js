@@ -7,7 +7,8 @@ var FeedbackSchema = new mongoose.Schema ({
     cons: String,
     sendFeedbackTo: String,
     reviewedByFirstName: String,
-    reviewedByLastName: String
+    reviewedByLastName: String,
+    completedAt: String
 })
 
 module.exports = mongoose.model("Feedback", FeedbackSchema);

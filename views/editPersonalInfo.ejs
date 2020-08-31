@@ -6,11 +6,17 @@
         <div class="editProfileDiv">
             
             
-            <form action="/employees/<%= user.id %>?_method=PUT" method="POST">
+            <form action="/employees/<%= userId %>?_method=PUT" method="POST">
                 <h4>Personal</h4>
                 <hr>
 
                 <div class="indentedInfo">
+                    <div class="row pl-3 mb-3">
+                        <div class="form-group mr-2 mb-0">
+                            <label class="mb-0" for="">Photo URL</label>
+                            <input type="text" name="photo" placeholder="photo url" class="form-control " value="<%= user.photo  %> ">
+                        </div>  
+                    </div>
                     <label class="mb-0" for="">Name</label>
                     <div class="row pl-3 mb-3">
                         <input type="text" class="form-control standardInputSize mr-2" name="firstName" value="<%= user.firstName%>">

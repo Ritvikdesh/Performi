@@ -4,135 +4,62 @@
 <div class="content">
    
     <h1 id="inLineNumber" >Tasks</h1>
-    <div class="circle">1</div>
+    <div class="circle">
+        <% var counter = 0 %> 
+        <% currentUser2.notifications.forEach(function(notification){ %>
+            <% if (!notification.isRead) { %>
+                <% counter = counter + 1 %> 
+            <% } %> 
+        <% }) %>
+        <%= counter  %>
+    </div>
     
     <div class="currentTasks">
         <div class="redBar">
            <span>Your Tasks</span>
         </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
+        <% allNotifications.forEach(function(notification){ %> 
+            <% if (!notification.isRead) { %>
+                <div class="task">
+                    <div class="row">
+                        <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0 ">
+                            <p class="firstParagraph" ><%= notification.message  %> </p>
+                            <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
+                        </div>
+                        <div class="col-auto pl-0 pr-0 ">
+                            <a class="btn respondBtn mt-2" href="<%= notification.url  %>"><i id="pencil" class="fas fa-pencil-alt"></i> <span>Respond</span></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0 ">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn respondBtn"><i id="pencil" class="fas fa-pencil-alt"></i> <span>Respond</span></button>
-                    <button class="btn declineBtn"><i class="fas fa-trash"></i> <span>Decline</span> </button>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn respondBtn"><i id="pencil" class="fas fa-pencil-alt"></i> <span>Respond</span></button>
-                    <button class="btn declineBtn"><i class="fas fa-trash"></i> <span>Decline</span> </button>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn respondBtn"><i id="pencil" class="fas fa-pencil-alt"></i> <span>Respond</span></button>
-                    <button class="btn declineBtn"><i class="fas fa-trash"></i> <span>Decline</span> </button>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <div class="row">   
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn respondBtn"><i id="pencil" class="fas fa-pencil-alt"></i> <span>Respond</span></button>
-                    <button class="btn declineBtn"><i class="fas fa-trash"></i> <span>Decline</span> </button>
-                </div>
-            </div>
-        </div>
+            <% } %> 
+        <% }) %> 
     </div>
 
     <div class="finishedTasks">
         <div class="redBar">
            <span>Finished Tasks</span>
         </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
+        <% allNotifications.forEach(function(notification){ %> 
+            <% if (notification.isRead) { %>
+                <div class="task">
+                    <div class="row">
+                        <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
+                            <p class="firstParagraph" ><%= notification.message  %></p>
+                            <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
+                        </div>
+                        <div class="col-auto pl-0 pr-0 ">
+                            <button class="btn viewTaskBtn"><i class="fas fa-eye"></i> <span>View</span> </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn viewTaskBtn"><i class="fas fa-eye"></i> <span>View</span> </button>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn viewTaskBtn"><i class="fas fa-eye"></i> <span>View</span> </button>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn viewTaskBtn"><i class="fas fa-eye"></i> <span>View</span> </button>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <div class="row">
-                <div class="col-1 col-md-2 pr-0  col-lg-1 col-xl-1">
-                    <i class="fas fa-comment-dots"></i>
-                </div>
-                <div class="col-8 col-md-5 col-lg-7 col-xl-8 pl-0 ml-lg-3 ml-xl-0">
-                    <p class="firstParagraph" >Give Peer Feedback on Shirish D</p>
-                    <small class="secondParagraph">Due in 20 days (April 20, 2020)</small>  
-                </div>
-                <div class="col-auto pl-0 pr-0 ">
-                    <button class="btn viewTaskBtn"><i class="fas fa-eye"></i> <span>View</span> </button>
-                </div>
-            </div>
-        </div>
-        
+            <% } %> 
+        <% }) %> 
     </div>
 </div>
 

@@ -8,7 +8,8 @@ var commentSchema = new mongoose.Schema({
             },
             username: String
     },
-    description: String
+    description: String,
+    photo: String
 })
 
 module.exports = mongoose.model("Comment", commentSchema);

@@ -399,6 +399,14 @@ button{
     margin-top: 5%;
   }
 
+  .respondBtn i{
+    color: #f1faee;
+  }
+
+  .respondBtn span{
+    color: #f1faee;
+  }
+
   .declineBtn{
     background-color: #f1faee; 
     color: #1d3557;
@@ -843,6 +851,18 @@ button{
   border: 1px solid #1d3557;
 }
 
+.submitManagerAssessment{
+  background-color: #457b9d;
+  color: #f1faee;
+  border: 1px solid #1d3557;
+}
+
+.saveManagerAssessment{
+  background-color: #f1faee;
+  color: #1d3557;
+  border: 1px solid #1d3557;
+}
+
 .managerAssessment{
   height: auto;
   padding-left: 1rem;
@@ -956,7 +976,7 @@ button{
   height: 1px;
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
-  width: 95%;
+  width: 100%;
   margin-top:0;
   margin-right: 0;
 }

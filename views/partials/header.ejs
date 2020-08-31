@@ -7,6 +7,7 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
 <link rel="stylesheet" href="/stylesheets/header.css">
 <title>Title</title>
 </head>
@@ -26,10 +27,22 @@
                         <a class="nav-link" href="/home">HOME<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="/tasks">TASKS</a>
+                        <a class="nav-link" href="/tasks">TASKS <span class="badge badge-pill badge-light">
+                            <% var counter = 0 %> 
+                            <% if (currentUser2.notifications) { %>
+                                <% currentUser2.notifications.forEach(function(notification){ %>
+                                    <% if (!notification.isRead) { %>
+                                        <% counter = counter + 1 %> 
+                                    <% } %> 
+                                <% }) %>
+                                <%= counter  %>
+                            <% } else { %>
+                                <%= counter %>
+                            <% } %>   
+                        </span></a>
                     </li>
                     <li class="nav-item mr-2">
-                        <a class="nav-link"  href="/myPerformance">MY PERFORMANCE</a>
+                        <a class="nav-link"  href="/myPerformance/<%= currentUser._id %> ">MY PERFORMANCE</a>
                     </li>
                     <li class="nav-item mr-2">
                         <a class="nav-link" href="/360feedback">360 FEEDBACK</a>
@@ -67,22 +80,22 @@
     </nav>
 
     <nav class="navbar navbar-toggleable-sm bg-inverse navbar-inverse fixed-top smart-scroll-two navbar2">
-        <span class="navbar-brand nameJob" href="#"> <%= currentUser.firstName %> <%= currentUser.lastName %> <small>CEO</small></span>
+        <span class="navbar-brand nameJob" href="#"> <%= currentUser2.firstName %> <%= currentUser2.lastName %> <small><%= currentUser2.jobTitle %> </small></span>
     </nav>
 
-    <img id="profilePic" src="<%= currentUser.photo %> " class="img-fluid" alt="Responsive image">
+    <img id="profilePic" src="<%= currentUser2.photo %> " class="img-fluid" alt="Responsive image">
     <div class="row justify-content-left mainRow">
         <div class="col-2 col-md-3 col-lg-2" id="personalInfo" >
-            <p id="line1" ><i class="fas fa-briefcase"></i> <%= currentUser.workPhoneNumber %></p>
-            <p ><i class="fas fa-mobile-alt"></i> <%= currentUser.mobilePhoneNumber %></p>
-            <p ><i class="fas fa-envelope"></i> <%= currentUser.email %> </p>
+            <p id="line1" ><i class="fas fa-briefcase"></i> <%= currentUser2.workPhoneNumber %></p>
+            <p ><i class="fas fa-mobile-alt"></i> <%= currentUser2.mobilePhoneNumber %></p>
+            <p ><i class="fas fa-envelope"></i> <%= currentUser2.email %> </p>
             <hr>
             <p class="heading">Hire Date</p>
-            <p><%= currentUser.hireDate %></p>
+            <p><%= currentUser2.hireDate %></p>
             <hr>
             <p ><i class="fas fa-thumbtack"></i> Part-time</p>
             <p ><i class="fas fa-user-friends"></i> Admin</p>
-            <p ><i class="fas fa-map-marker-alt"></i> <%= currentUser.city %>, <%= currentUser.country %></p>
+            <p ><i class="fas fa-map-marker-alt"></i> <%= currentUser2.city %>, <%= currentUser2.country %></p>
             <hr>
             <p class="heading">Manager</p>
             <div class="row">
@@ -90,27 +103,36 @@
                     <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="col-10 pl-0 besidePic">
-                    <p id="besidePic" ><%= currentUser.reportsTo %></p>
+                    <p id="besidePic" ><%= currentUser2.reportsTo %></p>
                 </div>
             </div>
             
-            <p id="suboordinates" class="heading">Subordinates</p>
-            <div class="row">
-                <div class="col-2 pl-2 pr-0">
-                    <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                </div>
-                <div class="col-10 pl-0 besidePic">
-                    <p id="besidePic" >Jai Deshpande</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 pl-2 pr-0">
-                    <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
-                </div>
-                <div class="col-10 pl-0 besidePic">
-                    <p id="besidePic" >Shirish Deshpande</p>
-                </div>
-            </div>
+            <% if (currentUser.privilege == "admin" && currentUser2.managers) { %> 
+                <p id="suboordinates" class="heading">Subordinates</p>
+                <% currentUser2.managers.forEach(function(manager){ %>
+                    <div class="row">
+                        <div class="col-2 pl-2 pr-0">
+                            <img class="employeesPic " src="<%= manager.photo  %> " class="img-fluid" alt="Responsive image">
+                        </div>
+                        <div class="col-10 pl-0 besidePic">
+                            <p id="besidePic" > <%= manager.firstName  %> <%= manager.lastName  %> </p>
+                        </div>
+                    </div> 
+                <% }) %>
+            <% } else if (currentUser.privilege == "manager" && currentUser2.employees) { %> 
+                <% currentUser2.employees.forEach(function(employee){ %>
+                    <div class="row">
+                        <div class="col-2 pl-2 pr-0">
+                            <img class="employeesPic " src="<%= employee.photo  %> " class="img-fluid" alt="Responsive image">
+                        </div>
+                        <div class="col-10 pl-0 besidePic">
+                            <p id="besidePic" > <%= employee.firstName  %> <%= employee.lastName  %> </p>
+                        </div>
+                    </div> 
+                <% }) %>
+            <% } %>
+            
+
         </div>
     </div>
       
