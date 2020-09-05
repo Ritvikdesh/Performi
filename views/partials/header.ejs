@@ -38,7 +38,7 @@
                                 <%= counter  %>
                             <% } else { %>
                                 <%= counter %>
-                            <% } %>   
+                            <% } %>  
                         </span></a>
                     </li>
                     <li class="nav-item mr-2">
@@ -55,16 +55,18 @@
                     
             </ul>
             <ul class="navbar-nav" style="margin-right: 5%">
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-cog settings"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item dropdownColor" href="/manageAccount" >Manage Account</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item dropdownColor" href="/manageUsers">Manage Users</a>
-                    </div>
-                </li>
+                <% if (currentUser.privilege == "admin") { %>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-cog settings"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item dropdownColor" href="/manageAccount" >Manage Account</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item dropdownColor" href="/manageUsers">Manage Users</a>
+                        </div>
+                    </li>
+                <% } %> 
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-cog settings"></i>
@@ -83,48 +85,75 @@
         <span class="navbar-brand nameJob" href="#"> <%= currentUser2.firstName %> <%= currentUser2.lastName %> <small><%= currentUser2.jobTitle %> </small></span>
     </nav>
 
-    <img id="profilePic" src="<%= currentUser2.photo %> " class="img-fluid" alt="Responsive image">
+    <% if (currentUser2.photo) { %>
+        <img id="profilePic" src="<%= currentUser2.photo %> " class="img-fluid" alt="image">
+    <% } else { %>
+        <img id="profilePic" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="image">
+    <% } %> 
     <div class="row justify-content-left mainRow">
         <div class="col-2 col-md-3 col-lg-2" id="personalInfo" >
-            <p id="line1" ><i class="fas fa-briefcase"></i> <%= currentUser2.workPhoneNumber %></p>
-            <p ><i class="fas fa-mobile-alt"></i> <%= currentUser2.mobilePhoneNumber %></p>
-            <p ><i class="fas fa-envelope"></i> <%= currentUser2.email %> </p>
+            <% if (currentUser2.workPhoneNumber) { %>
+                <p id="line1" ><i class="fas fa-briefcase"></i> <%= currentUser2.workPhoneNumber %></p>
+            <% } %>
+            <% if (currentUser2.mobilePhoneNumber) { %>
+                <p ><i class="fas fa-mobile-alt"></i> <%= currentUser2.mobilePhoneNumber %></p>
+            <% } %>
+            <% if (currentUser2.email) { %>
+                <p ><i class="fas fa-envelope"></i> <%= currentUser2.email %> </p>
+            <% } %>
             <hr>
             <p class="heading">Hire Date</p>
             <p><%= currentUser2.hireDate %></p>
             <hr>
             <p ><i class="fas fa-thumbtack"></i> Part-time</p>
-            <p ><i class="fas fa-user-friends"></i> Admin</p>
-            <p ><i class="fas fa-map-marker-alt"></i> <%= currentUser2.city %>, <%= currentUser2.country %></p>
+            <p ><i class="fas fa-user-friends"></i> <%= currentUser.privilege %></p>
+            <% if (currentUser2.city && currentUser2.country) { %>
+                <p ><i class="fas fa-map-marker-alt"></i> <%= currentUser2.city %>, <%= currentUser2.country %></p>
+            <% } %>
             <hr>
-            <p class="heading">Manager</p>
-            <div class="row">
-                <div class="col-2 pl-2 pr-0">
-                    <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+            <% if (currentUser.privilege == "employee") { %>
+                <p class="heading">Manager</p>
+                <div class="row">
+                    <div class="col-2 pl-2 pr-0">
+                        <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-10 pl-0 besidePic">
+                        <p id="besidePic" ><%= currentUser2.reportsTo %></p>
+                    </div>
                 </div>
-                <div class="col-10 pl-0 besidePic">
-                    <p id="besidePic" ><%= currentUser2.reportsTo %></p>
-                </div>
-            </div>
+            <% } %> 
             
             <% if (currentUser.privilege == "admin" && currentUser2.managers) { %> 
                 <p id="suboordinates" class="heading">Subordinates</p>
                 <% currentUser2.managers.forEach(function(manager){ %>
                     <div class="row">
-                        <div class="col-2 pl-2 pr-0">
-                            <img class="employeesPic " src="<%= manager.photo  %> " class="img-fluid" alt="Responsive image">
-                        </div>
+                        <% if (manager.photo) { %>
+                            <div class="col-2 pl-2 pr-0">
+                                <img class="employeesPic " src="<%= manager.photo  %> " class="img-fluid" alt="Responsive image">
+                            </div>
+                        <% } else { %>
+                            <div class="col-2 pl-2 pr-0">
+                                <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                            </div>
+                        <% } %>
                         <div class="col-10 pl-0 besidePic">
                             <p id="besidePic" > <%= manager.firstName  %> <%= manager.lastName  %> </p>
                         </div>
-                    </div> 
+                    </div>
                 <% }) %>
             <% } else if (currentUser.privilege == "manager" && currentUser2.employees) { %> 
+                <p id="suboordinates" class="heading">Subordinates</p>
                 <% currentUser2.employees.forEach(function(employee){ %>
                     <div class="row">
-                        <div class="col-2 pl-2 pr-0">
-                            <img class="employeesPic " src="<%= employee.photo  %> " class="img-fluid" alt="Responsive image">
-                        </div>
+                        <% if (employee.photo) { %>
+                            <div class="col-2 pl-2 pr-0">
+                                <img class="employeesPic " src="<%= employee.photo  %> " class="img-fluid" alt="Responsive image">
+                            </div>
+                        <% } else { %>
+                            <div class="col-2 pl-2 pr-0">
+                                <img class="employeesPic " src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                            </div>
+                        <% } %>
                         <div class="col-10 pl-0 besidePic">
                             <p id="besidePic" > <%= employee.firstName  %> <%= employee.lastName  %> </p>
                         </div>

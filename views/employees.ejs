@@ -1,7 +1,12 @@
 <%- include ("./partials/header2") %> 
 
 <div class="header2container">
-    <h2 style="font-weight: 600">Employees</h2>
+    <div id="addingEmployeesDiv" class="d-flex flex-row">
+        <h2 style="font-weight: 600; display: inline;">Employees</h2>
+        <% if (currentUser.privilege == "admin") { %>
+            <a class="btn align-self-start" id="addEmployeeBtn" href="/employees/new"><i class="fas fa-plus" ></i>  Add Employee</a>
+        <% } %>
+    </div>
     <div class="employeeFilter">
         <div class="redBarEmployee">
             <span>Filters</span>
@@ -49,22 +54,23 @@
         <% suboordinates.forEach(function(suboordinate) { %>
             <div class="row">
                 <div class="col-1 pr-0 mr-4">
-                    <img class="profilePicEmployeePage" src="<%= suboordinate.photo %> " class="img-fluid" alt="Responsive image">
+                    <% if (suboordinate.photo) { %>
+                        <img class="profilePicEmployeePage" src="<%= suboordinate.photo %> " class="img-fluid" alt="image">
+                    <% } else { %>
+                        <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="image">
+                    <% } %> 
                 </div>
                 <div class="col-2 pl-0 pr-0 ml-2  mt-md-2 mt-lg-3">
                     <span class="nameOfEmployee"><%= suboordinate.firstName  %> <% suboordinate.lastName %> </span>
                 </div>
-                <div class="col-2 mr-2 pl-0 pr-0 ml-4 pl-2 mt-md-2 mt-lg-2">
+                <div class="col-4 mr-2 pl-0 pr-0 ml-4 pl-2 mt-md-2 mt-lg-2">
                     <span class="newAppraisals pl-3">
                         <% if (suboordinate.sentPerformanceReview) { %> 
-                            <a class="btn view" href="/myPerformance/<%= suboordinate.userId%> ">New Performance Appraisal</a>
+                            <a class="btn view" href="/myPerformance/<%= suboordinate.userId%> "><i class="fas fa-chart-bar employeeIcon"></i>  New Performance Appraisal</a>
                         <% } else { %>
                             ~No New Appraisals~
                         <% } %>  
                     </span>
-                </div>
-                <div class="col-2 pl-0 mt-2 mr-0 pr-0 ">
-                    <button class="btn results pl-2"> <i class="fas fa-chart-bar employeeIcon"></i> Results</button>
                 </div>
                 <div class="col-md-auto pl-0 pl-0 mt-2 viewEmployeesGoal">
                     <a class="btn view" href="/myPerformance/<%= suboordinate.userId%> "><i class="fas fa-eye eyeIcon"></i> View</a>

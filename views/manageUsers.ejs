@@ -52,7 +52,11 @@
         <% for (var i = 0; i < users.length; i++) { %>
             <div class="row emoplyeesEveryoneRow no-gutters">
                 <div class="col-1">
-                    <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="Responsive image">
+                    <% if (users[i].photo) { %>
+                        <img class="profilePicEmployeePage" src="<%= users[i].photo %> " class="img-fluid" alt="image">
+                    <% } else { %>
+                        <img class="profilePicEmployeePage" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="image">
+                    <% } %> 
                 </div>
                 <div class="col-2 col-md-1 col-lg-2 mt-3 mr-md-5 mr-lg-0 ml-md-3 ml-lg-0">
                     <span class="nameOfEmployee"><%= users[i].firstName%> <%= users[i].lastName %> </span>

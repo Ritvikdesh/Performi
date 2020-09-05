@@ -23,7 +23,7 @@ var express     = require("express"),
         app     = express();
 
 // setting up defaults that app requires
-mongoose.connect("mongodb://localhost/performi_app");
+mongoose.connect("mongodb://localhost/performi_app", {useNewUrlParser: true});
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended:true}));
@@ -47,16 +47,30 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    if(req.user) {
+        User.findOne({username: req.user.username}).populate(`${req.user.privilege}`).exec(function(err, user){
+            if(err){
+                console.log(err);
+            }else{
+                var person = personRole(user);
+                if(user.privilege == "admin") {
+                    person.findById(user[`${user.privilege}`]._id).populate("managers").populate("notifications").exec(function(err, personRole){
+                        app.locals.currentUser3 = personRole;
+                    })
+                } else if(user.privilege == "manager") {
+                    person.findById(user[`${user.privilege}`]._id).populate("employees").populate("notifications").exec(function(err, personRole){
+                        app.locals.currentUser3 = personRole;
+                    })
+                } else if(user.privilege == "employee") {
+                    person.findById(user[`${user.privilege}`]._id).populate("notifications").exec(function(err, personRole){
+                        app.locals.currentUser3 = personRole;
+                    })
+                }
+            }
+        });
+    } 
     res.locals.currentUser2 = app.locals.currentUser3;
-    // if(req.user){
-    //     User.findById(req.user._id).populate("admin").populate("manager").populate("employee").exec(function(err, user){
-    //         var person = personRole(user);
-    //         person.findById(user[`${user.privilege}`]._id).populate('notifications', null, {isRead: false}).exec(function(err, personRole){
-    //             console.log(personRole);
-    //             // console.log("this is how many notifications i have: " + personRole.notifications.length);
-    //         });
-    //     });
-    // }
+    // console.log(app.locals.currentUser3);
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
     res.locals.sendForm = app.locals.sendForm;
@@ -92,9 +106,9 @@ app.post("/companySignUp", function(req,res){
             }else{
                 user.admin = admin;
                 user.save();
+                app.locals.currentUser3 = admin;
             }
         });
-        console.log(user);
         passport.authenticate("local")(req, res, function(){
             res.redirect("/home");  
         }); 
@@ -269,27 +283,7 @@ app.get("/logout", function(req,res){
 
 //HOME PAGE         
 app.get("/home", isLoggedIn, function(req, res){
-    User.findOne({username: req.user.username}).populate(`${req.user.privilege}`).exec(function(err, user){
-        if(err){
-            console.log(err);
-        }else{
-            var person = personRole(user);
-            if(user.privilege == "admin") {
-                person.findById(user[`${user.privilege}`]._id).populate("managers").populate("notifications").exec(function(err, personRole){
-                    app.locals.currentUser3 = personRole;
-                })
-            } else if(user.privilege == "manager") {
-                person.findById(user[`${user.privilege}`]._id).populate("employees").populate("notifications").exec(function(err, personRole){
-                    app.locals.currentUser3 = personRole;
-                })
-            } else if(user.privilege == "employee") {
-                person.findById(user[`${user.privilege}`]._id).populate("notifications").exec(function(err, personRole){
-                    app.locals.currentUser3 = personRole;
-                })
-            }
-            res.render("home");
-        }
-    });
+    res.render("home");
 })
 
 //TASKS PAGE

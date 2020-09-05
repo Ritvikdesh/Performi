@@ -133,13 +133,18 @@
                         <div class="indented-content">
                             <small><%= goal.description %></small>
                             <div class="progress">
+                                <!-- <input type="range" min="1" max="100" value=1" class="slider" id="myRange"> -->
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                             </div>
                             <% for (var i = 0; i < goal.comments.length; i++) { %>
                                 <div class="comment">
                                     <div class="row no-gutters">
                                         <div class="col-1 mt-2 ml-2 mr-md-5 mr-lg-4 mr-xl-0">
-                                            <img class="profilePicComment" src="<%= goal.comments[i].photo  %> " class="img-fluid" alt="Responsive image">
+                                            <% if (goal.comments[i].photo) { %>
+                                                <img class="profilePicComment" src="<%= goal.comments[i].photo %> " class="img-fluid" alt="image">
+                                            <% } else { %>
+                                                <img class="profilePicComment" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="image">
+                                            <% } %> 
                                         </div>
                                         <div class="col-8 col-md-7 col-lg-8">
                                             <p class="nameOfPerson mb-0 mt-4" > <%= goal.comments[i].author.username %>  Oct 25, 2020 8:44 PM</p>
@@ -157,7 +162,11 @@
                                 <form action="/myPerformance/goals/<%= goal._id %>/comments/create/<%= userId %> " method="POST">
                                     <div class="row no-gutters">
                                         <div class="col-1 mt-1 ml-3 mr-md-5 mr-lg-4 mr-xl-0">
-                                            <img  id="addCommentProfilePic" src="<%= currentUser2.photo  %> " class="img-fluid" alt="Responsive image">
+                                            <% if (currentUser2.photo) { %>
+                                                <img id="addCommentProfilePic" src="<%= currentUser2.photo %> " class="img-fluid" alt="image">
+                                            <% } else { %>
+                                                <img id="addCommentProfilePic" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="image">
+                                            <% } %> 
                                         </div>
                                         <div class="col-9 col-md-7 col-lg-7 mt-2">
                                             <input id="comment[addingAComment]" name="comment[description]" class="form-control" type="text" placeholder="Add a Comment">
@@ -230,7 +239,7 @@
                                 </div>
                             </form>
                         </div>
-                    <%  } else if (!sendForm && suboordinate.sentPerformanceReview && isCurrentUsersManager || suboordinate.recievePerformanceReview) { %>
+                    <%  } else if (sendForm && suboordinate.sentPerformanceReview && isCurrentUsersManager || suboordinate.recievePerformanceReview) { %>
                         <% for (var i = (assessments.length -1); i < assessments.length; i++) { %>
                             <div class="peerFeedback">
                                 <div class="row no-gutters">
@@ -275,11 +284,11 @@
                     <%  }   %> 
                 </div>
                 <div class="col-6">
-                    <% if (!sendForm && suboordinate.sentPerformanceReview && isCurrentUsersManager && !suboordinate.recievePerformanceReview) { %>
+                    <% if (sendForm && suboordinate.sentPerformanceReview && isCurrentUsersManager && !suboordinate.recievePerformanceReview) { %>
                         <div class="selfAssessment">
                             <form class="selfAssessmentForm" action="/managerAssessment/<%= suboordinate.userId %> " method="POST">
                                 <div class="form-row">
-                                    <div class="col-2 col-xl-1">
+                                    <div class="col-2 col-xl-1 mr-xl-4">
                                         <i class="fas fa-id-card"></i>
                                     </div>
                                     <div class="col-10">
@@ -393,7 +402,6 @@ $(document).ready(function() {
     var postComment = localStorage.getItem("postCommentKey");
     var submitAssessment = localStorage.getItem("submitAssessmentKey");
 
-    
 
     if ( addedGoal == "true" ) {
         $('#goalsHeading').tab('show')
