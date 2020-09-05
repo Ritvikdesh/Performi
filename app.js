@@ -23,7 +23,8 @@ var express     = require("express"),
         app     = express();
 
 // setting up defaults that app requires
-mongoose.connect("mongodb://localhost/performi_app", {useNewUrlParser: true});
+// mongoose.connect("mongodb://localhost/performi_app", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://Ritvik:process.env.PASS@cluster1.crimt.mongodb.net/Cluster1?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({extended:true}));
@@ -163,7 +164,7 @@ app.post("/forgotPassword", function(req, res, next){
                 service: 'Gmail', 
                 auth: {
                     user: 'kingritz1@gmail.com',
-                    pass: process.env.GMAILPWW
+                    pass: process.env. PWW
                 }
             });
             var mailOptions = {
